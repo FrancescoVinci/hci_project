@@ -2,9 +2,13 @@ import { useMemo } from "react";
 import { ScaleLinear } from "d3";
 
 // tick length
-const TICK_LENGTH = 6;
+const TICK_LENGTH = 10;
 
-export const XAxis = ({ xScale, pixelsPerTick }) => {
+export const XAxis = ({
+    xScale,
+    pixelsPerTick,
+    height,
+}) => {
     const range = xScale.range();
 
     const ticks = useMemo(() => {
@@ -19,23 +23,26 @@ export const XAxis = ({ xScale, pixelsPerTick }) => {
 
     return (
         <>
-            {/* Main horizontal line */}
-            <path
-                d={["M", range[0], 0, "L", range[1], 0].join(" ")}
-                fill="none"
-                stroke="currentColor"
-            />
-
             {/* Ticks and labels */}
             {ticks.map(({ value, xOffset }) => (
-                <g key={value} transform={'translate(${xOffset}, 0)'}>
-                    <line y2={TICK_LENGTH} stroke="currentColor" />
+                <g
+                    key={value}
+                    transform={`translate(${xOffset}, 0)`}
+                    shapeRendering={"crispEdges"}
+                >
+                    <line
+                        y1={TICK_LENGTH}
+                        y2={-height - TICK_LENGTH}
+                        stroke="#D2D7D3"
+                        strokeWidth={0.5}
+                    />
                     <text
                         key={value}
                         style={{
                             fontSize: "10px",
                             textAnchor: "middle",
                             transform: "translateY(20px)",
+                            fill: "#D2D7D3",
                         }}
                     >
                         {value}

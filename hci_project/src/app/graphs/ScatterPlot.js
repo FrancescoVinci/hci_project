@@ -24,7 +24,7 @@ const Scatterplot = ({ width, height, data }) => {
         cy={yScale(d.x)}
         opacity={1}
         stroke="#cb1dd1"
-        fill="#cb1dd1"
+        fill="#fb10d1"
         fillOpacity={0.2}
         strokeWidth={1}
       />

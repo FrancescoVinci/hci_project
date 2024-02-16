@@ -1,7 +1,6 @@
 import { useMemo } from "react";
 import { ScaleLinear } from "d3";
 
-
 const TICK_LENGTH = 10;
 
 export const YAxis = ({ yScale, pixelsPerTick, width }) => {
@@ -23,7 +22,7 @@ export const YAxis = ({ yScale, pixelsPerTick, width }) => {
             {ticks.map(({ value, yOffset }) => (
                 <g
                     key={value}
-                    transform={"translate(0, {yOffset})"} // TODO struggling with back ticks
+                    transform={`translate(0, ${yOffset})`}
                     shapeRendering={"crispEdges"}
                 >
                     <line
