@@ -5,17 +5,13 @@ import { Accordion, AccordionItem, Button, Card, CardBody } from "@nextui-org/re
 export default function Home() {
     return (
         <div className="">
-
-
             <div className="flex justify-center">
-
-                <p className="text-4xl pt-4 font-bold text-blue-600 inline-block">Group
-                    BeViCi
+                <p className="text-4xl pt-4 font-bold text-blue-600 inline-block">
+                    Group BeViCi
                 </p>
-
             </div>
 
-            <div className="pt-3 mb-4">
+            <div className="pt-3 mb-4 px-4">
                 <p className="font-sans">
                     I’m Derek, an astro-engineer based in Tattooine. I like to build X-Wings at{" "}
                     <a className="underline decoration-sky-500">My Company, Inc</a>.
@@ -41,21 +37,16 @@ export default function Home() {
                 <AccordionItem key="3" aria-label="Accordion 3" title="Accordion 3">
                     fff
                 </AccordionItem>
-                <AccordionItem key="4" aria-label="Accordion 4" title="Accordion 3">
+                <AccordionItem key="4" aria-label="Accordion 4" title="Accordion 4">
                     fff
                 </AccordionItem>
-                <AccordionItem key="5" aria-label="Accordion 5" title="Accordion 3">
+                <AccordionItem key="5" aria-label="Accordion 5" title="Accordion 5">
                     fff
                 </AccordionItem>
-                <AccordionItem key="6" aria-label="Accordion 6" title="Accordion 3">
+                <AccordionItem key="6" aria-label="Accordion 6" title="Accordion 6">
                     fff
                 </AccordionItem>
-
             </Accordion>
-
-
-
-
         </div>
     );
 }

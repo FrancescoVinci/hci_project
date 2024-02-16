@@ -1,6 +1,6 @@
 "use client"
 
-import React, {useState} from "react";
+import React, { useState } from "react";
 import {
     Navbar as NextUINavbar,
     NavbarBrand,
@@ -33,6 +33,18 @@ export const Navbar = () => {
         "BeViCi Group Info"
     ];
 
+    const menuItemsRef = [
+        "/representations/StreamGraph",
+        "/representations/ChordDiagram",
+        "/representations/ParallelCoordinatePlot",
+        "/representations/LineGraph",
+        "/representations/HeatMap",
+        "/representations/SpiralGraph",
+        "/representations/ScatterPlot",
+        "/representations/RidgelinePlot",
+        "/representations/BeViCiGroupInfo"
+    ];
+
     return (
         <NextUINavbar
             isBordered
@@ -41,19 +53,19 @@ export const Navbar = () => {
             className="bg-blue-50"
         >
             <NavbarContent className="sm:hidden" justify="start">
-                <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"}/>
+                <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
             </NavbarContent>
 
             <NavbarContent className="sm:hidden" justify="center">
                 <NavbarBrand>
                     <p className="font-semibold text-sm text-zinc-800 inline-block text-transparent bg-clip-text">HCI Project</p>
-                    <Image src="/fondazione.png" height={80} width={80}/>
+                    <Image src="/fondazione.png" height={80} width={80} />
                 </NavbarBrand>
             </NavbarContent>
 
             <NavbarContent className="hidden sm:flex gap-5" justify="center">
                 <NavbarBrand>
-                    <Image src="/fondazione.png" height={80} width={80}/>
+                    <Image src="/fondazione.png" height={80} width={80} />
                     <p className="font-semibold text-sm text-zinc-800 inline-block text-transparent bg-clip-text">HCI Project</p>
                 </NavbarBrand>
                 <NavbarItem>
@@ -62,28 +74,34 @@ export const Navbar = () => {
                     </Link>
                 </NavbarItem>
                 <NavbarItem isActive>
-                    <Dropdown className="bg-blue-100">
+                    <Dropdown className="bg-blue-50">
                         <DropdownTrigger>
-                            <Button variant="light" >
+                            <Button variant="light" color="primary" className="text-gray">
                                 Representations
                             </Button>
                         </DropdownTrigger>
-                        <DropdownMenu  >
+                        <DropdownMenu
+                            itemClasses={{
+                                base: [
+                                    "rounded-md",
+                                    "text-default-500",
+                                    "transition-opacity",
+                                    "data-[hover=true]:text-foreground",
+                                    "data-[hover=true]:bg-blue-100",
+                                    "dark:data-[hover=true]:bg-default-50",
+                                    "data-[selectable=true]:focus:bg-default-50",
+                                    "data-[pressed=true]:opacity-70",
+                                    "data-[focus-visible=true]:ring-default-500",
+                                ],
+                            }}>
                             {menuItems.map((item, index) => (
-                                <DropdownItem key={`${item}-${index}`}>
-                                    <Link
-                                        className="w-full"
-                                        color={
-                                            index === menuItems.length - 1 ? "primary" : "foreground"
-                                        }
-                                        href="#"
-                                        size="lg"
-                                    >
-                                        {item}
-                                    </Link>
+                                <DropdownItem
+                                    key={`${item}-${index}`}
+                                    href={`${menuItemsRef[index]}`}
+                                >
+                                    {item}
                                 </DropdownItem>
                             ))}
-
                         </DropdownMenu>
                     </Dropdown>
                 </NavbarItem>
