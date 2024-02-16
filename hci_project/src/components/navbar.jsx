@@ -45,17 +45,17 @@ export const Navbar = () => {
                 <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"}/>
             </NavbarContent>
 
-            <NavbarContent className="sm:hidden pr-3" justify="center">
+            <NavbarContent className="sm:hidden" justify="center">
                 <NavbarBrand>
+                    <p className="font-semibold text-sm text-zinc-600 inline-block text-transparent bg-clip-text">HCI Project</p>
                     <Image src="/fondazione.png" height={80} width={80}/>
-                    <p className="font-bold bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text">BeViCi</p>
                 </NavbarBrand>
             </NavbarContent>
 
-            <NavbarContent className="hidden sm:flex gap-4" justify="center">
+            <NavbarContent className="hidden sm:flex gap-5" justify="center">
                 <NavbarBrand>
                     <Image src="/fondazione.png" height={80} width={80}/>
-                    <p className="font-bold bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text">BeViCi</p>
+                    <p className="font-semibold text-sm text-zinc-600 inline-block text-transparent bg-clip-text">BeViCi</p>
                 </NavbarBrand>
                 <NavbarItem>
                     <Link color="foreground" href="#">

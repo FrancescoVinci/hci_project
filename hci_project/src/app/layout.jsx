@@ -1,6 +1,5 @@
 import {Inter} from "next/font/google";
 import {Providers} from "@/app/providers";
-import { Link } from "@nextui-org/link";
 import "@/styles/global.css";
 import {Navbar} from "@/components/navbar";
 
@@ -20,18 +19,11 @@ export default function RootLayout({children}) {
         <Providers>
             <div className="relative flex flex-col h-screen">
                 <Navbar/>
-                <main className="container mx-auto max-w-7xl pt-10 px-6 flex-grow">
+                <main className="container mx-auto max-w-7xl pt-10 px-6 flex-grow bg-gradient-to-r from-blue-500 to-blue-600">
                     {children}
                 </main>
-                <footer className="w-full flex items-center justify-center py-3">
-                    <Link
-                        isExternal
-                        className="flex items-center gap-1 text-current"
-                        href="https://nextui-docs-v2.vercel.app?utm_source=next-app-template"
-                        title="nextui.org homepage"
-                    >
-                        <span className="text-default-600">Made with ❤️ by BeViCi</span>
-                    </Link>
+                <footer className="w-full flex items-center justify-center py-3 bg-gradient-to-r from-blue-500 to-blue-600">
+                    <span className=" text-white">Made with ❤️ by BeViCi</span>
                 </footer>
             </div>
         </Providers>
