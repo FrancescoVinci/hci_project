@@ -11,19 +11,17 @@ export const metadata = {
 };
 
 export default function RootLayout({children}) {
-
-
     return (
         <html lang="en" className="light">
         <body className={inter.className}>
         <Providers>
-            <div className="flex flex-col h-screen bg-gradient-to-r from-blue-400 to-blue-500">
+            <div className="relative flex flex-col h-screen">
                 <Navbar/>
-                <main className="container mx-auto pt-7 px-6 ">
+                <main className="flex-grow container mx-auto pt-7 px-6 ">
                     {children}
                 </main>
-                <footer className="w-full flex items-center justify-center py-3 bg-gradient-to-r from-blue-400 to-blue-500">
-                    <span className="text-white">Made with ❤️ by BeViCi</span>
+                <footer className="w-full flex items-center justify-center py-3">
+                    <span className="text-gray">Made with ❤️ by BeViCi</span>
                 </footer>
             </div>
         </Providers>

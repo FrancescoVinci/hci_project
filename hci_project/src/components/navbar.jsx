@@ -18,8 +18,6 @@ import {
     DropdownItem
 } from "@nextui-org/react";
 
-
-
 export const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -40,6 +38,7 @@ export const Navbar = () => {
             isBordered
             isMenuOpen={isMenuOpen}
             onMenuOpenChange={setIsMenuOpen}
+            className="bg-blue-50"
         >
             <NavbarContent className="sm:hidden" justify="start">
                 <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"}/>
