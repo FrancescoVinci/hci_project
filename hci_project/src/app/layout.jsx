@@ -19,7 +19,7 @@ export default function RootLayout({children}) {
         <Providers>
             <div className="flex flex-col h-screen bg-gradient-to-r from-blue-400 to-blue-500">
                 <Navbar/>
-                <main className="container mx-auto pt-7 px-6 bg-gradient-to-r from-blue-400 to-blue-500">
+                <main className="container mx-auto pt-7 px-6 ">
                     {children}
                 </main>
                 <footer className="w-full flex items-center justify-center py-3 bg-gradient-to-r from-blue-400 to-blue-500">
