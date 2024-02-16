@@ -27,10 +27,10 @@ export default function Home() {
 
                     <Accordion variant="splitted">
                         <AccordionItem key="1" aria-label="Accordion 1" title="Accordion 1">
-                            <div className="flex">
+                            <div className="flex flex-col">
                                 <p>dfgdfgdsfg dfgdfgdsfg dfgdfgdsfg dfgdfgdsfg dfgdfgdsfg dfgdfgdsfg dfgdfgdsfg
                                     dfgdfgdsfg dfgdfgdsfg</p>
-                                <div className=" flex justify-center">
+                                <div className=" flex justify-center pt-4">
                                     <Button color="primary">Show</Button>
                                 </div>
                             </div>
