@@ -17,13 +17,13 @@ export default function RootLayout({children}) {
         <html lang="en" className="light">
         <body className={inter.className}>
         <Providers>
-            <div className="flex flex-col h-full bg-gradient-to-r from-blue-500 to-blue-600">
+            <div className="flex flex-col h-screen bg-gradient-to-r from-blue-400 to-blue-500">
                 <Navbar/>
-                <main className="container mx-auto pt-10 px-6 ">
+                <main className="container mx-auto pt-7 px-6 bg-gradient-to-r from-blue-400 to-blue-500">
                     {children}
                 </main>
-                <footer className="w-full flex items-center justify-center py-3 ">
-                    <span className=" text-white">Made with ❤️ by BeViCi</span>
+                <footer className="w-full flex items-center justify-center py-3 bg-gradient-to-r from-blue-400 to-blue-500">
+                    <span className="text-white">Made with ❤️ by BeViCi</span>
                 </footer>
             </div>
         </Providers>

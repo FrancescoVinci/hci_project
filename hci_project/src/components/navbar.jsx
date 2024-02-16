@@ -47,7 +47,7 @@ export const Navbar = () => {
 
             <NavbarContent className="sm:hidden" justify="center">
                 <NavbarBrand>
-                    <p className="font-semibold text-sm text-zinc-600 inline-block text-transparent bg-clip-text">HCI Project</p>
+                    <p className="font-semibold text-sm text-zinc-800 inline-block text-transparent bg-clip-text">HCI Project</p>
                     <Image src="/fondazione.png" height={80} width={80}/>
                 </NavbarBrand>
             </NavbarContent>
@@ -55,7 +55,7 @@ export const Navbar = () => {
             <NavbarContent className="hidden sm:flex gap-5" justify="center">
                 <NavbarBrand>
                     <Image src="/fondazione.png" height={80} width={80}/>
-                    <p className="font-semibold text-sm text-zinc-600 inline-block text-transparent bg-clip-text">BeViCi</p>
+                    <p className="font-semibold text-sm text-zinc-800 inline-block text-transparent bg-clip-text">HCI Project</p>
                 </NavbarBrand>
                 <NavbarItem>
                     <Link color="foreground" href="#">
@@ -63,19 +63,19 @@ export const Navbar = () => {
                     </Link>
                 </NavbarItem>
                 <NavbarItem isActive>
-                    <Dropdown>
+                    <Dropdown className="bg-blue-100">
                         <DropdownTrigger>
-                            <Button variant="light">
+                            <Button variant="light" >
                                 Representations
                             </Button>
                         </DropdownTrigger>
-                        <DropdownMenu aria-label="Static Actions">
+                        <DropdownMenu  >
                             {menuItems.map((item, index) => (
                                 <DropdownItem key={`${item}-${index}`}>
                                     <Link
                                         className="w-full"
                                         color={
-                                            index === menuItems.length - 1 ? "warning" : "foreground"
+                                            index === menuItems.length - 1 ? "primary" : "foreground"
                                         }
                                         href="#"
                                         size="lg"

@@ -6,11 +6,11 @@ export default function Home() {
     return (
         <div className="">
 
-            <Card shadow="lg" className="bg-opacity-90">
+            <Card className="bg-opacity-90">
                 <CardBody>
                     <div className="flex justify-center">
 
-                        <p className="text-3xl font-bold bg-gradient-to-r from-blue-500 to-blue-700 inline-block text-transparent bg-clip-text">Group
+                        <p className="text-4xl pt-4 font-bold text-blue-600 inline-block">Group
                             BeViCi</p>
 
                     </div>
@@ -50,44 +50,7 @@ export default function Home() {
                         <AccordionItem key="3" aria-label="Accordion 3" title="Accordion 3">
                             fff
                         </AccordionItem>
-                        <AccordionItem key="3" aria-label="Accordion 3" title="Accordion 3">
-                            fff
-                        </AccordionItem>
-                        <AccordionItem key="3" aria-label="Accordion 3" title="Accordion 3">
-                            fff
-                        </AccordionItem>
-                        <AccordionItem key="3" aria-label="Accordion 3" title="Accordion 3">
-                            fff
-                        </AccordionItem>
-                        <AccordionItem key="3" aria-label="Accordion 3" title="Accordion 3">
-                            fff
-                        </AccordionItem>
-                        <AccordionItem key="3" aria-label="Accordion 3" title="Accordion 3">
-                            fff
-                        </AccordionItem>
-                        <AccordionItem key="3" aria-label="Accordion 3" title="Accordion 3">
-                            fff
-                        </AccordionItem>
-                        <AccordionItem key="3" aria-label="Accordion 3" title="Accordion 3">
-                            fff
-                        </AccordionItem>
-                        <AccordionItem key="3" aria-label="Accordion 3" title="Accordion 3">
-                            fff
-                        </AccordionItem>
-                        <AccordionItem key="3" aria-label="Accordion 3" title="Accordion 3">
-                            fff
-                        </AccordionItem>
-                        <AccordionItem key="3" aria-label="Accordion 3" title="Accordion 3">
-                            fff
-                        </AccordionItem>
-                        <AccordionItem key="3" aria-label="Accordion 3" title="Accordion 3">
-                            fff
-                        </AccordionItem>
-                        <AccordionItem key="3" aria-label="Accordion 3" title="Accordion 3">
-                            fff
-                        </AccordionItem><AccordionItem key="3" aria-label="Accordion 3" title="Accordion 3">
-                        fff
-                    </AccordionItem>
+
                     </Accordion>
                 </CardBody>
             </Card>
