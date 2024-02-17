@@ -47,10 +47,9 @@ export const Navbar = () => {
 
     return (
         <NextUINavbar
-            isBordered
             isMenuOpen={isMenuOpen}
             onMenuOpenChange={setIsMenuOpen}
-            className="bg-blue-50"
+            className=""
         >
             <NavbarContent className="sm:hidden" justify="start">
                 <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
