@@ -8,6 +8,7 @@ import seriesLabel from "highcharts/modules/series-label"
 import annotations from "highcharts/modules/annotations"
 import HighchartsReact from 'highcharts-react-official'
 import {ChordDiagram} from "@/app/graphs/ChordDiagram/ChordDagram";
+import {Card, CardBody, Chip} from "@nextui-org/react";
 
 streamGraph(Highcharts);
 seriesLabel(Highcharts);
@@ -25,9 +26,10 @@ const Page = () => {
         chart: {
             type: 'streamgraph',
             marginBottom: 30,
+            marginTop: 40,
             zoomType: 'x',
-            borderRadius: 10,
-            height: 500,
+            borderRadius: 8,
+            height: 600,
 
             //backgroundColor: "rgba(255,233,245,0.3)"
         },
@@ -112,6 +114,7 @@ const Page = () => {
         },
 
         yAxis: {
+            labels: {enabled: false},
             visible: true,
             startOnTick: false,
             endOnTick: false
@@ -426,26 +429,37 @@ const Page = () => {
     };
 
     return (
-        <div>
-            <p className="text-3xl text-zinc-600 mb-3 ">Titolo del grafico: <a
-                className="underline decoration-pink-500">Chord Diagram</a></p>
-            <div className="pt-3 mb-4">
-                <p className="font-sans text-zinc-700">
-                    Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. È
-                    sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione,
-                    pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei
-                    fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più
-                    recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem
-                    Ipsum.
-                </p>
-            </div>
+        <Card className="fullWidth">
+            <CardBody className="p-7">
+                <p className="text-3xl text-zinc-600 mb-3 ">Titolo del grafico: <a
+                    className="underline decoration-pink-500">Chord Diagram</a></p>
+                <div className="flex flex-wrap justify-start gap-2">
+                    <Chip color="default">Default</Chip>
+                    <Chip color="primary">Primary</Chip>
+                    <Chip color="secondary">Secondary</Chip>
+                    <Chip color="success">Success</Chip>
+                    <Chip color="warning">Warning</Chip>
+                    <Chip color="danger">Danger</Chip>
+                </div>
+                <div className="pt-3 mb-7">
+                    <p className="font-sans text-zinc-700">
+                        Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. È
+                        sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione,
+                        pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei
+                        fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più
+                        recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem
+                        Ipsum.
+                    </p>
+                </div>
 
-            <HighchartsReact
-                highcharts={Highcharts}
-                options={options}
-            />
+                <HighchartsReact
 
-        </div>
+                    highcharts={Highcharts}
+                    options={options}
+                />
+            </CardBody>
+
+        </Card>
 
 
     );
