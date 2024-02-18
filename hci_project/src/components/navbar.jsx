@@ -17,9 +17,11 @@ import {
     DropdownMenu,
     DropdownItem
 } from "@nextui-org/react";
+import {useRouter} from "next/navigation";
 
 export const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const router = useRouter();
 
     const menuItems = [
         "Stream Graph",
@@ -56,14 +58,14 @@ export const Navbar = () => {
             </NavbarContent>
 
             <NavbarContent className="sm:hidden" justify="center">
-                <NavbarBrand>
+                <NavbarBrand className="hover:cursor-pointer" onClick={() => router.push("/")}>
                     <p className="font-semibold text-sm text-zinc-800 inline-block text-transparent bg-clip-text">HCI Project</p>
                     <Image src="/fondazione.png" height={80} width={80} />
                 </NavbarBrand>
             </NavbarContent>
 
             <NavbarContent className="hidden sm:flex gap-5" justify="center">
-                <NavbarBrand>
+                <NavbarBrand className="hover:cursor-pointer" onClick={() => router.push("/")}>
                     <Image src="/fondazione.png" height={80} width={80} />
                     <p className="font-semibold text-sm text-zinc-800 inline-block text-transparent bg-clip-text">HCI Project</p>
                 </NavbarBrand>
