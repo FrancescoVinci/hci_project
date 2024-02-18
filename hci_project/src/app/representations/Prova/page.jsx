@@ -7,6 +7,7 @@ import streamGraph from "highcharts/modules/streamgraph"
 import seriesLabel from "highcharts/modules/series-label"
 import annotations from "highcharts/modules/annotations"
 import HighchartsReact from 'highcharts-react-official'
+import {ChordDiagram} from "@/app/graphs/ChordDiagram/ChordDagram";
 
 streamGraph(Highcharts);
 seriesLabel(Highcharts);
@@ -24,7 +25,14 @@ const Page = () => {
         chart: {
             type: 'streamgraph',
             marginBottom: 30,
-            zoomType: 'x'
+            zoomType: 'x',
+            borderRadius: 10,
+            height: 500,
+
+            //backgroundColor: "rgba(255,233,245,0.3)"
+        },
+        credits: {
+            enabled: false
         },
         // Make sure connected countries have similar colors
         colors: [
@@ -104,7 +112,7 @@ const Page = () => {
         },
 
         yAxis: {
-            visible: false,
+            visible: true,
             startOnTick: false,
             endOnTick: false
         },
@@ -150,7 +158,6 @@ const Page = () => {
             }
         },
         series: [
-
             {
                 name: 'Finland',
                 data: [0, 11, 4, 3, 6, 0, 0, 6, 9, 7, 8, 10, 5, 5, 7, 9, 13, 7, 7, 6, 12, 7, 9, 5, 5]
@@ -419,10 +426,29 @@ const Page = () => {
     };
 
     return (
-        <HighchartsReact
-            highcharts={Highcharts}
-            options={options}
-        />);
+        <div>
+            <p className="text-3xl text-zinc-600 mb-3 ">Titolo del grafico: <a
+                className="underline decoration-pink-500">Chord Diagram</a></p>
+            <div className="pt-3 mb-4">
+                <p className="font-sans text-zinc-700">
+                    Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. È
+                    sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione,
+                    pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei
+                    fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più
+                    recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem
+                    Ipsum.
+                </p>
+            </div>
+
+            <HighchartsReact
+                highcharts={Highcharts}
+                options={options}
+            />
+
+        </div>
+
+
+    );
 }
 
 export default Page;
