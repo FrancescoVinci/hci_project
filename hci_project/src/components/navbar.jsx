@@ -116,7 +116,7 @@ export const Navbar = () => {
                             color={
                                 index === menuItems.length - 1 ? "warning" : "foreground"
                             }
-                            href="#"
+                            href={`${menuItemsRef[index]}`}
                             size="lg"
                         >
                             {item}
