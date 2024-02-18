@@ -14,10 +14,13 @@
     "@nextui-org/link": "^2.0.26",
     "@nextui-org/react": "^2.2.9",
     "d3": "^7.1.1",
+    "flubber": "^0.4.2",
     "framer-motion": "^11.0.5",
     "next": "14.1.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-d3-library": "^1.1.8",
+    "react-dom": "^18",
+    "react-spring": "^9.7.3"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
