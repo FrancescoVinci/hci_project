@@ -49,7 +49,7 @@ export default function Home() {
                 <AccordionItem key="5" aria-label="Heat Map" title="Heat Map">
                     fff
                 </AccordionItem>
-                <AccordionItem key="6" aria-label="Spiral Graph" title="Spiral Graph">
+                <AccordionItem key="6" aria-label="Spiral Plot" title="Spiral Plot">
                     fff
                 </AccordionItem>
             </Accordion>

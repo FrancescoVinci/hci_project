@@ -63,7 +63,7 @@ const Page = () => {
             text: 'Winter Olympic Medal Wins'
         },
         subtitle: {
-            floating: true,
+            floating: false,
             align: 'left',
             y: 30,
             text: 'Source: <a href="https://www.sports-reference.com/olympics/winter/1924/">sports-reference.com</a>'

@@ -63,7 +63,7 @@ const Page = () => {
                 text: 'Marathon set'
             },
             subtitle: {
-                floating: true,
+                floating: false,
                 align: 'left',
                 y: 30,
                 text: 'Source: blabla.com'

@@ -17,6 +17,7 @@
     "flubber": "^0.4.2",
     "framer-motion": "^11.0.5",
     "highcharts": "^11.3.0",
+    "highcharts-more": "^0.1.7",
     "highcharts-react-official": "^3.2.1",
     "next": "14.1.0",
     "react": "^18",

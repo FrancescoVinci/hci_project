@@ -28,10 +28,10 @@ export const Navbar = () => {
         "Chord Diagram",
         "Parallel Coordinate Plot",
         "Line Graph",
-        "Heat map",
-        "Spiral graph",
-        "Scatter plot",
-        "Ridgeline plot",
+        "Heat Map",
+        "Spiral Plot",
+        "Scatter Plot",
+        "Ridgeline Plot",
         "BeViCi Group Info"
     ];
 
@@ -41,7 +41,7 @@ export const Navbar = () => {
         "/representations/ParallelCoordinatePlot",
         "/representations/LineGraph",
         "/representations/HeatMap",
-        "/representations/SpiralGraph",
+        "/representations/SpiralPlot",
         "/representations/ScatterPlot",
         "/representations/RidgelinePlot",
         "/representations/BeViCiGroupInfo"
