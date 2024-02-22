@@ -122,8 +122,8 @@ const Page = () => {
     return (
         <Card className="fullWidth">
             <CardBody className="p-7">
-                <p className="text-3xl text-zinc-600 mb-3 ">Titolo del grafico: <a
-                    className="underline decoration-pink-500">Chord Diagram</a></p>
+                <p className="text-3xl font-PlayfairDisplay mb-3 ">Heat Map</p>
+
                 <div className="flex flex-wrap justify-start gap-2">
                     <Chip color="default">Default</Chip>
                     <Chip color="primary">Primary</Chip>
@@ -132,26 +132,22 @@ const Page = () => {
                     <Chip color="warning">Warning</Chip>
                     <Chip color="danger">Danger</Chip>
                 </div>
-                <div className="pt-3 mb-7">
-                    <p className="font-sans text-zinc-700">
-                        Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. È
-                        sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione,
-                        pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei
-                        fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più
-                        recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem
-                        Ipsum.
-                    </p>
-                </div>
+
+                <p className="font-xl font-Roboto pt-5 mb-7">
+                    Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. È
+                    sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione,
+                    pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei
+                    fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più
+                    recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem
+                    Ipsum.
+                </p>
 
                 <HighchartsReact
                     highcharts={Highcharts}
                     options={options}
                 />
             </CardBody>
-
         </Card>
-
-
     );
 }
 

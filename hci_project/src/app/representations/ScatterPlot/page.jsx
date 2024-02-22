@@ -7,21 +7,63 @@ import seriesLabel from "highcharts/modules/series-label"
 import annotations from "highcharts/modules/annotations"
 import HighchartsReact from 'highcharts-react-official'
 import {Card, CardBody, Chip} from "@nextui-org/react";
+import {data} from "./data";
 
 
 seriesLabel(Highcharts);
 annotations(Highcharts);
 const Page = () => {
 
-
     if (typeof Highcharts === 'object') {
         HighchartsExporting(Highcharts)
     }
 
+    const series = [
+        {
+            name: 'Basketball',
+            id: 'basketball',
+            marker: {
+                symbol: 'circle'
+            }
+        },
+        {
+            name: 'Triathlon',
+            id: 'triathlon',
+            marker: {
+                symbol: 'triangle'
+            }
+        },
+        {
+            name: 'Volleyball',
+            id: 'volleyball',
+            marker: {
+                symbol: 'square'
+            }
+        }
+    ];
+
+
+    const getData = sportName => {
+        const temp = [];
+        data.forEach(elm => {
+            if (elm.sport === sportName && elm.weight > 0 && elm.height > 0) {
+                temp.push([elm.height, elm.weight]);
+            }
+        });
+        return temp;
+    };
+
+    series.forEach(s => {
+        s.data = getData(s.id);
+    });
+
+
     const options = {
+        colors: ['rgba(5,141,199,0.5)', 'rgba(80,180,50,0.5)', 'rgba(237,86,27,0.5)'],
+
         chart: {
-            zoomType: 'x',
-            borderRadius: 8,
+            type: 'scatter',
+            zoomType: 'xy'
         },
         credits: {
             enabled: false
@@ -30,84 +72,76 @@ const Page = () => {
 
         title: {
             align: 'left',
-            text: 'U.S Solar Employment Growth'
+            text: 'Olympics athletes'
         },
         subtitle: {
             floating: false,
             align: 'left',
             y: 30,
-            text: 'By Job Category. Source: <a href="https://irecusa.org/programs/solar-jobs-census/" target="_blank">IREC</a>.',
+            text: 'Source: <a href="https://www.theguardian.com/sport/datablog/2012/aug/07/olympics-2012-athletes-age-weight-height">The Guardian</a>',
         },
         xAxis: {
-            accessibility: {
-                rangeDescription: 'Range: 2010 to 2020'
-            }
+            title: {
+                text: 'Height'
+            },
+            labels: {
+                format: '{value} m'
+            },
+            startOnTick: true,
+            endOnTick: true,
+            showLastLabel: true
         },
 
         yAxis: {
             title: {
-                text: 'Number of Employees'
+                text: 'Weight'
+            },
+            labels: {
+                format: '{value} kg'
             }
         },
 
         legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle'
+            enabled: true
         },
 
-        plotOptions: {
-            series: {
-                label: {
-                    connectorAllowed: false
+        pplotOptions: {
+            scatter: {
+                marker: {
+                    radius: 2.5,
+                    symbol: 'circle',
+                    states: {
+                        hover: {
+                            enabled: true,
+                            lineColor: 'rgb(100,100,100)'
+                        }
+                    }
                 },
-                pointStart: 2010
+                states: {
+                    hover: {
+                        marker: {
+                            enabled: false
+                        }
+                    }
+                },
+                jitter: {
+                    x: 0.005
+                }
             }
         },
 
-        series: [{
-            name: 'Installation & Developers',
-            data: [43934, 48656, 65165, 81827, 112143, 142383,
-                171533, 165174, 155157, 161454, 154610]
-        }, {
-            name: 'Manufacturing',
-            data: [24916, 37941, 29742, 29851, 32490, 30282,
-                38121, 36885, 33726, 34243, 31050]
-        }, {
-            name: 'Sales & Distribution',
-            data: [11744, 30000, 16005, 19771, 20185, 24377,
-                32147, 30912, 29243, 29213, 25663]
-        }, {
-            name: 'Operations & Maintenance',
-            data: [null, null, null, null, null, null, null,
-                null, 11164, 11218, 10077]
-        }, {
-            name: 'Other',
-            data: [21908, 5548, 8105, 11248, 8989, 11816, 18274,
-                17300, 13053, 11906, 10073]
-        }],
-
-        responsive: {
-            rules: [{
-                condition: {
-                    maxWidth: 500
-                },
-                chartOptions: {
-                    legend: {
-                        layout: 'horizontal',
-                        align: 'center',
-                        verticalAlign: 'bottom'
-                    }
-                }
-            }]
+        tooltip: {
+            pointFormat: 'Height: {point.x} m <br/> Weight: {point.y} kg'
         },
+
+        series
 
     };
 
     return (
         <Card className="fullWidth">
             <CardBody className="p-7">
-                <p className="text-3xl font-PlayfairDisplay mb-3 ">Line Graph</p>
+                <p className="text-3xl font-PlayfairDisplay mb-3 ">Scatter Plot</p>
 
                 <div className="flex flex-wrap justify-start gap-2">
                     <Chip color="default">Default</Chip>
@@ -133,6 +167,7 @@ const Page = () => {
                 />
             </CardBody>
         </Card>
+
     );
 }
 

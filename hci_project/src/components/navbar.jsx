@@ -59,7 +59,7 @@ export const Navbar = () => {
 
             <NavbarContent className="sm:hidden" justify="center">
                 <NavbarBrand className="hover:cursor-pointer" onClick={() => router.push("/")}>
-                    <p className="font-semibold text-sm text-zinc-800 inline-block text-transparent bg-clip-text">HCI Project</p>
+                    <p className="font-semibold text-sm">HCI Project</p>
                     <Image src="/fondazione.png" height={80} width={80} />
                 </NavbarBrand>
             </NavbarContent>
@@ -67,7 +67,7 @@ export const Navbar = () => {
             <NavbarContent className="hidden sm:flex gap-5" justify="center">
                 <NavbarBrand className="hover:cursor-pointer" onClick={() => router.push("/")}>
                     <Image src="/fondazione.png" height={80} width={80} />
-                    <p className="font-semibold text-sm text-zinc-800 inline-block text-transparent bg-clip-text">HCI Project</p>
+                    <p className="font-semibold text-sm">HCI Project</p>
                 </NavbarBrand>
                 <NavbarItem>
                     <Link color="foreground" href="#">
