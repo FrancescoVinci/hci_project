@@ -31,7 +31,7 @@ export default function Home() {
                     </div>
 
                     <Accordion>
-                        <AccordionItem key="1" aria-label="Stream Graph" title={<div className="flex items-center"><img className="mr-1" width="40" src="/stream_graph.svg"></img><p>Stream Graph</p></div>} >
+                        <AccordionItem key="1" aria-label="Stream Graph" title={<div className="flex items-center"><img className="mr-2" width="40" src="/stream_graph.svg"></img><p>Stream Graph</p></div>} >
                             <div className="flex flex-col">
                                 <p>dfgdfgdsfg dfgdfgdsfg dfgdfgdsfg dfgdfgdsfg dfgdfgdsfg dfgdfgdsfg dfgdfgdsfg
                                     dfgdfgdsfg dfgdfgdsfg</p>
@@ -40,19 +40,19 @@ export default function Home() {
                                 </div>
                             </div>
                         </AccordionItem>
-                        <AccordionItem key="2" aria-label="Chord Diagram" title={<div className="flex items-center"><img className="mr-1" width="40" src="/chord_diagram.svg"></img><p>Chord Diagram</p></div>}>
+                        <AccordionItem key="2" aria-label="Chord Diagram" title={<div className="flex items-center"><img className="mr-2" width="40" src="/chord_diagram.svg"></img><p>Chord Diagram</p></div>}>
                             fff
                         </AccordionItem>
-                        <AccordionItem key="3" aria-label="Parallel Coordinate Plot" title={<div className="flex items-center"><img className="mr-1" width="40" src="/parallel_coordinates.svg"></img><p>Parallel Coordinate Plot</p></div>}>
+                        <AccordionItem key="3" aria-label="Parallel Coordinate Plot" title={<div className="flex items-center"><img className="mr-2" width="40" src="/parallel_coordinates.svg"></img><p>Parallel Coordinate Plot</p></div>}>
                             fff
                         </AccordionItem>
                         <AccordionItem key="4" aria-label="Line Graph" title={<div className="flex items-center"><img className="mr-1" width="40" src="/line_graph.svg"></img><p>Line Graph</p></div>}>
                             fff
                         </AccordionItem>
-                        <AccordionItem key="5" aria-label="Heat Map" title={<div className="flex items-center"><img className="mr-1" width="40" src="/heat_map.svg"></img><p>Heat Map</p></div>}>
+                        <AccordionItem key="5" aria-label="Heat Map" title={<div className="flex items-center"><img className="mr-2" width="40" src="/heat_map.svg"></img><p>Heat Map</p></div>}>
                             fff
                         </AccordionItem>
-                        <AccordionItem key="6" aria-label="Spiral Plot" title={<div className="flex items-center"><img className="mr-1" width="40" src="/radial_bar_chart.svg"></img><p>Spiral Plot</p></div>}>
+                        <AccordionItem key="6" aria-label="Spiral Plot" title={<div className="flex items-center"><img className="mr-2" width="40" src="/radial_bar_chart.svg"></img><p>Spiral Plot</p></div>}>
                             fff
                         </AccordionItem>
                     </Accordion>
