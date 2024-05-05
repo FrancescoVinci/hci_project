@@ -17,7 +17,7 @@ export default function RootLayout({children}) {
         <Providers>
             <div className="relative flex flex-col h-screen bg-slate-100">
                 <Navbar/>
-                <main className="flex-grow container mx-auto pt-10">
+                <main className="flex-grow container mx-auto pt-5">
                     {children}
                 </main>
                 <footer className="w-full flex items-center justify-center py-3">
