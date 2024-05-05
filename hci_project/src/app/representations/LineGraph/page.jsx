@@ -7,11 +7,87 @@ import seriesLabel from "highcharts/modules/series-label"
 import annotations from "highcharts/modules/annotations"
 import HighchartsReact from 'highcharts-react-official'
 import {Card, CardBody, Chip} from "@nextui-org/react";
-
+import {useEffect, useState} from "react";
+import {usePapaParse} from "react-papaparse";
 
 seriesLabel(Highcharts);
 annotations(Highcharts);
+
+
 const Page = () => {
+
+    const {readRemoteFile} = usePapaParse();
+    const [parsedData1, setParsedData1] = useState([]);
+    const [parsedData2, setParsedData2] = useState([]);
+    const [parsedData3, setParsedData3] = useState([]);
+
+    const decodeWindDirection = (wind) => {
+        switch (wind) {
+            case "N":
+                return 0;
+            case "NNE":
+                return 1;
+            case "NE":
+                return 2;
+            case "ENE":
+                return 3;
+            case "E":
+                return 4;
+            case "ESE":
+                return 5;
+            case "SE":
+                return 6;
+            case "SSE":
+                return 7;
+            case "S":
+                return 8;
+            case "SSO":
+                return 9;
+            case "SO":
+                return 10;
+            case "OSO":
+                return 11;
+            case "O":
+                return 12;
+            case "ONO":
+                return 13;
+            case "NO":
+                return 14;
+            case "NNO":
+                return 15;
+            default:
+                console.log(`Oops...`);
+        }
+    }
+
+    useEffect(() => {
+        readRemoteFile("/data.csv", {
+            complete: (results) => {
+
+                const seriesData1 = [];
+                const seriesData2 = [];
+                const seriesData3 = [];
+
+                results.data.forEach((row, index) => {
+                    if (index !== 0) {
+                        seriesData1.push(parseInt(row[4]));
+                        seriesData2.push(parseFloat(row[5]));
+                        seriesData3.push(decodeWindDirection(row[6]));
+                    }
+                });
+
+                console.log(seriesData1)
+                console.log(seriesData2)
+                console.log(seriesData3)
+
+                setParsedData1(seriesData1);
+                setParsedData2(seriesData2);
+                setParsedData3(seriesData3);
+            },
+        });
+
+
+    }, [])
 
 
     if (typeof Highcharts === 'object') {
@@ -20,72 +96,92 @@ const Page = () => {
 
     const options = {
         chart: {
-            zoomType: 'x',
-            borderRadius: 8,
+            type: 'spline'
         },
+
         credits: {
             enabled: false
         },
-        // Make sure connected countries have similar colors
 
         title: {
             align: 'left',
-            text: 'U.S Solar Employment Growth'
+            text: 'United States of America\'s Inflation-related statistics',
         },
         subtitle: {
-            floating: false,
-            align: 'left',
-            y: 30,
-            text: 'By Job Category. Source: <a href="https://irecusa.org/programs/solar-jobs-census/" target="_blank">IREC</a>.',
-        },
-        xAxis: {
-            accessibility: {
-                rangeDescription: 'Range: 2010 to 2020'
-            }
+            text: 'Source: <a href="https://www.worldbank.org/en/home">The World Bank</a>',
+            align: 'left'
         },
 
-        yAxis: {
-            title: {
-                text: 'Number of Employees'
-            }
-        },
+        yAxis: [
+            {
+                title: {
+                    text: 'Co2'
+                },
+                plotLines: [
+                    {
+                        color: 'black',
+                        width: 2,
+                        value: 13.5492019749684,
+                        animation: {
+                            duration: 1000,
+                            defer: 4000
+                        },
+                        label: {
+                            text: 'Max Co2',
+                            align: 'right',
+                            x: -20
+                        }
+                    }
+                ]
+            }, {
+                title: {
+                    text: 'Avg Wind Speed'
+                }
+            }, {
+                opposite: true,
+                title: {
+                    text: 'Wind Direction'
+                },
 
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle'
-        },
+
+            }
+        ],
 
         plotOptions: {
             series: {
-                label: {
-                    connectorAllowed: false
+                animation: {
+                    duration: 1000
                 },
-                pointStart: 2010
+                marker: {
+                    enabled: false
+                },
+                lineWidth: 2
             }
         },
 
-        series: [{
-            name: 'Installation & Developers',
-            data: [43934, 48656, 65165, 81827, 112143, 142383,
-                171533, 165174, 155157, 161454, 154610]
-        }, {
-            name: 'Manufacturing',
-            data: [24916, 37941, 29742, 29851, 32490, 30282,
-                38121, 36885, 33726, 34243, 31050]
-        }, {
-            name: 'Sales & Distribution',
-            data: [11744, 30000, 16005, 19771, 20185, 24377,
-                32147, 30912, 29243, 29213, 25663]
-        }, {
-            name: 'Operations & Maintenance',
-            data: [null, null, null, null, null, null, null,
-                null, 11164, 11218, 10077]
-        }, {
-            name: 'Other',
-            data: [21908, 5548, 8105, 11248, 8989, 11816, 18274,
-                17300, 13053, 11906, 10073]
-        }],
+        series: [
+            {
+                name: "Co2",
+                data: parsedData1,
+                yAxis: 0
+            },
+            {
+                name: "Wind Speed",
+                data: parsedData2,
+                yAxis: 1,
+                animation: {
+                    defer: 1000
+                }
+            },
+            {
+                name: "Avg Wind Direction",
+                data: parsedData3,
+                yAxis: 2,
+                animation: {
+                    defer: 2000
+                },
+            },
+        ],
 
         responsive: {
             rules: [{
@@ -93,14 +189,34 @@ const Page = () => {
                     maxWidth: 500
                 },
                 chartOptions: {
-                    legend: {
-                        layout: 'horizontal',
-                        align: 'center',
-                        verticalAlign: 'bottom'
-                    }
+                    yAxis: [{
+                        tickAmount: 2,
+                        title: {
+                            x: 15,
+                            reserveSpace: false
+                        }
+                    }, {
+                        tickAmount: 2,
+                        title: {
+                            x: 20,
+                            reserveSpace: false
+                        }
+                    }, {
+                        tickAmount: 2,
+                        title: {
+                            x: -20,
+                            reserveSpace: false
+                        }
+                    }, {
+                        tickAmount: 2,
+                        title: {
+                            x: -20,
+                            reserveSpace: false
+                        }
+                    }]
                 }
             }]
-        },
+        }
 
     };
 
