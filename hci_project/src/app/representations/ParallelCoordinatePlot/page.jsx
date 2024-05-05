@@ -7,34 +7,30 @@ import parallelGraph from "highcharts/modules/parallel-coordinates"
 import seriesLabel from "highcharts/modules/series-label"
 import annotations from "highcharts/modules/annotations"
 import HighchartsReact from 'highcharts-react-official'
-import {Card, CardBody, Chip} from "@nextui-org/react";
+import { Card, CardBody, Chip } from "@nextui-org/react";
 import "./style.css"
+import { interpolate } from 'framer-motion'
 
 parallelGraph(Highcharts);
 seriesLabel(Highcharts);
 annotations(Highcharts);
 
 const data = [
-    [1012518000000, 5, 2311020, 0, 462180, 1, 0],
-    [1012690800000, 5, 2464980, 0, 493020.00000000006, 1, 0],
-    [1012863600000, 4, 1881000, 1, 470280.00000000006, 1, 0],
-    [1012950000000, 6, 3232020, 1, 538680, 0, 0],
-    [1013122800000, 4.5, 2419020, 0, 537540, 1, 0],
-    [1013209200000, 5, 2391000, 2, 478200, 1, 0],
-    [1013295600000, 4, 2202000, 2, 550500, 1, 0],
-    [1013468400000, 5, 2304000, 0, 460799.99999999994, 1, 0],
-    [1013554800000, 6, 2806020, 3, 467640, 0, 0],
-    [1013727600000, 5, 2401020, 3, 480180, 1, 0],
-    [1013900400000, 5, 2385000, 0, 477000, 1, 0],
-    [1013986800000, 5, 2386020, 4, 477180, 1, 0],
-    [1014073200000, 4, 2026020.0000000002, 0, 506520, 1, 0],
-    [1014159600000, 6, 2851020, 4, 475140, 0, 0],
-    [1014332400000, 5, 2320020, 4, 463979.99999999994, 1, 0],
-    [1014418800000, 5, 2337000, 4, 467400, 1, 0],
-    [1014505200000, 4, 1863000, 5, 465780, 1, 0],
-    [1014678000000, 6, 2758020, 6, 459659.99999999994, 0, 0],
-    [1014764400000, 6, 2808000, 7, 468000, 0, 0],
-    [1015023600000, 5, 2638020, 7, 527579.9999999999, 1, 0],
+    [494, 3, 3],
+    [437, 3, 2],
+    [479, 0, 1],
+    [478, 0, 3],
+    [476, 0, 3],
+    [481, 0, 2],
+    [473, 1, 3],
+    [463, 0, 1],
+    [461, 3, 1],
+    [461, 3, 0],
+    [461, 2, 1],
+    [463, 2, 1],
+    [488, 0, 3],
+    [474, 2, 3],
+    [500, 3, 3]
 ]
 const Page = () => {
 
@@ -44,114 +40,121 @@ const Page = () => {
     }
 
     const options = {
-            chart: {
-                type: 'spline',
-
-                zoomType: 'x',
-
-                height: 500,
-                parallelCoordinates: true,
-                parallelAxes: {
-                    lineWidth: 2
-                }
-            },
-            credits: {
-                enabled: false
-            },
-            title: {
-                align: 'left',
-                text: 'Marathon set'
-            },
-            subtitle: {
-                floating: false,
-                align: 'left',
-                y: 30,
-                text: 'Source: blabla.com'
-            },
-            plotOptions: {
-                series: {
-                    accessibility: {
-                        enabled: false
-                    },
-                    animation: false,
-                    marker: {
-                        enabled: false,
-                        states: {
-                            hover: {
-                                enabled: false
-                            }
-                        }
-                    },
+        chart: {
+            type: 'spline',
+            zoomType: 'x',
+            height: 500,
+            parallelCoordinates: true,
+            parallelAxes: {
+                lineWidth: 2
+            }
+        },
+        credits: {
+            enabled: false
+        },
+        title: {
+            align: 'left',
+            text: 'CO2 Values in Relation to the Number of Vehicles and People'
+        },
+        subtitle: {
+            align: 'left',
+            text: 'Source: mobile station data'
+        },
+        plotOptions: {
+            series: {
+                accessibility: {
+                    enabled: false
+                },
+                animation: false,
+                marker: {
+                    enabled: false,
                     states: {
                         hover: {
-                            halo: {
-                                size: 0
-                            }
-                        }
-                    },
-                    events: {
-                        mouseOver: function () {
-                            this.group.toFront();
+                            enabled: false
                         }
                     }
+                },
+                states: {
+                    hover: {
+                        halo: {
+                            size: 0
+                        },
+                    }
+                },
+                events: {
+                    mouseOver: function () {
+                        this.group.toFront();
+                    }
                 }
+            }
+        },
+        tooltip: {
+            pointFormat: '<span style="color:{point.color}">\u25CF</span>' +
+                '{series.name}: <b>{point.formattedValue}</b><br/>'
+        },
+        xAxis: {
+            categories: [
+                'CO2',
+                'Vehicles',
+                'People',
+            ],
+            offset: 10,
+        },
+        yAxis: [
+            {
+                tickInterval: 5,
+                tooltipValueFormat: '{value}'
             },
-            tooltip: {
-                pointFormat: '<span style="color:{point.color}">\u25CF</span>' +
-                    '{series.name}: <b>{point.formattedValue}</b><br/>'
-            },
-            xAxis: {
-                categories: [
-                    'Training date',
-                    'Miles for training run',
-                    'Training time',
-                    'Shoe brand',
-                    'Running pace per mile',
-                    'Short or long',
-                    'After 2004'
-                ],
-                offset: 10
-            },
-            yAxis: [{
-                type: 'datetime',
-                tooltipValueFormat: '{value:%Y-%m-%d}'
-            }, {
+            {
                 min: 0,
-                tooltipValueFormat: '{value} mile(s)'
-            }, {
-                type: 'datetime',
-                min: 0,
-                labels: {
-                    format: '{value:%H:%M}'
-                }
-            }, {
-                categories: [
-                    'Other',
-                    'Adidas',
-                    'Mizuno',
-                    'Asics',
-                    'Brooks',
-                    'New Balance',
-                    'Izumi'
+                allowDecimals: false,
+                tooltipValueFormat: '{value}',
+                startOnTick: false,
+                categories:[
+                    "None",
+                    "Low",
+                    "Medium",
+                    "High",
                 ]
-            }, {
-                type: 'datetime'
-            }, {
-                categories: ['> 5miles', '< 5miles']
-            }, {
-                categories: ['Before', 'After']
-            }],
-            colors: ['rgba(11, 200, 200, 0.1)'],
-            series: data.map(function (set, i) {
-                return {
-                    name: 'Runner ' + i,
-                    data: set,
-                    shadow: false
-                };
-            })
-
-        }
-    ;
+            },
+            {
+                min: 0,
+                allowDecimals: false,
+                tooltipValueFormat: '{value}',
+                startOnTick: false,
+                categories:[
+                    "None",
+                    "Low",
+                    "Medium",
+                    "High",
+                ]
+            },
+        ],
+        colors: [
+            'rgb(230, 25, 75)', // red
+            'rgb(245, 130, 48)', // orange
+            'rgb(255, 255, 25)', // yellow
+            'rgb(210, 245, 60)', // lime
+            'rgb(60, 180, 75)', // green
+            'rgb(70, 240, 240)', // cyan
+            'rgb(0, 130, 200)', // blue
+            'rgb(145 30, 180)', // purple
+            'rgb(240, 50, 230)', // magenta
+            'rgb(128, 128, 128)', // grey
+            'rgb(170, 110, 40)', // brown
+            'rgb(0, 0, 0)', // black
+            'rgb(0, 0, 128)', // navy
+            'rgb(255, 215, 180)', // apricot
+            'rgb(128, 128, 0)', // olive
+        ],
+        series: data.map(function (set, i) {
+            return {
+                name: 'Path ' + i,
+                data: set,
+                shadow: false
+            };
+        })
+    };
 
     return (
         <Card className="fullWidth">
