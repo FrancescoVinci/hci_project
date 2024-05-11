@@ -24,7 +24,7 @@ export const Navbar = () => {
     const router = useRouter();
 
     const menuItems = [
-        "Stream Graph",
+        "Lollipop Series",
         "Chord Diagram",
         "Parallel Coordinate Plot",
         "Line Graph",
@@ -36,7 +36,7 @@ export const Navbar = () => {
     ];
 
     const menuItemsRef = [
-        "/representations/StreamGraph",
+        "/representations/LollipopSeries",
         "/representations/ChordDiagram",
         "/representations/ParallelCoordinatePlot",
         "/representations/LineGraph",
