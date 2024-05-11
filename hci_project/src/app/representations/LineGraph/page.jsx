@@ -70,7 +70,7 @@ const Page = () => {
 
         title: {
             align: "left",
-            text: "Trend Co2, Temperature, Humidity per path"
+            text: "Co2, Temperature, Humidity trend per path"
         },
         
         subtitle: {
@@ -179,24 +179,28 @@ const Page = () => {
     return (
         <Card className="fullWidth">
             <CardBody className="p-7">
-                <p className="text-3xl font-PlayfairDisplay mb-3 ">Line Graph</p>
+                <p className="text-3xl font-PlayfairDisplay">Line Graph</p>
+                <p className="text-xl font-PlayfairDisplay mb-3">Analysis of CO2 Levels, Temperature, and Humidity
+                    during the Venice Walk on November 23, 2023</p>
 
                 <div className="flex flex-wrap justify-start gap-2">
-                    <Chip color="default">Default</Chip>
-                    <Chip color="primary">Primary</Chip>
-                    <Chip color="secondary">Secondary</Chip>
-                    <Chip color="success">Success</Chip>
-                    <Chip color="warning">Warning</Chip>
-                    <Chip color="danger">Danger</Chip>
+                    <Chip color="primary">Co2</Chip>
+                    <Chip color="secondary">Temperature</Chip>
+                    <Chip color="success">Humidity</Chip>
                 </div>
 
-                <p className="font-xl font-Roboto pt-5 mb-7">
-                    Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. È
-                    sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione,
-                    pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei
-                    fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più
-                    recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem
-                    Ipsum.
+                <p className="font-xl font-Roboto pt-5">
+                    The following graph depicts the data collected during a walk through Venice on <i>November 23, 2023</i>,
+                    tracking CO2 levels, temperature, and humidity along the predetermined route.
+                    This analysis aims to provide insights into environmental conditions during the excursion and their
+                    potential implications.
+                </p>
+                <p className="font-xl font-Roboto mb-7">
+                    The CO2 levels are depicted by a line graph, showing fluctuations in atmospheric carbon dioxide
+                    concentrations throughout the walk. Peaks and troughs in the graph indicate areas of high and low CO2
+                    emissions, respectively. Analysis of these fluctuations can reveal sources of carbon emissions along the
+                    route, such as vehicular traffic (i.e. vaporettos) or human activity.
+
                 </p>
 
                 <div className="flex justify-center mb-4">
@@ -207,7 +211,7 @@ const Page = () => {
                         className="max-w-xs"
                         onSelectionChange={setSelected}
                     >
-                        {["1","2","5","6","7","8","9","10","11","12","13","14"].map((sector) => (
+                        {["1", "2", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"].map((sector) => (
                             <SelectItem key={sector} value={sector}>
                                 {sector}
                             </SelectItem>
