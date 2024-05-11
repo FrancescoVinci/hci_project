@@ -41,7 +41,7 @@ const Page = () => {
 
         xAxis: {
             categories: ['February', 'March', 'April', 'May',
-                'June', 'July', 'August', 'September', 'October', 'November', 'December']
+                'June', 'July', 'August', 'September', 'October', 'November']
         },
 
         yAxis: {
@@ -94,7 +94,6 @@ const Page = () => {
                 [7, 0, 31], [7, 1, 1], [7, 2, 82], [7, 3, 32], [7, 4, 30], [7, 5, 167],
                 [8, 0, 85], [8, 1, 97], [8, 2, 123], [8, 3, 64], [8, 4, 84],  [8, 5, 122],
                 [9, 0, 47], [9, 1, 114], [9, 2, 31], [9, 3, 48], [9, 4, 91], [9, 5, 47],
-                [10, 0, 47], [10, 1, 114], [10, 2, 31], [10, 3, 48], [10, 4, 91], [10, 5, 47],
             ],
             dataLabels: {
                 enabled: true,
