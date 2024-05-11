@@ -7,13 +7,17 @@ import heatMap from "highcharts/modules/heatmap"
 import seriesLabel from "highcharts/modules/series-label"
 import annotations from "highcharts/modules/annotations"
 import HighchartsReact from 'highcharts-react-official'
-import {Card, CardBody, Chip} from "@nextui-org/react";
+import {Card, CardBody, Chip, Select, SelectItem} from "@nextui-org/react";
 import "./style.css";
+import {useState} from "react";
 
 heatMap(Highcharts);
 seriesLabel(Highcharts);
 annotations(Highcharts);
 const Page = () => {
+
+    const [selected, setSelected] = useState({currentKey: "Co2"});
+
     if (typeof Highcharts === 'object') {
         HighchartsExporting(Highcharts)
     }
@@ -124,12 +128,9 @@ const Page = () => {
                 <p className="text-3xl font-PlayfairDisplay mb-3 ">Heat Map</p>
 
                 <div className="flex flex-wrap justify-start gap-2">
-                    <Chip color="default">Default</Chip>
-                    <Chip color="primary">Primary</Chip>
-                    <Chip color="secondary">Secondary</Chip>
-                    <Chip color="success">Success</Chip>
-                    <Chip color="warning">Warning</Chip>
-                    <Chip color="danger">Danger</Chip>
+                    <Chip color="primary">Co2</Chip>
+                    <Chip color="secondary">Temperature</Chip>
+                    <Chip color="success">Humidity</Chip>
                 </div>
 
                 <p className="font-xl font-Roboto pt-5 mb-7">
@@ -140,6 +141,22 @@ const Page = () => {
                     recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem
                     Ipsum.
                 </p>
+
+                <div className="flex justify-center mb-4">
+                    <Select
+                        label="Select an option"
+                        placeholder="Select..."
+                        defaultSelectedKeys={["Co2"]}
+                        className="max-w-xs"
+                        onSelectionChange={setSelected}
+                    >
+                        {["Co2","Temperature","Humidity"].map((key) => (
+                            <SelectItem key={key} value={key}>
+                                {key}
+                            </SelectItem>
+                        ))}
+                    </Select>
+                </div>
 
                 <HighchartsReact
                     highcharts={Highcharts}
