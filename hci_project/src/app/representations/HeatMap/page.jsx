@@ -40,7 +40,7 @@ const Page = () => {
         },
 
         xAxis: {
-            categories: ['January', 'February', 'March', 'April', 'May',
+            categories: ['February', 'March', 'April', 'May',
                 'June', 'July', 'August', 'September', 'October', 'November', 'December']
         },
 
@@ -60,8 +60,8 @@ const Page = () => {
 
         colorAxis: {
             min: 0,
-            minColor: '#FFFFFF',
-            maxColor: Highcharts.getOptions().colors[0]
+            minColor: '#70CF09',
+            maxColor: '#FF2930'
         },
 
         legend: {
@@ -74,9 +74,9 @@ const Page = () => {
         },
 
         tooltip: {
-            format: '<b>{series.xAxis.categories.(point.x)}</b> sold<br>' +
-                '<b>{point.value}</b> items on <br>' +
-                '<b>{series.yAxis.categories.(point.y)}</b>'
+            format: '<b>{series.xAxis.categories.(point.x)}</b><br>' +
+                'CO2: <b>{point.value}</b> <br>' +
+                'at <b>{series.yAxis.categories.(point.y)}</b>'
         },
 
         series: [{
@@ -95,7 +95,6 @@ const Page = () => {
                 [8, 0, 85], [8, 1, 97], [8, 2, 123], [8, 3, 64], [8, 4, 84],  [8, 5, 122],
                 [9, 0, 47], [9, 1, 114], [9, 2, 31], [9, 3, 48], [9, 4, 91], [9, 5, 47],
                 [10, 0, 47], [10, 1, 114], [10, 2, 31], [10, 3, 48], [10, 4, 91], [10, 5, 47],
-                [11, 0, 147], [11, 1, 14], [11, 2, 231], [11, 3, 148], [11, 4, 91], [11, 5, 47],
             ],
             dataLabels: {
                 enabled: true,
