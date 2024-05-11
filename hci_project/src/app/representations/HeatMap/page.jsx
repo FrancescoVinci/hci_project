@@ -130,7 +130,7 @@ const Page = () => {
                 <div className="flex flex-wrap justify-start gap-2">
                     <Chip color="primary">Co2</Chip>
                     <Chip color="secondary">Temperature</Chip>
-                    <Chip color="success">Humidity</Chip>
+                    <Chip className="text-white" color="success">Humidity</Chip>
                 </div>
 
                 <p className="font-xl font-Roboto pt-5 mb-7">
