@@ -7,16 +7,93 @@ import heatMap from "highcharts/modules/heatmap"
 import seriesLabel from "highcharts/modules/series-label"
 import annotations from "highcharts/modules/annotations"
 import HighchartsReact from 'highcharts-react-official'
-import {Card, CardBody, Chip, Select, SelectItem} from "@nextui-org/react";
+import { Card, CardBody, Chip, Select, SelectItem } from "@nextui-org/react";
 import "./style.css";
-import {useState} from "react";
+import { useEffect, useState } from "react";
 
 heatMap(Highcharts);
 seriesLabel(Highcharts);
 annotations(Highcharts);
-const Page = () => {
 
-    const [selected, setSelected] = useState({currentKey: "Co2"});
+const start_value = {
+    "CO2": 360,
+    "Humidity": 40,
+    "Temperature": 5,
+};
+
+const value_scale = {
+    "CO2": [
+        [0, '#8fd48e'],
+        [0.25, '#BFFF00'],
+        [0.5, '#FFFF00'],
+        [0.75, '#FFA500'],
+        [1, '#FF0000']
+    ],
+    "Humidity": [
+        [0, '#8fd48e'],
+        [0.25, '#BFFF00'],
+        [0.5, '#FFFF00'],
+        [0.75, '#FFA500'],
+        [1, '#FF0000']
+    ],
+    "Temperature": [
+        [0, '#0500ff'],
+        [0.25, '#00b2ff'],
+        [1, '#FF0000']
+    ],
+};
+
+const data = {
+    "CO2": [
+        [0, 0, 452], [0, 1, 513], [0, 2, 455], [0, 3, 544], [0, 4, 506], [0, 5, 418],
+        [1, 0, 432], [1, 1, 525], [1, 2, 453], [1, 3, 522], [1, 4, 438], [1, 5, 479],
+        [2, 0, 428], [2, 1, 423], [2, 2, 459], [2, 3, 475], [2, 4, 431], [2, 5, 457],
+        [3, 0, 427], [3, 1, 423], [3, 2, 430], [3, 3, 545], [3, 4, 434], [3, 5, 462],
+        [4, 0, 433], [4, 1, 428], [4, 2, 429], [4, 3, 436], [4, 4, 434], [4, 5, 422],
+        [5, 0, 429], [5, 1, 423], [5, 2, 448], [5, 3, 468], [5, 4, 424], [5, 5, 420],
+        [6, 0, 433], [6, 1, 427], [6, 2, 457], [6, 3, 645], [6, 4, 429], [6, 5, 436],
+        [7, 0, 433], [7, 1, 424], [7, 2, 465], [7, 3, 470], [7, 4, 440], [7, 5, 443],
+        [8, 0, 432], [8, 1, 431], [8, 2, 438], [8, 3, 374], [8, 4, NaN], [8, 5, 436],
+        [9, 0, 446], [9, 1, 442], [9, 2, 456], [9, 3, 445], [9, 4, 428], [9, 5, 457],
+    ], 
+    "Humidity": [
+        [0, 0, 70], [0, 1, 42], [0, 2, 61], [0, 3, 63], [0, 4, 59], [0, 5, 44],
+        [1, 0, 68], [1, 1, 55], [1, 2, 55], [1, 3, 58], [1, 4, 54], [1, 5, 53],
+        [2, 0, 58], [2, 1, 48], [2, 2, 51], [2, 3, 52], [2, 4, 50], [2, 5, 48],
+        [3, 0, 56], [3, 1, 51], [3, 2, 51], [3, 3, 52], [3, 4, 51], [3, 5, 49],
+        [4, 0, 56], [4, 1, 56], [4, 2, 52], [4, 3, 52], [4, 4, 50], [4, 5, 50],
+        [5, 0, 61], [5, 1, 59], [5, 2, 55], [5, 3, 54], [5, 4, 58], [5, 5, 53],
+        [6, 0, 60], [6, 1, 56], [6, 2, 53], [6, 3, 55], [6, 4, 58], [6, 5, 62],
+        [7, 0, 61], [7, 1, 49], [7, 2, 53], [7, 3, 57], [7, 4, 53], [7, 5, 46],
+        [8, 0, 77], [8, 1, 55], [8, 2, 60], [8, 3, 66], [8, 4, NaN], [8, 5, 69],
+        [9, 0, 80], [9, 1, 50], [9, 2, 61], [9, 3, 64], [9, 4, 78], [9, 5, 70],
+    ],
+    "Temperature":[
+        [0, 0, 8.07], [0, 1, 10.89], [0, 2, 12.96], [0, 3, 12.47], [0, 4, 13.69], [0, 5, 12.85],
+        [1, 0, 14.38], [1, 1, 16.63], [1, 2, 16.38], [1, 3, 15.85], [1, 4, 16.72], [1, 5, 15.91],
+        [2, 0, 17.34], [2, 1, 19.62], [2, 2, 18.1], [2, 3, 18.14], [2, 4, 18.55], [2, 5, 18.28],
+        [3, 0, 24.87], [3, 1, 24.69], [3, 2, 24.57], [3, 3, 25.04], [3, 4, 27.16], [3, 5, 25.35],
+        [4, 0, 28.78], [4, 1, 27.74], [4, 2, 28.43], [4, 3, 29.06], [4, 4, 29.23], [4, 5, 29.2],
+        [5, 0, 30.88], [5, 1, 29.6], [5, 2, 30.62], [5, 3, 31.52], [5, 4, 29.21], [5, 5, 31.57],
+        [6, 0, 30.09], [6, 1, 29.97], [6, 2, 30.57], [6, 3, 30.46], [6, 4, 28.64], [6, 5, 29.01],
+        [7, 0, 26.99], [7, 1, 30.28], [7, 2, 28.48], [7, 3, 27.63], [7, 4, 27.54], [7, 5, 28.64],
+        [8, 0, 20.3], [8, 1, 25.55], [8, 2, 23.75], [8, 3, 21.98], [8, 4, NaN], [8, 5, 22.31],
+        [9, 0, 10.48], [9, 1, 18.04], [9, 2, 17.62], [9, 3, 13.55], [9, 4, 20.13], [9, 5, 13.59],
+    ]
+}
+
+const Page = () => {
+    const [selected, setSelected] = useState({currentKey: "CO2"});
+    const [cur_data, setData] = useState(data[selected.currentKey]);
+    const [cur_value, setValue] = useState(start_value[selected.currentKey]);
+    const [cur_scale, setScale] = useState(value_scale[selected.currentKey]);
+
+    useEffect(() => {
+        console.log("selected.currentKey = " + selected.currentKey);
+        setData(data[selected.currentKey]);
+        setValue(start_value[selected.currentKey]);
+        setScale(value_scale[selected.currentKey]);
+    }, [selected]);
 
     if (typeof Highcharts === 'object') {
         HighchartsExporting(Highcharts)
@@ -25,7 +102,7 @@ const Page = () => {
     const options = {
         chart: {
             type: 'heatmap',
-            plotBorderWidth: 1
+            plotBorderWidth: 1,
         },
 
         credits: {
@@ -61,18 +138,16 @@ const Page = () => {
         },
 
         colorAxis: {
-            min: 0,
-            minColor: '#70CF09',
-            maxColor: '#FF2930'
+            min: cur_value,
+            stops: cur_scale
         },
 
         legend: {
             align: 'right',
-            layout: 'vertical',
-            margin: 0,
+            layout: 'horizontal',
+            margin: 5,
             verticalAlign: 'top',
-            y: 25,
-            symbolHeight: 280
+            symbolHeight: 280,
         },
 
         tooltip: {
@@ -85,18 +160,7 @@ const Page = () => {
             name: 'Avg CO2 Values per Station per Month',
             borderWidth: 1,
             // column is sector, row is month
-            data: [
-                [0, 0, 10], [0, 1, 19], [0, 2, 8], [0, 3, 24], [0, 4, 67], [0, 5, 67],
-                [1, 0, 92], [1, 1, 58], [1, 2, 78], [1, 3, 117], [1, 4, 48], [1, 5, 17],
-                [2, 0, 35], [2, 1, 15], [2, 2, 123], [2, 3, 64], [2, 4, 52], [2, 5, 97],
-                [3, 0, 72], [3, 1, 132], [3, 2, 114], [3, 3, 19], [3, 4, 16], [3, 5, 67],
-                [4, 0, 38], [4, 1, 5], [4, 2, 8], [4, 3, 117], [4, 4, 115], [4, 5, 37],
-                [5, 0, 88], [5, 1, 32], [5, 2, 12], [5, 3, 6], [5, 4, 120], [5, 5, 7],
-                [6, 0, 13], [6, 1, 44], [6, 2, 88], [6, 3, 98], [6, 4, 96], [6, 5, 27],
-                [7, 0, 31], [7, 1, 1], [7, 2, 82], [7, 3, 32], [7, 4, 30], [7, 5, 167],
-                [8, 0, 85], [8, 1, 97], [8, 2, 123], [8, 3, 64], [8, 4, 84],  [8, 5, 122],
-                [9, 0, 47], [9, 1, 114], [9, 2, 31], [9, 3, 48], [9, 4, 91], [9, 5, 47],
-            ],
+            data: cur_data,
             dataLabels: {
                 enabled: true,
                 color: '#000000'
@@ -144,11 +208,11 @@ const Page = () => {
                     <Select
                         label="Select an option"
                         placeholder="Select..."
-                        defaultSelectedKeys={["Co2"]}
+                        defaultSelectedKeys={["CO2"]}
                         className="max-w-xs"
                         onSelectionChange={setSelected}
                     >
-                        {["Co2","Temperature","Humidity"].map((key) => (
+                        {["CO2", "Temperature", "Humidity"].map((key) => (
                             <SelectItem key={key} value={key}>
                                 {key}
                             </SelectItem>
