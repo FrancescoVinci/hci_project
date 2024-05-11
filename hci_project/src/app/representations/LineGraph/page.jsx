@@ -9,6 +9,8 @@ import HighchartsReact from 'highcharts-react-official'
 import {Card, CardBody, Chip} from "@nextui-org/react";
 import {useEffect, useState} from "react";
 import {usePapaParse} from "react-papaparse";
+import {Select, SelectItem} from "@nextui-org/react";
+
 
 seriesLabel(Highcharts);
 annotations(Highcharts);
@@ -17,86 +19,46 @@ annotations(Highcharts);
 const Page = () => {
 
     const {readRemoteFile} = usePapaParse();
-    const [parsedData1, setParsedData1] = useState([]);
-    const [parsedData2, setParsedData2] = useState([]);
-    const [parsedData3, setParsedData3] = useState([]);
+    const [selected, setSelected] = useState("1");
+    const [date, setDate] = useState([]);
+    const [co2, setCo2] = useState([]);
+    const [temperature, setTemperature] = useState([]);
+    const [humidity, setHumidity] = useState([]);
 
-    const decodeWindDirection = (wind) => {
-        switch (wind) {
-            case "N":
-                return 0;
-            case "NNE":
-                return 1;
-            case "NE":
-                return 2;
-            case "ENE":
-                return 3;
-            case "E":
-                return 4;
-            case "ESE":
-                return 5;
-            case "SE":
-                return 6;
-            case "SSE":
-                return 7;
-            case "S":
-                return 8;
-            case "SSO":
-                return 9;
-            case "SO":
-                return 10;
-            case "OSO":
-                return 11;
-            case "O":
-                return 12;
-            case "ONO":
-                return 13;
-            case "NO":
-                return 14;
-            case "NNO":
-                return 15;
-            default:
-                console.log(`Oops...`);
-        }
-    }
 
     useEffect(() => {
-        readRemoteFile("/data.csv", {
+        readRemoteFile(`/lineGraph/sector${selected}.csv`, {
             complete: (results) => {
 
-                const seriesData1 = [];
-                const seriesData2 = [];
-                const seriesData3 = [];
+                const co2 = [];
+                const temperature = [];
+                const humidity = [];
 
                 results.data.forEach((row, index) => {
                     if (index !== 0) {
-                        seriesData1.push(parseInt(row[4]));
-                        seriesData2.push(parseFloat(row[5]));
-                        seriesData3.push(decodeWindDirection(row[6]));
+                        co2.push(parseInt(row[4]));
+                        temperature.push(parseFloat(row[5]));
+                        humidity.push(row[6]);
                     }
                 });
 
-                console.log(seriesData1)
-                console.log(seriesData2)
-                console.log(seriesData3)
-
-                setParsedData1(seriesData1);
-                setParsedData2(seriesData2);
-                setParsedData3(seriesData3);
+                setCo2(co2);
+                setTemperature(temperature);
+                setHumidity(humidity);
             },
         });
 
 
-    }, [])
+    }, [selected]);
 
 
-    if (typeof Highcharts === 'object') {
+    if (typeof Highcharts === "object") {
         HighchartsExporting(Highcharts)
     }
 
     const options = {
         chart: {
-            type: 'spline'
+            type: "spline"
         },
 
         credits: {
@@ -104,22 +66,23 @@ const Page = () => {
         },
 
         title: {
-            align: 'left',
-            text: 'United States of America\'s Inflation-related statistics',
+            align: "left",
+            text: "Trend Co2, Temperature, Humidity per path"
         },
+        
         subtitle: {
-            text: 'Source: <a href="https://www.worldbank.org/en/home">The World Bank</a>',
-            align: 'left'
+            text: "Source: Mobile Station",
+            align: "left"
         },
 
         yAxis: [
             {
                 title: {
-                    text: 'Co2'
+                    text: "Co2"
                 },
                 plotLines: [
                     {
-                        color: 'black',
+                        color: "black",
                         width: 2,
                         value: 13.5492019749684,
                         animation: {
@@ -127,15 +90,15 @@ const Page = () => {
                             defer: 4000
                         },
                         label: {
-                            text: 'Max Co2',
-                            align: 'right',
+                            text: "Max Co2",
+                            align: "right",
                             x: -20
                         }
                     }
                 ]
             }, {
                 title: {
-                    text: 'Avg Wind Speed'
+                    text: 'Avg. Wind Speed m/s'
                 }
             }, {
                 opposite: true,
@@ -166,7 +129,7 @@ const Page = () => {
                 yAxis: 0
             },
             {
-                name: "Wind Speed",
+                name: "Avg. Wind Speed",
                 data: parsedData2,
                 yAxis: 1,
                 animation: {
@@ -174,7 +137,7 @@ const Page = () => {
                 }
             },
             {
-                name: "Avg Wind Direction",
+                name: "Wind Direction",
                 data: parsedData3,
                 yAxis: 2,
                 animation: {
@@ -242,6 +205,22 @@ const Page = () => {
                     recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem
                     Ipsum.
                 </p>
+
+                <div className="flex justify-center mb-4">
+                    <Select
+                        label="Select a sector"
+                        placeholder="Select..."
+                        defaultSelectedKeys={["1"]}
+                        className="max-w-xs"
+                        onChange={(e) => setSelected(e.target.currentValue)}
+                    >
+                        {["1","2","5","6","7","8","9","10","11","12","13","14"].map((sector) => (
+                            <SelectItem key={sector} value={sector}>
+                                {sector}
+                            </SelectItem>
+                        ))}
+                    </Select>
+                </div>
 
                 <HighchartsReact
                     highcharts={Highcharts}
