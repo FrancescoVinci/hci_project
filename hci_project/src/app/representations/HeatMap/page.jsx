@@ -37,9 +37,7 @@ const Page = () => {
             text: 'CO2 Values per Sector Per Month'
         },
         subtitle: {
-            floating: false,
             align: 'left',
-            y: 30,
             text: 'Fixed Stations Dataset',
         },
 

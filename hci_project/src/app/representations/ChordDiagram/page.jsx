@@ -34,9 +34,7 @@ const Page = () => {
             text: "Highcharts Dependency Wheel"
         },
         subtitle: {
-            floating: false,
             align: 'left',
-            y: 30,
             text: 'Bla bla bla bla bla bla bla bla bla bla',
         },
 
