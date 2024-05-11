@@ -19,7 +19,7 @@ annotations(Highcharts);
 const Page = () => {
 
     const {readRemoteFile} = usePapaParse();
-    const [selected, setSelected] = useState("1");
+    const [selected, setSelected] = useState({currentKey: "1"});
     const [date, setDate] = useState([]);
     const [co2, setCo2] = useState([]);
     const [temperature, setTemperature] = useState([]);
@@ -27,21 +27,24 @@ const Page = () => {
 
 
     useEffect(() => {
-        readRemoteFile(`/lineGraph/sector${selected}.csv`, {
+        readRemoteFile(`/lineGraph/sector${selected.currentKey}.csv`, {
             complete: (results) => {
 
+                const date = [];
                 const co2 = [];
                 const temperature = [];
                 const humidity = [];
 
                 results.data.forEach((row, index) => {
                     if (index !== 0) {
-                        co2.push(parseInt(row[4]));
-                        temperature.push(parseFloat(row[5]));
-                        humidity.push(row[6]);
+                        date.push(new Date(row[0]));
+                        temperature.push(parseFloat(row[1]));
+                        humidity.push(parseFloat(row[2]));
+                        co2.push(parseInt(row[3]));
                     }
                 });
 
+                setDate(date);
                 setCo2(co2);
                 setTemperature(temperature);
                 setHumidity(humidity);
@@ -75,39 +78,27 @@ const Page = () => {
             align: "left"
         },
 
+        xAxis: {
+            categories: date.map(date => {
+                return Highcharts.dateFormat('%m/%d %H:%m', new Date(date).getTime());
+            })
+        },
+
         yAxis: [
             {
                 title: {
                     text: "Co2"
                 },
-                plotLines: [
-                    {
-                        color: "black",
-                        width: 2,
-                        value: 13.5492019749684,
-                        animation: {
-                            duration: 1000,
-                            defer: 4000
-                        },
-                        label: {
-                            text: "Max Co2",
-                            align: "right",
-                            x: -20
-                        }
-                    }
-                ]
             }, {
                 title: {
-                    text: 'Avg. Wind Speed m/s'
+                    text: 'Temperature'
                 }
             }, {
                 opposite: true,
                 title: {
-                    text: 'Wind Direction'
+                    text: 'Humidity'
                 },
-
-
-            }
+            },
         ],
 
         plotOptions: {
@@ -125,20 +116,20 @@ const Page = () => {
         series: [
             {
                 name: "Co2",
-                data: parsedData1,
+                data: co2,
                 yAxis: 0
             },
             {
-                name: "Avg. Wind Speed",
-                data: parsedData2,
+                name: "Temperature",
+                data: temperature,
                 yAxis: 1,
                 animation: {
                     defer: 1000
                 }
             },
             {
-                name: "Wind Direction",
-                data: parsedData3,
+                name: "Humidity",
+                data: humidity,
                 yAxis: 2,
                 animation: {
                     defer: 2000
@@ -212,7 +203,7 @@ const Page = () => {
                         placeholder="Select..."
                         defaultSelectedKeys={["1"]}
                         className="max-w-xs"
-                        onChange={(e) => setSelected(e.target.currentValue)}
+                        onSelectionChange={setSelected}
                     >
                         {["1","2","5","6","7","8","9","10","11","12","13","14"].map((sector) => (
                             <SelectItem key={sector} value={sector}>
