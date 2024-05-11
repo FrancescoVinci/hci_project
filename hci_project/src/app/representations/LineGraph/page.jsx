@@ -36,7 +36,7 @@ const Page = () => {
                 const humidity = [];
 
                 results.data.forEach((row, index) => {
-                    if (index !== 0) {
+                    if (index !== 0 ) {
                         date.push(new Date(row[0]));
                         temperature.push(parseFloat(row[1]));
                         humidity.push(parseFloat(row[2]));
@@ -80,8 +80,10 @@ const Page = () => {
 
         xAxis: {
             categories: date.map(date => {
-                return Highcharts.dateFormat('%m/%d %H:%m', new Date(date).getTime());
-            })
+                return ("0" + date.getHours()).slice(-2) + ":" + ("0" + date.getMinutes()).slice(-2);
+            }),
+            type: 'datetime',
+
         },
 
         yAxis: [
