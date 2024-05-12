@@ -3,18 +3,22 @@
 import Highcharts from 'highcharts'
 
 import HighchartsExporting from 'highcharts/modules/exporting'
-
+import hc_more from "highcharts/highcharts-more"
 import lollipop from "highcharts/modules/lollipop"
+import dumbell from "highcharts/modules/dumbbell";
 import seriesLabel from "highcharts/modules/series-label"
 import annotations from "highcharts/modules/annotations"
 import HighchartsReact from 'highcharts-react-official'
 import {Card, CardBody, Chip} from "@nextui-org/react";
 
+hc_more(Highcharts);
+dumbell(Highcharts); // dependency for lollipop
 lollipop(Highcharts);
 seriesLabel(Highcharts);
 annotations(Highcharts);
 
 const Page = () => {
+
     if (typeof Highcharts === 'object') {
         HighchartsExporting(Highcharts)
     }
