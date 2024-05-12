@@ -33,7 +33,6 @@ export const Navbar = () => {
         "Composite Chart",
         "Spiral Plot (?)",
         "Meteo Graph (?)",
-        "BeViCi Group Info"
     ];
 
     const menuItemsRef = [
@@ -46,7 +45,6 @@ export const Navbar = () => {
         "/representations/CompositeChart",
         "/representations/SpiralPlot",
         "/representations/MeteoGraph",
-        "/representations/BeViCiGroupInfo"
     ];
 
     return (
