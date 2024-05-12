@@ -3,6 +3,7 @@
 import Highcharts from 'highcharts'
 
 import HighchartsExporting from 'highcharts/modules/exporting'
+
 import hc_more from "highcharts/highcharts-more"
 import lollipop from "highcharts/modules/lollipop"
 import dumbbell from "highcharts/modules/dumbbell";
@@ -55,13 +56,18 @@ const Page = () => {
         },
 
         xAxis: {
-            type: 'category'
+            categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+            scrollbar: {
+                enabled: true,
+            },
         },
+
+
 
         yAxis: [
             {
                 title: {
-                    text: 'Wind'
+                    text: 'Values'
                 },
                 labels: {
                     formatter: function () {
@@ -75,117 +81,62 @@ const Page = () => {
                             return 'HIGH';
                         }
                     }
-                }
-            },
-            {
-                title: {
-                    text: 'Environmental Noise'
                 },
-                labels: {
-                    formatter: function () {
-                        if (this.value === 0) {
-                            return 'NONE';
-                        } else if (this.value === 1) {
-                            return 'LOW';
-                        } else if (this.value === 2) {
-                            return 'MEDIUM';
-                        } else if (this.value === 3) {
-                            return 'HIGH';
-                        }
-                    }
-                }
-            },
-            {
-                title: {
-                    text: 'Quantity of Vehicles'
-                },
-                labels: {
-                    formatter: function () {
-                        if (this.value === 0) {
-                            return 'NONE';
-                        } else if (this.value === 1) {
-                            return 'LOW';
-                        } else if (this.value === 2) {
-                            return 'MEDIUM';
-                        } else if (this.value === 3) {
-                            return 'HIGH';
-                        }
-                    }
-                }
-            },
-            {
-                title: {
-                    text: 'Quantity of People'
-                },
-                labels: {
-                    formatter: function () {
-                        if (this.value === 0) {
-                            return 'NONE';
-                        } else if (this.value === 1) {
-                            return 'LOW';
-                        } else if (this.value === 2) {
-                            return 'MEDIUM';
-                        } else if (this.value === 3) {
-                            return 'HIGH';
-                        }
-                    }
-                }
+                tickInterval: 1,
             },
             {
                 title: {
                     text: 'CO2'
                 },
-                labels: {
-                    format: "{value}"
-                },
-                opposite: true
+                opposite: true,
             },
         ],
 
         series: [
             {
                 type: 'lollipop',
-                yAxis: 1,
+                yAxis: 0,
                 name: 'Wind',
                 data: [1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 2, 1, 1, 1, 1],
-                tooltip: {
-                    pointFormatter: function () {
-                        if (this.value === 0) {
-                            return 'NONE';
-                        } else if (this.value === 1) {
-                            return 'LOW';
-                        } else if (this.value === 2) {
-                            return 'MEDIUM';
-                        } else if (this.value === 3) {
-                            return 'HIGH';
-                        }
-                    }
-                }
             },
             {
                 type: 'lollipop',
-                yAxis: 1,
+                yAxis: 0,
                 name: 'Environmental Noise',
                 data: [1, 1, 1, 1, 1, 2, 2, 1, 2, 1, 1, 1, 2, 2, 3]
             },
             {
                 type: 'lollipop',
-                yAxis: 1,
+                yAxis: 0,
                 name: 'Quantity of Vehicles',
                 data: [3, 3, 0, 0, 0, 0, 1, 0, 3, 3, 2, 2, 0, 2, 3]
             },
             {
                 type: 'lollipop',
-                yAxis: 1,
+                yAxis: 0,
                 name: 'Quantity of People',
                 data: [3, 2, 1, 3, 3, 2, 3, 1, 1, 0, 1, 1, 3, 3, 3]
             },
             {
                 type: 'spline',
+                yAxis: 1,
                 name: 'CO2',
                 data: [494, 437, 479, 478, 476, 481, 473, 463, 461, 461, 461, 463, 488, 478, 500,]
             },
-        ]
+        ],
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        enabled: false
+                    }
+                }
+            }]
+        }
+
     };
 
     return (
@@ -212,9 +163,11 @@ const Page = () => {
                 </p>
 
                 <HighchartsReact
+
                     highcharts={Highcharts}
                     options={options}
                 />
+
 
             </CardBody>
 
