@@ -29,7 +29,7 @@ export const Navbar = () => {
         "Parallel Coordinate Plot",
         "Line Graph",
         "Heat Map",
-        "Spiral Plot",
+        "Area Range Plot",
         "Scatter Plot",
         "Ridgeline Plot",
         "BeViCi Group Info"
@@ -41,7 +41,7 @@ export const Navbar = () => {
         "/representations/ParallelCoordinatePlot",
         "/representations/LineGraph",
         "/representations/HeatMap",
-        "/representations/SpiralPlot",
+        "/representations/AreaRange",
         "/representations/ScatterPlot",
         "/representations/RidgelinePlot",
         "/representations/BeViCiGroupInfo"
