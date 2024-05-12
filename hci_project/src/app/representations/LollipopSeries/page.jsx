@@ -84,7 +84,7 @@ const Page = () => {
                         }
                     }
                 },
-                tickInterval: 1,
+                tickPositions: [0, 1, 2, 3]
             },
             {
                 title: {
@@ -127,17 +127,23 @@ const Page = () => {
             },
         ],
         responsive: {
-            rules: [{
-                condition: {
-                    maxWidth: 500
-                },
-                chartOptions: {
-                    legend: {
-                        enabled: true
+            rules: [
+                {
+                    condition: {
+                        maxWidth: 500
+                    },
+                    chartOptions: {
+                        legend: {
+                            floating: false,
+                            layout: 'horizontal',
+                            align: 'center',
+                            verticalAlign: 'bottom',
+                            x: 0,
+                            y: 0
+                        },
                     }
-                }
-            }]
-        }
+                }]
+        },
     };
 
     return (
