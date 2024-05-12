@@ -2,7 +2,7 @@
 
 
 import {Card, CardBody, Chip, Select, SelectItem} from "@nextui-org/react";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import CO2 from "@/app/representations/HeatMap/CO2";
 import Humidity from "@/app/representations/HeatMap/Humidity";
 import Temperature from "@/app/representations/HeatMap/Temp";
@@ -47,15 +47,11 @@ const Page = () => {
                 </div>
 
                 {selected === "CO2" ?
-                    <CO2 />
+                    <CO2/>
                     : selected === "Humidity" ?
                         <Humidity/>
                         : <Temperature/>
                 }
-
-
-
-
 
             </CardBody>
         </Card>

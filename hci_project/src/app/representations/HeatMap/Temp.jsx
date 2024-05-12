@@ -51,7 +51,7 @@ const Temperature = () => {
 
         title: {
             align: 'left',
-            text: 'CO2 Values per Sector Per Month'
+            text: 'Temperature Values per Sector Per Month'
         },
         subtitle: {
             align: 'left',

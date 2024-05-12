@@ -8,7 +8,6 @@ import seriesLabel from "highcharts/modules/series-label"
 import annotations from "highcharts/modules/annotations"
 import HighchartsReact from 'highcharts-react-official'
 
-
 heatMap(Highcharts);
 seriesLabel(Highcharts);
 annotations(Highcharts);
@@ -50,7 +49,7 @@ const Humidity = () => {
 
         title: {
             align: 'left',
-            text: 'CO2 Values per Sector Per Month'
+            text: 'Humidity Values per Sector Per Month'
         },
         subtitle: {
             align: 'left',
