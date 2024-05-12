@@ -276,10 +276,11 @@ const Page = () => {
                         Ipsum.
                     </p>
 
-                    <div className="flex gap-2 justify-center mb-4">
+                    <div className="flex justify-center gap-2  mb-4">
                         <Select
-                            label="Select a location"
+                            label="Select location"
                             placeholder="Select..."
+                            defaultSelectedKeys={["Briati"]}
                             className="max-w-xs"
                             onSelectionChange={(e) => setSelected(e.currentKey)}
                         >
