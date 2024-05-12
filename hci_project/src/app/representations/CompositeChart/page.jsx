@@ -1,6 +1,6 @@
 "use client"
 
-import Highcharts from 'highcharts'
+import Highcharts, { color } from 'highcharts'
 
 import HighchartsExporting from 'highcharts/modules/exporting'
 import hc_more from "highcharts/highcharts-more"
@@ -31,56 +31,79 @@ const Page = () => {
             align: 'left'
         },
         xAxis: [{
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun',
+                'Jul', 'Aug', 'Sep', 'Oct', 'Nov'],
             crosshair: true
         }],
-        yAxis: [{ // Primary yAxis
-            labels: {
-                format: '{value}°C',
-                style: {
-                    color: Highcharts.getOptions().colors[2]
-                }
+        yAxis: [
+            {
+                // Temperature yAxis
+                labels: {
+                    format: '{value}°C',
+                    style: {
+                        color: Highcharts.getOptions().colors[0]
+                    }
+                },
+                title: {
+                    text: 'Temperature',
+                    style: {
+                        color: Highcharts.getOptions().colors[0]
+                    }
+                },
+                opposite: false
             },
-            title: {
-                text: 'Temperature',
-                style: {
-                    color: Highcharts.getOptions().colors[2]
-                }
+            {
+                // Rainfall yAxis
+                gridLineWidth: 0,
+                title: {
+                    text: 'Rainfall',
+                    style: {
+                        color: Highcharts.getOptions().colors[1]
+                    }
+                },
+                labels: {
+                    format: '{value} mm',
+                    style: {
+                        color: Highcharts.getOptions().colors[1]
+                    }
+                },
+                opposite: true
             },
-            opposite: true
-
-        }, { // Secondary yAxis
-            gridLineWidth: 0,
-            title: {
-                text: 'Rainfall',
-                style: {
-                    color: Highcharts.getOptions().colors[0]
-                }
+            {
+                // CO2 yAxis
+                gridLineWidth: 0,
+                title: {
+                    text: 'CO2',
+                    style: {
+                        color: Highcharts.getOptions().colors[2]
+                    }
+                },
+                labels: {
+                    format: '{value}',
+                    style: {
+                        color: Highcharts.getOptions().colors[2]
+                    }
+                },
+                opposite: false
             },
-            labels: {
-                format: '{value} mm',
-                style: {
-                    color: Highcharts.getOptions().colors[0]
-                }
+            {
+                // Humidity yAxis
+                gridLineWidth: 0,
+                title: {
+                    text: 'Humidity',
+                    style: {
+                        color: Highcharts.getOptions().colors[3]
+                    }
+                },
+                labels: {
+                    format: '{value}',
+                    style: {
+                        color: Highcharts.getOptions().colors[3]
+                    }
+                },
+                opposite: true
             }
-
-        }, { // Tertiary yAxis
-            gridLineWidth: 0,
-            title: {
-                text: 'Sea-Level Pressure',
-                style: {
-                    color: Highcharts.getOptions().colors[1]
-                }
-            },
-            labels: {
-                format: '{value} mb',
-                style: {
-                    color: Highcharts.getOptions().colors[1]
-                }
-            },
-            opposite: true
-        }],
+        ],
         tooltip: {
             shared: true
         },
@@ -89,73 +112,92 @@ const Page = () => {
             align: 'center',
             verticalAlign: 'bottom',
             floating: false,
-            backgroundColor:
-                Highcharts.defaultOptions.legend.backgroundColor || // theme
-                'rgba(255,255,255,0.25)'
         },
-        series: [{
-            name: 'Rainfall',
-            type: 'column',
-            yAxis: 1,
-            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
-            tooltip: {
-                valueSuffix: ' mm'
-            }
-
-        }, {
-            name: 'Sea-Level Pressure',
-            type: 'spline',
-            yAxis: 2,
-            data: [1016, 1016, 1015.9, 1015.5, 1012.3, 1009.5, 1009.6, 1010.2, 1013.1, 1016.9, 1018.2, 1016.7],
-            marker: {
-                enabled: false
-            },
-            dashStyle: 'shortdot',
-            tooltip: {
-                valueSuffix: ' mb'
-            }
-
-        }, {
-            name: 'Temperature',
-            type: 'spline',
-            data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6],
-            tooltip: {
-                valueSuffix: ' °C'
-            }
-        }],
-        responsive: {
-            rules: [{
-                condition: {
-                    maxWidth: 500
+        series: [
+            {
+                name: 'Rainfall',
+                type: 'column',
+                yAxis: 1,
+                data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+                tooltip: {
+                    valueSuffix: ' mm'
                 },
-                chartOptions: {
-                    legend: {
-                        floating: false,
-                        layout: 'horizontal',
-                        align: 'center',
-                        verticalAlign: 'bottom',
-                        x: 0,
-                        y: 0
+            },
+            {
+                name: 'CO2',
+                type: 'spline',
+                yAxis: 2,
+                data: [9.9, 1.5, 16.4, 19.2, 44.0, 76.0, 35.6, 48.5, 16.4, 94.1, 5.6, 4.4],
+                tooltip: {
+                    valueSuffix: ''
+                },
+                dashStyle: 'ShortDashDot',
+                color: Highcharts.getOptions().colors[2]
+            },
+            {
+                name: 'Temperature',
+                type: 'spline',
+                yAxis: 0,
+                data: [27.0, 26.9, 39.5, 24.5, 38.2, 22.5, 35.2, 36.5, 33.3, 38.3, 33.9, 39.6],
+                tooltip: {
+                    valueSuffix: ' °C'
+                },
+                dashStyle: 'ShortDot',
+                color: Highcharts.getOptions().colors[0]
+            },
+            {
+                name: 'Humidity',
+                type: 'spline',
+                yAxis: 3,
+                data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6],
+                tooltip: {
+                    valueSuffix: ' %'
+                },
+                dashStyle: 'Dash',
+                color: Highcharts.getOptions().colors[3]
+            }
+        ],
+        responsive: {
+            rules: [
+                {
+                    condition: {
+                        maxWidth: 500
                     },
-                    yAxis: [{
-                        labels: {
-                            align: 'right',
+                    chartOptions: {
+                        legend: {
+                            floating: false,
+                            layout: 'horizontal',
+                            align: 'center',
+                            verticalAlign: 'bottom',
                             x: 0,
-                            y: -6
+                            y: 0
                         },
-                        showLastLabel: false
-                    }, {
-                        labels: {
-                            align: 'left',
-                            x: 0,
-                            y: -6
-                        },
-                        showLastLabel: false
-                    }, {
-                        visible: false
-                    }]
-                }
-            }]
+                        yAxis: [{
+                            labels: {
+                                align: 'right',
+                                x: 0,
+                                y: -6
+                            },
+                            showLastLabel: false
+                        }, {
+                            labels: {
+                                align: 'left',
+                                x: 0,
+                                y: -6
+                            },
+                            showLastLabel: false
+                        }, {
+                            visible: false
+                        }]
+                    }
+                }]
+        },
+        plotOptions: {
+            column: {
+                borderColor: "rgba(80,74,205,.6)",
+                borderWidth: 2,
+                color: "rgba(80,74,205,.2)",
+            }
         }
     };
 
