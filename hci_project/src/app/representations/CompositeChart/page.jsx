@@ -20,7 +20,9 @@ const Page = () => {
 
     const options = {
         chart: {
-            zoomType: 'xy'
+            scrollablePlotArea: {
+                minWidth: 700
+            }
         },
         title: {
             text: 'Average Monthly Weather Data for Tokyo',
@@ -172,23 +174,32 @@ const Page = () => {
                             x: 0,
                             y: 0
                         },
-                        yAxis: [{
-                            labels: {
-                                align: 'right',
-                                x: 0,
-                                y: -6
+                        yAxis: [
+                            {
+                                title:{
+                                    text: ''
+                                },
+                                showLastLabel: false
                             },
-                            showLastLabel: false
-                        }, {
-                            labels: {
-                                align: 'left',
-                                x: 0,
-                                y: -6
+                            {
+                                title:{
+                                    text: ''
+                                },
+                                showLastLabel: false
                             },
-                            showLastLabel: false
-                        }, {
-                            visible: false
-                        }]
+                            {
+                                title:{
+                                    text: ''
+                                },
+                                showLastLabel: false
+                            },
+                            {
+                                title:{
+                                    text: ''
+                                },
+                                showLastLabel: false
+                            },
+                        ]
                     }
                 }]
         },
