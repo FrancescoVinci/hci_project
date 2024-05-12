@@ -25,13 +25,14 @@ export const Navbar = () => {
 
     const menuItems = [
         "Lollipop Series",
-        "Chord Diagram",
+        "Chord Diagram (?)",
         "Parallel Coordinate Plot",
-        "Line Graph (to be removed)",
+        "Line Graph (?)",
         "Heat Map",
         "Area Range Plot",
         "Composite Chart",
-        "Spiral Plot",
+        "Spiral Plot (?)",
+        "Meteo Graph (?)",
         "BeViCi Group Info"
     ];
 
@@ -44,6 +45,7 @@ export const Navbar = () => {
         "/representations/AreaRange",
         "/representations/CompositeChart",
         "/representations/SpiralPlot",
+        "/representations/MeteoGraph",
         "/representations/BeViCiGroupInfo"
     ];
 

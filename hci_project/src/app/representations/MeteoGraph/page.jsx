@@ -549,7 +549,7 @@ const Page = () => {
     return (
         <Card className="fullWidth">
             <CardBody className="p-7">
-                <p className="text-3xl font-PlayfairDisplay mb-3 ">Line Graph</p>
+                <p className="text-3xl font-PlayfairDisplay mb-3 ">Meteo Graph</p>
 
                 <div className="flex flex-wrap justify-start gap-2">
                     <Chip color="default">Default</Chip>
