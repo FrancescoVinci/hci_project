@@ -13,7 +13,7 @@ import HighchartsReact from 'highcharts-react-official'
 import {Card, CardBody, Chip} from "@nextui-org/react";
 
 hc_more(Highcharts);
-dumbbell(Highcharts); // dependency for lollipop
+dumbbell(Highcharts);
 lollipop(Highcharts);
 seriesLabel(Highcharts);
 annotations(Highcharts);
@@ -25,7 +25,11 @@ const Page = () => {
     }
 
     const options = {
-        chart: {},
+        chart: {
+            scrollablePlotArea: {
+                minWidth: 700
+            }
+        },
         accessibility: {
             point: {
                 valueDescriptionFormat: '{index}. {xDescription}, {point.y}.'
@@ -62,12 +66,10 @@ const Page = () => {
             },
         },
 
-
-
         yAxis: [
             {
                 title: {
-                    text: 'Values'
+                    text: ''
                 },
                 labels: {
                     formatter: function () {
@@ -131,12 +133,11 @@ const Page = () => {
                 },
                 chartOptions: {
                     legend: {
-                        enabled: false
+                        enabled: true
                     }
                 }
             }]
         }
-
     };
 
     return (
