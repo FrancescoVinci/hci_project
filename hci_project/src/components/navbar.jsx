@@ -27,11 +27,11 @@ export const Navbar = () => {
         "Lollipop Series",
         "Chord Diagram",
         "Parallel Coordinate Plot",
-        "Line Graph",
+        "Line Graph (to be removed)",
         "Heat Map",
         "Area Range Plot",
-        "Scatter Plot",
-        "Ridgeline Plot",
+        "Composite Chart",
+        "Spiral Plot",
         "BeViCi Group Info"
     ];
 
@@ -42,8 +42,8 @@ export const Navbar = () => {
         "/representations/LineGraph",
         "/representations/HeatMap",
         "/representations/AreaRange",
-        "/representations/ScatterPlot",
-        "/representations/RidgelinePlot",
+        "/representations/CompositeChart",
+        "/representations/SpiralPlot",
         "/representations/BeViCiGroupInfo"
     ];
 
