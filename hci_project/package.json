@@ -9,13 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@nextui-org/accordion": "^2.0.28",
-    "@nextui-org/button": "^2.0.26",
-    "@nextui-org/link": "^2.0.26",
-    "@nextui-org/react": "^2.2.9",
+    "@nextui-org/react": "^2.3.6",
     "d3": "^7.1.1",
     "flubber": "^0.4.2",
-    "framer-motion": "^11.0.5",
+    "framer-motion": "^11.1.9",
     "highcharts": "^11.3.0",
     "highcharts-more": "^0.1.7",
     "highcharts-react-official": "^3.2.1",

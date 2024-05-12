@@ -7,7 +7,8 @@ import hc_more from "highcharts/highcharts-more"
 import seriesLabel from "highcharts/modules/series-label"
 import annotations from "highcharts/modules/annotations"
 import HighchartsReact from 'highcharts-react-official'
-import {Card, CardBody, Chip} from "@nextui-org/react";
+import {Card, CardBody, Chip, Select, SelectItem} from "@nextui-org/react";
+import {Calendar} from "@nextui-org/calendar";
 
 hc_more(Highcharts);
 seriesLabel(Highcharts);
@@ -179,6 +180,23 @@ const Page = () => {
                     recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem
                     Ipsum.
                 </p>
+
+                <div className="flex justify-center mb-4">
+                    <Select
+                        label="Select an option"
+                        placeholder="Select..."
+                        className="max-w-xs"
+                        onSelectionChange={(e) => setSelected(e.currentKey)}
+                    >
+                        {["P. Briati", "P. Ca Foscari", "Campus Scientifico", "S. Basilio", "S. Giobbe", "S. Margherita"].map((key) => (
+                            <SelectItem key={key} value={key}>
+                                {key}
+                            </SelectItem>
+                        ))}
+                    </Select>
+
+                    <Calendar aria-label="Date (No Selection)" />
+                </div>
 
                 <HighchartsReact
                     highcharts={Highcharts}
