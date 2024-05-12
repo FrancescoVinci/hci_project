@@ -25,9 +25,8 @@ const Page = () => {
 
     const options = {
         chart: {
-            type: 'lollipop'
+            
         },
-    
         accessibility: {
             point: {
                 valueDescriptionFormat: '{index}. {xDescription}, {point.y}.'
@@ -35,18 +34,21 @@ const Page = () => {
         },
     
         legend: {
-            enabled: false
+            enabled: true
         },
     
         subtitle: {
-            text: '2021'
+            text: 'subtitle',
+            align: 'left'
         },
     
         title: {
-            text: 'Top 10 Countries by Population'
+            text: 'Top 10 Countries by Population',
+            align: 'left'
         },
     
         tooltip: {
+            crosshairs: true,
             shared: true
         },
     
@@ -54,47 +56,369 @@ const Page = () => {
             type: 'category'
         },
     
-        yAxis: {
-            title: {
-                text: 'Population'
-            }
-        },
-    
-        series: [{
-            name: 'Population',
-            data: [{
-                name: 'China',
-                y: 1444216107
-            }, {
-                name: 'India',
-                y: 1393409038
-            }, {
-                name: 'United States',
-                y: 332915073
-            }, {
-                name: 'Indonesia',
-                y: 276361783
-            }, {
-                name: 'Pakistan',
-                y: 225199937
-            }, {
-                name: 'Brazil',
-                y: 213993437
-            }, {
-                name: 'Nigeria',
-                y: 211400708
-            }, {
-                name: 'Bangladesh',
-                y: 166303498
-            }, {
-                name: 'Russia',
-                y: 145912025
-            }, {
-                name: 'Mexico',
-                y: 130262216
-            }]
-        }]
-    
+        yAxis: [
+            {
+                title: {
+                    text: 'Levels'
+                },
+                labels:{
+                    formatter:function(){
+                        if(this.value == 0){
+                            return 'NONE';
+                        }
+                        else if(this.value == 1) {
+                            return 'LOW';
+                        }
+                        else if(this.value == 2) {
+                            return 'MEDIUM';
+                        }
+                        else if(this.value == 3) {
+                            return 'HIGH';
+                        }
+                    }
+                } 
+            },
+            {
+                // linegraph
+                opposite: true
+            },
+        ],
+
+        series: [
+            {
+                type: 'lollipop',
+                name: 'Wind',
+                yAxis: 1,
+                data: [
+                    {
+                        name: 'Path 1',
+                        y: 1, type: 'lollipop',
+                        name: 'Path 2',
+                        y: 1,
+                    }, 
+                    {
+                        name: 'Path 3',
+                        y: 1,
+                    }, 
+                    {
+                        name: 'Path 4',
+                        y: 1,
+                    }, 
+                    {
+                        name: 'Path 5',
+                        y: 1,
+                    }, 
+                    {
+                        name: 'Path 6',
+                        y: 1,
+                    }, 
+                    {
+                        name: 'Path 7',
+                        y: 2,
+                    },
+                    {
+                        name: 'Path 8',
+                        y: 1,
+                    }, 
+                    {
+                        name: 'Path 9',
+                        y: 1,
+                    }, 
+                    {
+                        name: 'Path 10',
+                        y: 2,
+                    }, 
+                    {
+                        name: 'Path 11',
+                        y: 2,
+                    }, 
+                    {
+                        name: 'Path 12',
+                        y: 1,
+                    }, 
+                    {
+                        name: 'Path 13',
+                        y: 1,
+                    }, 
+                    {
+                        name: 'Path 14',
+                        y: 1,
+                    }, 
+                    {
+                        name: 'Path 15',
+                        y: 1,
+                    }
+                ] 
+            }, 
+            {
+                type: 'lollipop',
+                name: 'Environmental Noise',
+                yAxis: 1,
+                data: [
+                    {
+                        name: 'Path 1',
+                        y: 1,
+                    },
+                    {
+                        name: 'Path 2',
+                        y: 1,
+                    }, 
+                    {
+                        name: 'Path 3',
+                        y: 1,
+                    }, 
+                    {
+                        name: 'Path 4',
+                        y: 1,
+                    }, 
+                    {
+                        name: 'Path 5',
+                        y: 1,
+                    }, 
+                    {
+                        name: 'Path 6',
+                        y: 2,
+                    }, 
+                    {
+                        name: 'Path 7',
+                        y: 2,
+                    },
+                    {
+                        name: 'Path 8',
+                        y: 1,
+                    }, 
+                    {
+                        name: 'Path 9',
+                        y: 2,
+                    }, 
+                    {
+                        name: 'Path 10',
+                        y: 1,
+                    }, 
+                    {
+                        name: 'Path 11',
+                        y: 1,
+                    }, 
+                    {
+                        name: 'Path 12',
+                        y: 1,
+                    }, 
+                    {
+                        name: 'Path 13',
+                        y: 2,
+                    }, 
+                    {
+                        name: 'Path 14',
+                        y: 2,
+                    }, 
+                    {
+                        name: 'Path 15',
+                        y: 3,
+                    }
+                ] 
+            }, 
+            {
+                type: 'lollipop',
+                name: 'Quantity of Vehicles',
+                yAxis: 1,
+                data: [
+                    {
+                        name: 'Path 1',
+                        y: 3,
+                    },
+                    {
+                        name: 'Path 2',
+                        y: 3,
+                    }, 
+                    {
+                        name: 'Path 3',
+                        y: 0,
+                    }, 
+                    {
+                        name: 'Path 4',
+                        y: 0,
+                    }, 
+                    {
+                        name: 'Path 5',
+                        y: 0,
+                    }, 
+                    {
+                        name: 'Path 6',
+                        y: 0,
+                    }, 
+                    {
+                        name: 'Path 7',
+                        y: 1,
+                    },
+                    {
+                        name: 'Path 8',
+                        y: 0,
+                    }, 
+                    {
+                        name: 'Path 9',
+                        y: 3,
+                    }, 
+                    {
+                        name: 'Path 10',
+                        y: 3,
+                    }, 
+                    {
+                        name: 'Path 11',
+                        y: 2,
+                    }, 
+                    {
+                        name: 'Path 12',
+                        y: 2,
+                    }, 
+                    {
+                        name: 'Path 13',
+                        y: 0,
+                    }, 
+                    {
+                        name: 'Path 14',
+                        y: 2,
+                    }, 
+                    {
+                        name: 'Path 15',
+                        y: 3,
+                    }
+                ] 
+            }, 
+            {
+                type: 'lollipop',
+                name: 'Quantity of People',
+                yAxis: 1,
+                data: [
+                    {
+                        name: 'Path 1',
+                        y: 3,
+                    },
+                    {
+                        name: 'Path 2',
+                        y: 2,
+                    }, 
+                    {
+                        name: 'Path 3',
+                        y: 1,
+                    }, 
+                    {
+                        name: 'Path 4',
+                        y: 3,
+                    }, 
+                    {
+                        name: 'Path 5',
+                        y: 3,
+                    }, 
+                    {
+                        name: 'Path 6',
+                        y: 2,
+                    }, 
+                    {
+                        name: 'Path 7',
+                        y: 3,
+                    },
+                    {
+                        name: 'Path 8',
+                        y: 1,
+                    }, 
+                    {
+                        name: 'Path 9',
+                        y: 1,
+                    }, 
+                    {
+                        name: 'Path 10',
+                        y: 0,
+                    }, 
+                    {
+                        name: 'Path 11',
+                        y: 1,
+                    }, 
+                    {
+                        name: 'Path 12',
+                        y: 1,
+                    }, 
+                    {
+                        name: 'Path 13',
+                        y: 3,
+                    }, 
+                    {
+                        name: 'Path 14',
+                        y: 3,
+                    }, 
+                    {
+                        name: 'Path 15',
+                        y: 3,
+                    }
+                ] 
+            },
+            {
+                type: 'spline',
+                name: 'CO2',
+                yAxis: 2,
+                data: [
+                    {
+                        name: 'Path 1',
+                        y: 494,
+                    },
+                    {
+                        name: 'Path 2',
+                        y: 437,
+                    }, 
+                    {
+                        name: 'Path 3',
+                        y: 479,
+                    }, 
+                    {
+                        name: 'Path 4',
+                        y: 478,
+                    }, 
+                    {
+                        name: 'Path 5',
+                        y: 476,
+                    }, 
+                    {
+                        name: 'Path 6',
+                        y: 481,
+                    }, 
+                    {
+                        name: 'Path 7',
+                        y: 473,
+                    },
+                    {
+                        name: 'Path 8',
+                        y: 463,
+                    }, 
+                    {
+                        name: 'Path 9',
+                        y: 461,
+                    }, 
+                    {
+                        name: 'Path 10',
+                        y: 461,
+                    }, 
+                    {
+                        name: 'Path 11',
+                        y: 461,
+                    }, 
+                    {
+                        name: 'Path 12',
+                        y: 463,
+                    }, 
+                    {
+                        name: 'Path 13',
+                        y: 488,
+                    }, 
+                    {
+                        name: 'Path 14',
+                        y: 478,
+                    }, 
+                    {
+                        name: 'Path 15',
+                        y: 500,
+                    }
+                ] 
+            },
+        ]
     };
 
     return (
