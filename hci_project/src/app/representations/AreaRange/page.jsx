@@ -92,6 +92,10 @@ const Page = () => {
             text: 'CO2 Range and Average',
             align: 'left'
         },
+
+        credits: {
+            enabled: false
+        },
     
         subtitle: {
             text: 'Source: ' +

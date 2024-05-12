@@ -31,6 +31,10 @@ const Page = () => {
             }
         },
 
+        credits: {
+            enabled: false
+        },
+
         legend: {
             enabled: true
         },
