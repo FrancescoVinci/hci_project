@@ -36,7 +36,7 @@ const Page = () => {
                 const humidity = [];
 
                 results.data.forEach((row, index) => {
-                    if (index !== 0 ) {
+                    if (index !== 0) {
                         date.push(new Date(row[0]));
                         temperature.push(parseFloat(row[1]));
                         humidity.push(parseFloat(row[2]));
@@ -72,7 +72,7 @@ const Page = () => {
             align: "left",
             text: "Co2, Temperature, Humidity trend per path"
         },
-        
+
         subtitle: {
             text: "Source: Mobile Station",
             align: "left"
@@ -190,15 +190,18 @@ const Page = () => {
                 </div>
 
                 <p className="font-xl font-Roboto pt-5">
-                    The following graph depicts the data collected during a walk through Venice on <i>November 23, 2023</i>,
+                    The following graph depicts the data collected during a walk through Venice on <i>November 23,
+                    2023</i>,
                     tracking CO2 levels, temperature, and humidity along the predetermined route.
                     This analysis aims to provide insights into environmental conditions during the excursion and their
                     potential implications.
                 </p>
                 <p className="font-xl font-Roboto mb-7">
                     The CO2 levels are depicted by a line graph, showing fluctuations in atmospheric carbon dioxide
-                    concentrations throughout the walk. Peaks and troughs in the graph indicate areas of high and low CO2
-                    emissions, respectively. Analysis of these fluctuations can reveal sources of carbon emissions along the
+                    concentrations throughout the walk. Peaks and troughs in the graph indicate areas of high and low
+                    CO2
+                    emissions, respectively. Analysis of these fluctuations can reveal sources of carbon emissions along
+                    the
                     route, such as vehicular traffic (i.e. vaporettos) or human activity.
 
                 </p>
