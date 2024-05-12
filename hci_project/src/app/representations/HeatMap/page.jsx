@@ -18,7 +18,7 @@ annotations(Highcharts);
 const start_value = {
     "CO2": 360,
     "Humidity": 40,
-    "Temperature": 5,
+    "Temperature": 1,
 };
 
 const value_scale = {
@@ -31,14 +31,14 @@ const value_scale = {
     ],
     "Humidity": [
         [0, '#8fd48e'],
-        [0.25, '#BFFF00'],
-        [0.5, '#FFFF00'],
-        [0.75, '#FFA500'],
+        [0.5, '#BFFF00'],
         [1, '#FF0000']
     ],
     "Temperature": [
         [0, '#0500ff'],
         [0.25, '#00b2ff'],
+        [0.3, '#8fd48e'],
+        [0.5, '#FFA500'],
         [1, '#FF0000']
     ],
 };
@@ -102,7 +102,7 @@ const Page = () => {
     const options = {
         chart: {
             type: 'heatmap',
-            plotBorderWidth: 1,
+            plotBorderWidth: 0,
         },
 
         credits: {
@@ -158,8 +158,8 @@ const Page = () => {
 
         series: [{
             name: 'Avg CO2 Values per Station per Month',
-            borderWidth: 1,
-            // column is sector, row is month
+            borderWidth: 0.5,
+            borderColor: "rgba(0,0,0,.5)",
             data: cur_data,
             dataLabels: {
                 enabled: true,
