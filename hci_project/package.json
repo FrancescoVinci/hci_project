@@ -21,8 +21,10 @@
     "react": "^18",
     "react-d3-library": "^1.1.8",
     "react-dom": "^18",
+    "react-lite-month-picker": "^1.2.18",
     "react-papaparse": "^4.4.0",
-    "react-spring": "^9.7.3"
+    "react-spring": "^9.7.3",
+    "react-toastify": "^10.0.5"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
