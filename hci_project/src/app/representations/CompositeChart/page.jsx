@@ -24,6 +24,9 @@ const Page = () => {
                 minWidth: 700
             }
         },
+        credits: {
+            enabled: false
+        },
         title: {
             text: 'Average Monthly Weather Data for Tokyo',
             align: 'left'

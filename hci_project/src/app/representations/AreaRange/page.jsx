@@ -52,7 +52,7 @@ const Page = () => {
     const start = "2023-02-01 00:00";
     const end = "2023-11-30";
 
-    const [selected, setSelected] = useState("Briati");
+    const [selected, setSelected] = useState("campusS");
     const [selectedMonthData, setSelectedMonthData] = useState({
         month: 2,
         year: 2023,
@@ -250,7 +250,7 @@ const Page = () => {
                         <Select
                             label="Select location"
                             placeholder="Select..."
-                            defaultSelectedKeys={["Briati"]}
+                            defaultSelectedKeys={["campusS"]}
                             className="max-w-xs"
                             onSelectionChange={(e) => setSelected(e.currentKey)}
                         >
