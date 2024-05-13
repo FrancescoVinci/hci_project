@@ -372,12 +372,10 @@ const Page = () => {
                     <p className="text-3xl font-PlayfairDisplay mb-3 ">Composite Chart</p>
 
                     <div className="flex flex-wrap justify-start gap-2">
-                        <Chip color="default">Default</Chip>
-                        <Chip color="primary">Primary</Chip>
-                        <Chip color="secondary">Secondary</Chip>
-                        <Chip color="success">Success</Chip>
-                        <Chip color="warning">Warning</Chip>
-                        <Chip color="danger">Danger</Chip>
+                        <Chip color="primary">Temperature</Chip>
+                        <Chip color="secondary">Rainfall</Chip>
+                        <Chip className="text-white" color="success">CO2</Chip>
+                        <Chip className="text-white" color="warning">Humidity</Chip>
                     </div>
 
                     <p className="font-xl font-Roboto pt-5 mb-7">

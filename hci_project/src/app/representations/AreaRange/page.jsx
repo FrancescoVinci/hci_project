@@ -137,7 +137,7 @@ const Page = () => {
             }
         },
         title: {
-            text: `Temperature, CO2 Range and Average (${selectedMonthData.monthName})`,
+            text: `Temperature, CO2 - Range and Average (${selectedMonthData.monthName})`,
             align: 'left'
         },
 
@@ -146,9 +146,7 @@ const Page = () => {
         },
 
         subtitle: {
-            text: 'Source: ' +
-                '<a href="https://www.yr.no/nb/historikk/graf/1-113585/Norge/Viken/Nesbyen/Nesbyen?q=2022-07"' +
-                'target="_blank">YR</a>',
+            text: 'Source: Fixed Stations Dataset',
             align: 'left'
         },
 
@@ -255,7 +253,8 @@ const Page = () => {
         <>
             <Card className="fullWidth">
                 <CardBody className="p-7">
-                    <p className="text-3xl font-PlayfairDisplay mb-3 ">Area Range Plot</p>
+                    <p className="text-3xl font-PlayfairDisplay">Area Range Plot</p>
+                    <p className="text-xl font-PlayfairDisplay mb-3 ">Analysis of Peaks, Valleys, and Averages: Temperature and CO2 Trends</p>
 
                     <div className="flex flex-wrap justify-start gap-2">
                         <Chip color="primary">Temperature</Chip>
@@ -264,12 +263,9 @@ const Page = () => {
                     </div>
 
                     <p className="font-xl font-Roboto pt-5 mb-7">
-                        Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. È
-                        sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione,
-                        pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei
-                        fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più
-                        recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem
-                        Ipsum.
+                        In the graph, we observe the <b><i>maximums</i></b>, <b><i>minimums</i></b>, and <b><i>averages</i></b> of <b><i>CO2</i></b> and <b><i>temperature</i></b>.
+                        These data points are derived from the dataset provided by the monitoring stations situated across university sites.
+                        The dataset has been processed by aggregating multiple measurements taken on the same day and calculating the maximums, minimums, and averages for both temperature and CO2 levels.
                     </p>
 
                     <div className="flex justify-center gap-2  mb-4">

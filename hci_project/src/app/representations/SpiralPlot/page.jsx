@@ -410,9 +410,8 @@ const Page = () => {
                 <p className="text-3xl font-PlayfairDisplay mb-3 ">Spiral Plot</p>
 
                 <div className="flex flex-wrap justify-start gap-2">
-                    <Chip color="success">{ranges["low"][0]  + "-"  + ranges["low"][1]}</Chip>
-                    <Chip color="warning">{ranges["med"][0]  + "-"  + ranges["med"][1]}</Chip>
-                    <Chip color="danger">{">"  + ranges["high"][0]}</Chip>
+                    <Chip className="text-white" color="primary">CO2</Chip>
+
                 </div>
 
                 <p className="font-xl font-Roboto pt-5 mb-7">
@@ -428,6 +427,12 @@ const Page = () => {
                     highcharts={Highcharts}
                     options={options}
                 />
+                <div className="flex flex-wrap justify-center gap-2">
+                    <Chip className="text-white" color="success">{ranges["low"][0] + "-" + ranges["low"][1]}</Chip>
+                    <Chip className="text-white" color="warning">{ranges["med"][0] + "-" + ranges["med"][1]}</Chip>
+                    <Chip color="danger">{">" + ranges["high"][0]}</Chip>
+                </div>
+
             </CardBody>
         </Card>
     );
