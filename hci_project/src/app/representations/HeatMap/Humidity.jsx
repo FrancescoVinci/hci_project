@@ -90,7 +90,7 @@ const Humidity = () => {
 
         tooltip: {
             format: '<b>{series.xAxis.categories.(point.x)}</b><br>' +
-                'CO2: <b>{point.value}</b> <br>' +
+                'Humidity: <b>{point.value}</b> %<br>' +
                 'at <b>{series.yAxis.categories.(point.y)}</b>'
         },
 
