@@ -286,7 +286,8 @@ const Page = () => {
                                 </SelectItem>
                             ))}
                         </Select>
-
+                    </div>
+                    <div className="flex justify-center gap-5  mb-4">
                         <div className="z-10">
                             <MonthInput
                                 bgColorHover={"#E4E4E7"}
@@ -296,6 +297,7 @@ const Page = () => {
                                 selected={selectedMonthData}
                                 setShowMonthPicker={setIsPickerOpen}
                                 showMonthPicker={isPickerOpen}
+                                className="bg-red-500"
                             />
                             {isPickerOpen ? (
                                 <MonthPicker
