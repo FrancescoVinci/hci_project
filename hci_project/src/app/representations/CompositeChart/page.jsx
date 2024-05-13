@@ -1,17 +1,17 @@
 "use client"
 
-import Highcharts, {color} from 'highcharts'
+import Highcharts, { color } from 'highcharts'
 
 import HighchartsExporting from 'highcharts/modules/exporting'
 import hc_more from "highcharts/highcharts-more"
 import seriesLabel from "highcharts/modules/series-label"
 import annotations from "highcharts/modules/annotations"
 import HighchartsReact from 'highcharts-react-official'
-import {Card, CardBody, Chip, Radio, RadioGroup, Select, SelectItem} from "@nextui-org/react";
-import {MonthPicker, MonthInput} from 'react-lite-month-picker';
-import {usePapaParse} from "react-papaparse";
-import {useEffect, useState} from "react";
-import {toast, ToastContainer} from "react-toastify";
+import { Card, CardBody, Chip, Radio, RadioGroup, Select, SelectItem } from "@nextui-org/react";
+import { MonthPicker, MonthInput } from 'react-lite-month-picker';
+import { usePapaParse } from "react-papaparse";
+import { useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 hc_more(Highcharts);
 seriesLabel(Highcharts);
@@ -45,7 +45,7 @@ const locations = [
 ];
 
 const Page = () => {
-    const {readRemoteFile} = usePapaParse();
+    const { readRemoteFile } = usePapaParse();
 
     const start = "2023-02-01 00:00";
     const end = "2023-11-30";
@@ -69,48 +69,95 @@ const Page = () => {
     const [humidity, setHumidity] = useState([]);
 
     useEffect(() => {
-        const parsedDate = new Date(selectedMonthData.year + "-" + selectedMonthData.month + "-01");
-        const startDate = new Date(start);
-        const endDate = new Date(end);
+        if (radioValue === "daily"){
+            const parsedDate = new Date(selectedMonthData.year + "-" + selectedMonthData.month + "-01");
+            const startDate = new Date(start);
+            const endDate = new Date(end);
 
-        if (parsedDate.getTime() >= startDate.getTime() && parsedDate.getTime() <= endDate.getTime()) {
+            if (parsedDate.getTime() >= startDate.getTime() && parsedDate.getTime() <= endDate.getTime()) {
+                readRemoteFile(`/compositeChart/${selected}.csv`, {
+                    complete: (results) => {
+                        const dates = [];
+                        const temp = [];
+                        const CO2 = [];
+                        const rain = [];
+                        const humid = [];
+
+                        results.data.forEach((row, index) => {
+                            if (index !== 0) {
+                                const date = new Date(row[0]);
+                                const rowMonth = date.getMonth();
+                                if (rowMonth === parsedDate.getMonth()) {
+                                    const day = date.getDate();
+                                    dates.push(day);
+                                    temp.push(parseFloat(row[1]));
+                                    humid.push(parseFloat(row[2]));
+                                    CO2.push(parseFloat(row[3]));
+                                    rain.push(parseFloat(row[4]));
+                                }
+                            }
+                        });
+
+                        setDates(dates);
+                        setCO2(CO2);
+                        setHumidity(humid);
+                        setRainfall(rain);
+                        setTemperature(temp);
+                    },
+                });
+            } else {
+                toast.warn("There is no data for this month...🤷");
+            }
+        } else {
             readRemoteFile(`/compositeChart/${selected}.csv`, {
                 complete: (results) => {
-
-                    const dates = [];
                     const temp = [];
                     const CO2 = [];
                     const rain = [];
                     const humid = [];
 
-                    results.data.forEach((row, index) => {
-                        if (index !== 0) {
-                            const date = new Date(row[0]);
-                            console.log(date);
-                            const rowMonth = date.getMonth();
-                            if (rowMonth === parsedDate.getMonth()) {
-                                const day = date.getDate();
-                                dates.push(day);
-                                temp.push(parseFloat(row[1]));
-                                humid.push(parseFloat(row[2]));
-                                CO2.push(parseFloat(row[3]));
-                                rain.push(parseFloat(row[4]));
-                            }
-                        }
-                    });
+                    let accTemp = [];
+                    let accHumid = [];
+                    let accCO2 = [];
+                    let accRain = [];
 
-                    setDates(dates);
+                    for(let cur_month = 2; cur_month < 11; cur_month++){
+                        console.log("for cicle #" + cur_month)
+                        accTemp = [];
+                        accHumid = [];
+                        accCO2 = [];
+                        accRain = [];
+
+                        results.data.forEach((row, index) => {
+                            if (index !== 0) {
+                                const date = new Date(row[0]);
+                                const rowMonth = date.getMonth();
+                                if (rowMonth === cur_month) {
+                                    accTemp.push(parseFloat(row[1]));
+                                    accHumid.push(parseFloat(row[2]));
+                                    accCO2.push(parseFloat(row[3]));
+                                    accRain.push(parseFloat(row[4]));
+                                }
+                            }
+                        });
+
+                        const avg = (array) => array.reduce((sum, x) => sum + x, 0) / array.length;
+
+                        temp.push(avg(accTemp))
+                        humid.push(avg(accHumid))
+                        CO2.push(avg(accCO2))
+                        rain.push(avg(accRain))
+                    }
+
+                    setDates(["Feb", "Mar", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov"]);
                     setCO2(CO2);
                     setHumidity(humid);
                     setRainfall(rain);
                     setTemperature(temp);
                 },
             });
-        } else {
-            toast.warn("There is no data for this month...🤷");
         }
-
-    }, [selected, selectedMonthData]);
+    }, [selected, selectedMonthData, radioValue]);
 
     if (typeof Highcharts === 'object') {
         HighchartsExporting(Highcharts)
