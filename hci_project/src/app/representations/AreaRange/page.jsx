@@ -118,6 +118,11 @@ const Page = () => {
     }
 
     const options = {
+        chart: {
+            scrollablePlotArea: {
+                minWidth: 700
+            }
+        },
         title: {
             text: 'CO2 Range and Average',
             align: 'left'
@@ -139,6 +144,9 @@ const Page = () => {
             categories: dates.map(date => {
                 return date.getDate() + "/" + (date.getMonth() + 1);
             }),
+            scrollbar: {
+                enabled: true,
+            },
 
         },
 
