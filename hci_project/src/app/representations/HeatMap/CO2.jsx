@@ -92,7 +92,7 @@ const CO2 = () => {
 
         tooltip: {
             format: '<b>{series.xAxis.categories.(point.x)}</b><br>' +
-                'CO2: <b>{point.value}</b> <br>' +
+                'CO2: <b>{point.value}</b> ppm <br>' +
                 'at <b>{series.yAxis.categories.(point.y)}</b>'
         },
 
