@@ -109,6 +109,8 @@ const Page = () => {
                 toast.warn("There is no data for this month...🤷");
             }
         } else {
+            const avg = (array) => array.reduce((sum, x) => sum + x, 0) / array.length;
+
             readRemoteFile(`/compositeChart/${selected}.csv`, {
                 complete: (results) => {
                     const temp = [];
@@ -116,18 +118,11 @@ const Page = () => {
                     const rain = [];
                     const humid = [];
 
-                    let accTemp = [];
-                    let accHumid = [];
-                    let accCO2 = [];
-                    let accRain = [];
-
-                    for(let cur_month = 2; cur_month < 11; cur_month++){
-                        console.log("for cicle #" + cur_month)
-                        accTemp = [];
-                        accHumid = [];
-                        accCO2 = [];
-                        accRain = [];
-
+                    for(let cur_month = 1; cur_month < 11; cur_month++){
+                        const accTemp = [];
+                        const accHumid = [];
+                        const accCO2 = [];
+                        const accRain = [];
                         results.data.forEach((row, index) => {
                             if (index !== 0) {
                                 const date = new Date(row[0]);
@@ -141,15 +136,17 @@ const Page = () => {
                             }
                         });
 
-                        const avg = (array) => array.reduce((sum, x) => sum + x, 0) / array.length;
+                        temp.push(avg(accTemp));
+                        humid.push(avg(accHumid));
+                        CO2.push(avg(accCO2));
+                        rain.push(avg(accRain));
 
-                        temp.push(avg(accTemp))
-                        humid.push(avg(accHumid))
-                        CO2.push(avg(accCO2))
-                        rain.push(avg(accRain))
+                        console.log(temp);
+                        console.log(humid);
+                        console.log(CO2);
+                        console.log(rain);
                     }
-
-                    setDates(["Feb", "Mar", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov"]);
+                    setDates(["Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov"]);
                     setCO2(CO2);
                     setHumidity(humid);
                     setRainfall(rain);
@@ -170,7 +167,6 @@ const Page = () => {
             setShowMonthPicker(false);
         }
         setRadioValue(e);
-
     }
 
     const options = {
