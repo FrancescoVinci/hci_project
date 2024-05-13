@@ -172,7 +172,7 @@ const Page = () => {
                 marker: {
                     fillColor: 'white',
                     lineWidth: 2,
-                    lineColor: Highcharts.getOptions().colors[0]
+                    lineColor: Highcharts.getOptions().colors[4]
                 }
             },
             {
@@ -207,7 +207,7 @@ const Page = () => {
                 type: 'arearange',
                 lineWidth: 0.5,
                 linkedTo: ':previous',
-                color: Highcharts.getOptions().colors[1],
+                color: Highcharts.getOptions().colors[5],
                 fillOpacity: 0.3,
                 zIndex: 0,
                 marker: {
