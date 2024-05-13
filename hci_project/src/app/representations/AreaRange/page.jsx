@@ -82,7 +82,6 @@ const Page = () => {
             readRemoteFile(`/areaChart/${selected}.csv`, {
                 complete: (results) => {
 
-
                     const dates = [];
                     const avgTemperature = [];
                     const avgCO2 = [];
@@ -109,14 +108,21 @@ const Page = () => {
                         setRangeTemperature(rangeTemperature);
                         setRangeCO2(rangeCO2);
                     } else {
-                        setSelectedMonthData({
-                            month: selectedMonthData - 1
-                        });
+                        setDates([]);
+                        setAvgTemperature([]);
+                        setAvgCO2([]);
+                        setRangeTemperature([]);
+                        setRangeCO2([]);
                         toast.warn("There is no data for this month...🤷");
                     }
                 },
             });
         } else {
+            setDates([]);
+            setAvgTemperature([]);
+            setAvgCO2([]);
+            setRangeTemperature([]);
+            setRangeCO2([]);
             toast.warn("There is no data for this month...🤷");
         }
 
