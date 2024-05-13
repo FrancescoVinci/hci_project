@@ -361,6 +361,7 @@ const Page = () => {
                             ))}
                         </Select>
 
+
                         <RadioGroup
                             color="secondary"
                             defaultValue="daily"
@@ -371,6 +372,9 @@ const Page = () => {
                             <Radio value="monthly">Monthly</Radio>
                         </RadioGroup>
 
+
+                    </div>
+                    <div className="flex flex-col items-center overflow-y-visible">
                         {showMonthPicker &&
                             <div className="z-10">
                                 <MonthInput
@@ -401,7 +405,9 @@ const Page = () => {
 
                 </CardBody>
 
+
             </Card>
+
             <ToastContainer
                 position="top-right"
                 autoClose={5000}
