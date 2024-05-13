@@ -7,19 +7,19 @@ import hc_more from "highcharts/highcharts-more"
 import seriesLabel from "highcharts/modules/series-label"
 import annotations from "highcharts/modules/annotations"
 import HighchartsReact from 'highcharts-react-official'
-import {Card, CardBody, Chip} from "@nextui-org/react";
+import { Card, CardBody, Chip } from "@nextui-org/react";
 
 hc_more(Highcharts);
 seriesLabel(Highcharts);
 annotations(Highcharts);
-const Page = () => {
 
+const Page = () => {
     if (typeof Highcharts === 'object') {
         HighchartsExporting(Highcharts)
     }
 
     const options = {
-        colors: ['#FFD700', '#C0C0C0', '#CD7F32'],
+        colors: ['#0FD700', '#FFD700', '#FF2032'],
 
         chart: {
             type: 'column',
@@ -33,17 +33,13 @@ const Page = () => {
         },
 
         title: {
-            text: 'Winter Olympic medals per existing country (TOP 5)',
+            text: 'Number of Months per CO2 Levels per Station',
             align: 'left'
         },
 
         subtitle: {
-
             align: 'left',
-
-            text: 'Source: ' +
-                '<a href="https://en.wikipedia.org/wiki/All-time_Olympic_Games_medal_table"' +
-                'target="_blank">Wikipedia</a>',
+            text: 'subtitle',
         },
         tooltip: {
             outside: true
@@ -70,48 +66,48 @@ const Page = () => {
             lineWidth: 0,
             gridLineWidth: 0,
             categories: [
-                'Norway <span class="f16"><span id="flag" class="flag no">' +
-                '</span></span>',
-                'United States <span class="f16"><span id="flag" class="flag us">' +
-                '</span></span>',
-                'Germany <span class="f16"><span id="flag" class="flag de">' +
-                '</span></span>',
-                'Austria <span class="f16"><span id="flag" class="flag at">' +
-                '</span></span>',
-                'Canada <span class="f16"><span id="flag" class="flag ca">' +
-                '</span></span>'
+                "CampusS",
+                "S.Basilio",
+                "S.Giobbe",
+                "S.Marghe",
+                "Briati",
+                "Ca Foscari",
             ]
         },
 
         yAxis: {
-            lineWidth: 0,
-            tickInterval: 25,
+            lineWidth: 0.2,
+            tickInterval: 1,
             reversedStacks: false,
             endOnTick: true,
             showLastLabel: true,
-            gridLineWidth: 0
+            gridLineWidth: 1
         },
 
         plotOptions: {
             column: {
                 stacking: 'normal',
                 borderWidth: 0,
-                pointPadding: 0,
-                groupPadding: 0.15,
+                pointPadding: 1,
+                groupPadding: 0.10,
                 borderRadius: '50%'
             }
         },
 
-        series: [{
-            name: 'Gold medals',
-            data: [148, 113, 104, 71, 77]
-        }, {
-            name: 'Silver medals',
-            data: [113, 122, 98, 88, 72]
-        }, {
-            name: 'Bronze medals',
-            data: [124, 95, 65, 91, 76]
-        }],
+        series: [
+            {
+                name: 'Low CO2 Level',
+                data: [2, 5, 1, 4, 7]
+            }, 
+            {
+                name: 'Medium CO2 Level',
+                data: [6, 3, 2, 3, 2]
+            }, 
+            {
+                name: 'High CO2 Level',
+                data: [2, 2, 7, 3, 1]
+            }
+        ],
 
         /*responsive: {
             rules: [{
