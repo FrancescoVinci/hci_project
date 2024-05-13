@@ -24,26 +24,26 @@ export const Navbar = () => {
     const router = useRouter();
 
     const menuItems = [
-        "Lollipop Series",
-        "Chord Diagram (?)",
-        "Parallel Coordinate Plot",
-        "Line Graph (?)",
         "Heat Map",
+        "Spiral Plot",
         "Area Range Plot",
         "Composite Chart",
-        "Spiral Plot (?)",
+        "Parallel Coordinates Plot",
+        "Lollipop Series",
+        "Chord Diagram (?)",
+        "Line Graph (?)",
         "Meteo Graph (?)",
     ];
 
     const menuItemsRef = [
-        "/representations/LollipopSeries",
-        "/representations/ChordDiagram",
-        "/representations/ParallelCoordinatePlot",
-        "/representations/LineGraph",
         "/representations/HeatMap",
+        "/representations/SpiralPlot",
         "/representations/AreaRange",
         "/representations/CompositeChart",
-        "/representations/SpiralPlot",
+        "/representations/ParallelCoordinatePlot",
+        "/representations/LollipopSeries",
+        "/representations/ChordDiagram",
+        "/representations/LineGraph",
         "/representations/MeteoGraph",
     ];
 
