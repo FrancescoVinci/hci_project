@@ -374,7 +374,7 @@ const Page = () => {
 
 
                     </div>
-                    <div className="flex flex-col items-center overflow-y-visible">
+                    <div className="flex flex-col items-center">
                         {showMonthPicker &&
                             <div className="z-10">
                                 <MonthInput
