@@ -78,6 +78,7 @@ const Page = () => {
             readRemoteFile(`/areaChart/${selected}.csv`, {
                 complete: (results) => {
 
+
                     const dates = [];
                     const avgTemperature = [];
                     const avgCO2 = [];
@@ -97,12 +98,15 @@ const Page = () => {
                         }
                     });
 
-                    setDates(dates);
-                    setAvgTemperature(avgTemperature);
-                    setAvgCO2(avgCO2);
-                    setRangeTemperature(rangeTemperature);
-                    setRangeCO2(rangeCO2);
-
+                    if (dates.length !== 0) {
+                        setDates(dates);
+                        setAvgTemperature(avgTemperature);
+                        setAvgCO2(avgCO2);
+                        setRangeTemperature(rangeTemperature);
+                        setRangeCO2(rangeCO2);
+                    } else {
+                        toast.warn("There is no data for this month...🤷");
+                    }
                 },
             });
         } else {
@@ -153,12 +157,12 @@ const Page = () => {
         yAxis: [
             {
                 title: {
-                    text: "Temperature"
+                    text: "Temperature °C"
                 }
             },
             {
                 title: {
-                    text: "CO2",
+                    text: "CO2 ppm",
                 },
                 opposite: true,
             }
@@ -167,7 +171,6 @@ const Page = () => {
         tooltip: {
             crosshairs: true,
             shared: true,
-            valueSuffix: '°C'
         },
 
 
@@ -181,7 +184,11 @@ const Page = () => {
                     fillColor: 'white',
                     lineWidth: 2,
                     lineColor: Highcharts.getOptions().colors[4]
-                }
+                },
+                tooltip: {
+                    valueSuffix: " °C",
+                    valueDecimals: 3
+                },
             },
             {
                 name: 'Range Temp',
@@ -195,7 +202,10 @@ const Page = () => {
                 zIndex: 0,
                 marker: {
                     enabled: false
-                }
+                },
+                tooltip: {
+                    valueSuffix: " °C",
+                },
             },
             {
                 name: 'CO2',
@@ -206,7 +216,11 @@ const Page = () => {
                     fillColor: 'white',
                     lineWidth: 2,
                     lineColor: Highcharts.getOptions().colors[5]
-                }
+                },
+                tooltip: {
+                    valueSuffix: " ppm",
+                    valueDecimals: 3
+                },
             },
             {
                 name: 'Range CO2',
@@ -220,7 +234,10 @@ const Page = () => {
                 zIndex: 0,
                 marker: {
                     enabled: false
-                }
+                },
+                tooltip: {
+                    valueSuffix: " ppm",
+                },
             },
         ]
     };
