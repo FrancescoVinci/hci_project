@@ -106,7 +106,7 @@ const Page = () => {
                 },
             });
         } else {
-            toast.warn("Non ci sono rilevazioni");
+            toast.warn("There is no data for this month...🤷");
         }
 
 
@@ -292,7 +292,7 @@ const Page = () => {
                 pauseOnFocusLoss
                 draggable
                 pauseOnHover
-                theme="colored"
+                theme="light"
             />
         </>
     );
