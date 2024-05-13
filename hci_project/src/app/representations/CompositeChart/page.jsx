@@ -1,17 +1,17 @@
 "use client"
 
-import Highcharts, { color } from 'highcharts'
+import Highcharts, {color} from 'highcharts'
 
 import HighchartsExporting from 'highcharts/modules/exporting'
 import hc_more from "highcharts/highcharts-more"
 import seriesLabel from "highcharts/modules/series-label"
 import annotations from "highcharts/modules/annotations"
 import HighchartsReact from 'highcharts-react-official'
-import { Card, CardBody, Chip, Select, SelectItem } from "@nextui-org/react";
-import { MonthPicker, MonthInput } from 'react-lite-month-picker';
-import { usePapaParse } from "react-papaparse";
-import { useEffect, useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import {Card, CardBody, Chip, Radio, RadioGroup, Select, SelectItem} from "@nextui-org/react";
+import {MonthPicker, MonthInput} from 'react-lite-month-picker';
+import {usePapaParse} from "react-papaparse";
+import {useEffect, useState} from "react";
+import {toast, ToastContainer} from "react-toastify";
 
 hc_more(Highcharts);
 seriesLabel(Highcharts);
@@ -45,10 +45,12 @@ const locations = [
 ];
 
 const Page = () => {
-    const { readRemoteFile } = usePapaParse();
+    const {readRemoteFile} = usePapaParse();
 
     const start = "2023-02-01 00:00";
     const end = "2023-11-30";
+
+    const [radioValue, setRadioValue] = useState("daily")
 
     const [selected, setSelected] = useState("campusS");
     const [selectedMonthData, setSelectedMonthData] = useState({
@@ -58,6 +60,7 @@ const Page = () => {
         monthShort: 'Feb'
     });
     const [isPickerOpen, setIsPickerOpen] = useState(false);
+    const [showMonthPicker, setShowMonthPicker] = useState(true);
 
     const [dates, setDates] = useState([]);
     const [temperature, setTemperature] = useState([]);
@@ -111,6 +114,16 @@ const Page = () => {
 
     if (typeof Highcharts === 'object') {
         HighchartsExporting(Highcharts)
+    }
+
+    const changeRadioValue = (e) => {
+        if (e === "daily") {
+            setShowMonthPicker(true);
+        } else {
+            setShowMonthPicker(false);
+        }
+        setRadioValue(e);
+
     }
 
     const options = {
@@ -333,7 +346,7 @@ const Page = () => {
                         Ipsum.
                     </p>
 
-                    <div className="flex justify-center gap-2  mb-4">
+                    <div className="flex justify-center gap-5  mb-4">
                         <Select
                             label="Select location"
                             placeholder="Select..."
@@ -348,25 +361,37 @@ const Page = () => {
                             ))}
                         </Select>
 
-                        <div className="z-10">
-                            <MonthInput
-                                bgColorHover={"#E4E4E7"}
-                                textColor={"#71717A"}
-                                bgColor={"#F4F4F5"}
-                                size={"small"}
-                                selected={selectedMonthData}
-                                setShowMonthPicker={setIsPickerOpen}
-                                showMonthPicker={isPickerOpen}
-                            />
-                            {isPickerOpen ? (
-                                <MonthPicker
+                        <RadioGroup
+                            color="secondary"
+                            defaultValue="daily"
+                            value={radioValue}
+                            onValueChange={changeRadioValue}
+                        >
+                            <Radio value="daily">Daily</Radio>
+                            <Radio value="monthly">Monthly</Radio>
+                        </RadioGroup>
+
+                        {showMonthPicker &&
+                            <div className="z-10">
+                                <MonthInput
+                                    bgColorHover={"#E4E4E7"}
+                                    textColor={"#71717A"}
+                                    bgColor={"#F4F4F5"}
                                     size={"small"}
-                                    setIsOpen={setIsPickerOpen}
                                     selected={selectedMonthData}
-                                    onChange={setSelectedMonthData}
+                                    setShowMonthPicker={setIsPickerOpen}
+                                    showMonthPicker={isPickerOpen}
                                 />
-                            ) : null}
-                        </div>
+                                {isPickerOpen ? (
+                                    <MonthPicker
+                                        size={"small"}
+                                        setIsOpen={setIsPickerOpen}
+                                        selected={selectedMonthData}
+                                        onChange={setSelectedMonthData}
+                                    />
+                                ) : null}
+                            </div>
+                        }
                     </div>
 
                     <HighchartsReact

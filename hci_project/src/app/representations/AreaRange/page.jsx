@@ -67,6 +67,10 @@ const Page = () => {
     const [rangeTemperature, setRangeTemperature] = useState([]);
     const [rangeCO2, setRangeCO2] = useState([]);
 
+    if (typeof Highcharts === 'object') {
+        HighchartsExporting(Highcharts)
+    }
+
 
     useEffect(() => {
         const parsedDate = new Date(selectedMonthData.year + "-" + selectedMonthData.month + "-01");
@@ -105,6 +109,9 @@ const Page = () => {
                         setRangeTemperature(rangeTemperature);
                         setRangeCO2(rangeCO2);
                     } else {
+                        setSelectedMonthData({
+                            month: selectedMonthData - 1
+                        });
                         toast.warn("There is no data for this month...🤷");
                     }
                 },
@@ -117,10 +124,6 @@ const Page = () => {
     }, [selected, selectedMonthData]);
 
 
-    if (typeof Highcharts === 'object') {
-        HighchartsExporting(Highcharts)
-    }
-
     const options = {
         chart: {
             scrollablePlotArea: {
@@ -128,7 +131,7 @@ const Page = () => {
             }
         },
         title: {
-            text: 'CO2 Range and Average',
+            text: `Temperature, CO2 Range and Average (${selectedMonthData.monthName})`,
             align: 'left'
         },
 
