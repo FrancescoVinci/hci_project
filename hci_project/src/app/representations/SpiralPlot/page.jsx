@@ -16,9 +16,9 @@ seriesLabel(Highcharts);
 annotations(Highcharts);
 
 const ranges = {
-    "low": [350, 450],
-    "med": [450, 500],
-    "high": [500, 650],
+    "low": [300, 400],
+    "med": [400, 600],
+    "high": [600, 700],
 }
 
 const Page = () => {
@@ -276,7 +276,7 @@ const Page = () => {
     }
 
     const options = {
-        colors: ['#0FD700', '#FFD700', '#FF2032'],
+        colors: ['#17c964', '#f5a524', '#f31260'],
 
         chart: {
             type: 'column',
@@ -410,12 +410,9 @@ const Page = () => {
                 <p className="text-3xl font-PlayfairDisplay mb-3 ">Spiral Plot</p>
 
                 <div className="flex flex-wrap justify-start gap-2">
-                    <Chip color="default">Default</Chip>
-                    <Chip color="primary">Primary</Chip>
-                    <Chip color="secondary">Secondary</Chip>
-                    <Chip color="success">Success</Chip>
-                    <Chip color="warning">Warning</Chip>
-                    <Chip color="danger">Danger</Chip>
+                    <Chip color="success">{ranges["low"][0]  + "-"  + ranges["low"][1]}</Chip>
+                    <Chip color="warning">{ranges["med"][0]  + "-"  + ranges["med"][1]}</Chip>
+                    <Chip color="danger">{">"  + ranges["high"][0]}</Chip>
                 </div>
 
                 <p className="font-xl font-Roboto pt-5 mb-7">
@@ -431,9 +428,7 @@ const Page = () => {
                     highcharts={Highcharts}
                     options={options}
                 />
-
             </CardBody>
-
         </Card>
     );
 }
