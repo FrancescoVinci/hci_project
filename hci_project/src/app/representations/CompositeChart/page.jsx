@@ -7,12 +7,107 @@ import hc_more from "highcharts/highcharts-more"
 import seriesLabel from "highcharts/modules/series-label"
 import annotations from "highcharts/modules/annotations"
 import HighchartsReact from 'highcharts-react-official'
-import { Card, CardBody, Chip } from "@nextui-org/react";
+import { Card, CardBody, Chip, Select, SelectItem } from "@nextui-org/react";
+import { MonthPicker, MonthInput } from 'react-lite-month-picker';
+import { usePapaParse } from "react-papaparse";
+import { useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 hc_more(Highcharts);
 seriesLabel(Highcharts);
 annotations(Highcharts);
+
+const locations = [
+    {
+        name: "P. Briati",
+        key: "Briati"
+    },
+    {
+        name: "P. Ca Foscari",
+        key: "CaFoscari"
+    },
+    {
+        name: "Campus Scientifico",
+        key: "campusS"
+    },
+    {
+        name: "S. Basilio",
+        key: "SBasilio"
+    },
+    {
+        name: "S. Giobbe",
+        key: "SGiobbe"
+    },
+    {
+        name: "S. Margherita",
+        key: "SMarghe"
+    }
+];
+
 const Page = () => {
+    const { readRemoteFile } = usePapaParse();
+
+    const start = "2023-02-01 00:00";
+    const end = "2023-11-30";
+
+    const [selected, setSelected] = useState("campusS");
+    const [selectedMonthData, setSelectedMonthData] = useState({
+        month: 2,
+        year: 2023,
+        monthName: 'February',
+        monthShort: 'Feb'
+    });
+    const [isPickerOpen, setIsPickerOpen] = useState(false);
+
+    const [dates, setDates] = useState([]);
+    const [temperature, setTemperature] = useState([]);
+    const [co2, setCO2] = useState([]);
+    const [rainfall, setRainfall] = useState([]);
+    const [humidity, setHumidity] = useState([]);
+
+    useEffect(() => {
+        const parsedDate = new Date(selectedMonthData.year + "-" + selectedMonthData.month + "-01");
+        const startDate = new Date(start);
+        const endDate = new Date(end);
+
+        if (parsedDate.getTime() >= startDate.getTime() && parsedDate.getTime() <= endDate.getTime()) {
+            readRemoteFile(`/compositeChart/${selected}.csv`, {
+                complete: (results) => {
+
+                    const dates = [];
+                    const temp = [];
+                    const CO2 = [];
+                    const rain = [];
+                    const humid = [];
+
+                    results.data.forEach((row, index) => {
+                        if (index !== 0) {
+                            const date = new Date(row[0]);
+                            console.log(date);
+                            const rowMonth = date.getMonth();
+                            if (rowMonth === parsedDate.getMonth()) {
+                                const day = date.getDate();
+                                dates.push(day);
+                                temp.push(parseFloat(row[1]));
+                                humid.push(parseFloat(row[2]));
+                                CO2.push(parseFloat(row[3]));
+                                rain.push(parseFloat(row[4]));
+                            }
+                        }
+                    });
+
+                    setDates(dates);
+                    setCO2(CO2);
+                    setHumidity(humid);
+                    setRainfall(rain);
+                    setTemperature(temp);
+                },
+            });
+        } else {
+            toast.warn("There is no data for this month...🤷");
+        }
+
+    }, [selected, selectedMonthData]);
 
     if (typeof Highcharts === 'object') {
         HighchartsExporting(Highcharts)
@@ -28,16 +123,15 @@ const Page = () => {
             enabled: false
         },
         title: {
-            text: 'Average Monthly Weather Data for Tokyo',
+            text: 'CO2, Rainfall, Temperature and Humidity',
             align: 'left'
         },
         subtitle: {
-            text: 'Source: WorldClimate.com',
+            text: 'Fixed Stations Dataset',
             align: 'left'
         },
         xAxis: [{
-            categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun',
-                'Jul', 'Aug', 'Sep', 'Oct', 'Nov'],
+            categories: dates,
             crosshair: true
         }],
         yAxis: [
@@ -123,7 +217,7 @@ const Page = () => {
                 name: 'Rainfall',
                 type: 'column',
                 yAxis: 1,
-                data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+                data: rainfall,
                 tooltip: {
                     valueSuffix: ' mm'
                 },
@@ -132,7 +226,7 @@ const Page = () => {
                 name: 'CO2',
                 type: 'spline',
                 yAxis: 2,
-                data: [9.9, 1.5, 16.4, 19.2, 44.0, 76.0, 35.6, 48.5, 16.4, 94.1, 5.6, 4.4],
+                data: co2,
                 tooltip: {
                     valueSuffix: ''
                 },
@@ -143,7 +237,7 @@ const Page = () => {
                 name: 'Temperature',
                 type: 'spline',
                 yAxis: 0,
-                data: [27.0, 26.9, 39.5, 24.5, 38.2, 22.5, 35.2, 36.5, 33.3, 38.3, 33.9, 39.6],
+                data: temperature,
                 tooltip: {
                     valueSuffix: ' °C'
                 },
@@ -154,7 +248,7 @@ const Page = () => {
                 name: 'Humidity',
                 type: 'spline',
                 yAxis: 3,
-                data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6],
+                data: humidity,
                 tooltip: {
                     valueSuffix: ' %'
                 },
@@ -179,25 +273,25 @@ const Page = () => {
                         },
                         yAxis: [
                             {
-                                title:{
+                                title: {
                                     text: ''
                                 },
                                 showLastLabel: false
                             },
                             {
-                                title:{
+                                title: {
                                     text: ''
                                 },
                                 showLastLabel: false
                             },
                             {
-                                title:{
+                                title: {
                                     text: ''
                                 },
                                 showLastLabel: false
                             },
                             {
-                                title:{
+                                title: {
                                     text: ''
                                 },
                                 showLastLabel: false
@@ -216,36 +310,86 @@ const Page = () => {
     };
 
     return (
-        <Card className="fullWidth">
-            <CardBody className="p-7">
-                <p className="text-3xl font-PlayfairDisplay mb-3 ">Composite Chart</p>
+        <>
+            <Card className="fullWidth">
+                <CardBody className="p-7">
+                    <p className="text-3xl font-PlayfairDisplay mb-3 ">Composite Chart</p>
 
-                <div className="flex flex-wrap justify-start gap-2">
-                    <Chip color="default">Default</Chip>
-                    <Chip color="primary">Primary</Chip>
-                    <Chip color="secondary">Secondary</Chip>
-                    <Chip color="success">Success</Chip>
-                    <Chip color="warning">Warning</Chip>
-                    <Chip color="danger">Danger</Chip>
-                </div>
+                    <div className="flex flex-wrap justify-start gap-2">
+                        <Chip color="default">Default</Chip>
+                        <Chip color="primary">Primary</Chip>
+                        <Chip color="secondary">Secondary</Chip>
+                        <Chip color="success">Success</Chip>
+                        <Chip color="warning">Warning</Chip>
+                        <Chip color="danger">Danger</Chip>
+                    </div>
 
-                <p className="font-xl font-Roboto pt-5 mb-7">
-                    Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. È
-                    sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione,
-                    pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei
-                    fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più
-                    recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem
-                    Ipsum.
-                </p>
+                    <p className="font-xl font-Roboto pt-5 mb-7">
+                        Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. È
+                        sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione,
+                        pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei
+                        fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più
+                        recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem
+                        Ipsum.
+                    </p>
 
-                <HighchartsReact
-                    highcharts={Highcharts}
-                    options={options}
-                />
+                    <div className="flex justify-center gap-2  mb-4">
+                        <Select
+                            label="Select location"
+                            placeholder="Select..."
+                            defaultSelectedKeys={["campusS"]}
+                            className="max-w-xs"
+                            onSelectionChange={(e) => setSelected(e.currentKey)}
+                        >
+                            {locations.map((elem) => (
+                                <SelectItem key={elem.key} value={elem.name}>
+                                    {elem.name}
+                                </SelectItem>
+                            ))}
+                        </Select>
 
-            </CardBody>
+                        <div className="z-10">
+                            <MonthInput
+                                bgColorHover={"#E4E4E7"}
+                                textColor={"#71717A"}
+                                bgColor={"#F4F4F5"}
+                                size={"small"}
+                                selected={selectedMonthData}
+                                setShowMonthPicker={setIsPickerOpen}
+                                showMonthPicker={isPickerOpen}
+                            />
+                            {isPickerOpen ? (
+                                <MonthPicker
+                                    size={"small"}
+                                    setIsOpen={setIsPickerOpen}
+                                    selected={selectedMonthData}
+                                    onChange={setSelectedMonthData}
+                                />
+                            ) : null}
+                        </div>
+                    </div>
 
-        </Card>
+                    <HighchartsReact
+                        highcharts={Highcharts}
+                        options={options}
+                    />
+
+                </CardBody>
+
+            </Card>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
+        </>
     );
 }
 
