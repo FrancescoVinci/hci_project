@@ -190,7 +190,7 @@ const Page = () => {
                 marker: {
                     fillColor: 'white',
                     lineWidth: 2,
-                    lineColor: Highcharts.getOptions().colors[4]
+                    lineColor: "#006FEE"
                 },
                 tooltip: {
                     valueSuffix: " °C",
@@ -204,7 +204,7 @@ const Page = () => {
                 type: 'arearange',
                 lineWidth: 0.5,
                 linkedTo: ':previous',
-                color: Highcharts.getOptions().colors[4],
+                color: "#006FEE",
                 fillOpacity: 0.3,
                 zIndex: 0,
                 marker: {
@@ -222,7 +222,7 @@ const Page = () => {
                 marker: {
                     fillColor: 'white',
                     lineWidth: 2,
-                    lineColor: Highcharts.getOptions().colors[5]
+                    lineColor: "#9353d3"
                 },
                 tooltip: {
                     valueSuffix: " ppm",
@@ -236,7 +236,7 @@ const Page = () => {
                 type: 'arearange',
                 lineWidth: 0.5,
                 linkedTo: ':previous',
-                color: Highcharts.getOptions().colors[5],
+                color: "#9353d3",
                 fillOpacity: 0.3,
                 zIndex: 0,
                 marker: {

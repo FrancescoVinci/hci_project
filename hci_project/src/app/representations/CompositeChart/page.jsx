@@ -196,13 +196,13 @@ const Page = () => {
                 labels: {
                     format: '{value}°C',
                     style: {
-                        color: Highcharts.getOptions().colors[0]
+                        color: "#006FEE"
                     }
                 },
                 title: {
                     text: 'Temperature',
                     style: {
-                        color: Highcharts.getOptions().colors[0]
+                        color: "#006FEE"
                     }
                 },
                 opposite: false
@@ -213,13 +213,13 @@ const Page = () => {
                 title: {
                     text: 'Rainfall',
                     style: {
-                        color: Highcharts.getOptions().colors[1]
+                        color: "#9353d3"
                     }
                 },
                 labels: {
                     format: '{value} mm',
                     style: {
-                        color: Highcharts.getOptions().colors[1]
+                        color: "#9353d3"
                     }
                 },
                 opposite: true
@@ -230,13 +230,13 @@ const Page = () => {
                 title: {
                     text: 'CO2',
                     style: {
-                        color: Highcharts.getOptions().colors[2]
+                        color: "#17c964"
                     }
                 },
                 labels: {
                     format: '{value}',
                     style: {
-                        color: Highcharts.getOptions().colors[2]
+                        color: "#17c964"
                     }
                 },
                 opposite: false
@@ -247,13 +247,13 @@ const Page = () => {
                 title: {
                     text: 'Humidity',
                     style: {
-                        color: Highcharts.getOptions().colors[3]
+                        color: "#f5a524"
                     }
                 },
                 labels: {
                     format: '{value}',
                     style: {
-                        color: Highcharts.getOptions().colors[3]
+                        color: "#f5a524"
                     }
                 },
                 opposite: true
@@ -287,7 +287,7 @@ const Page = () => {
                     valueSuffix: ''
                 },
                 dashStyle: 'ShortDashDot',
-                color: Highcharts.getOptions().colors[2]
+                color: "#17c964"
             },
             {
                 name: 'Temperature',
@@ -298,7 +298,7 @@ const Page = () => {
                     valueSuffix: ' °C'
                 },
                 dashStyle: 'ShortDot',
-                color: Highcharts.getOptions().colors[0]
+                color: "#006FEE"
             },
             {
                 name: 'Humidity',
@@ -309,7 +309,7 @@ const Page = () => {
                     valueSuffix: ' %'
                 },
                 dashStyle: 'Dash',
-                color: Highcharts.getOptions().colors[3]
+                color: "#f5a524"
             }
         ],
         responsive: {
@@ -358,9 +358,9 @@ const Page = () => {
         },
         plotOptions: {
             column: {
-                borderColor: "rgba(80,74,205,.6)",
+                borderColor: "#9353d3",
                 borderWidth: 2,
-                color: "rgba(80,74,205,.2)",
+                color: "rgba(147,83,211,.4)",
             }
         }
     };
