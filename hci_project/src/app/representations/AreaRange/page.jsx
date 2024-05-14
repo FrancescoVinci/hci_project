@@ -13,10 +13,14 @@ import {useEffect, useState} from "react";
 import {toast, ToastContainer} from "react-toastify";
 import {MonthPicker, MonthInput} from 'react-lite-month-picker';
 
+if (typeof Highcharts === 'object') {
+    HighchartsExporting(Highcharts);
+    hc_more(Highcharts);
+    seriesLabel(Highcharts);
+    annotations(Highcharts);
+}
 
-hc_more(Highcharts);
-seriesLabel(Highcharts);
-annotations(Highcharts);
+
 
 const locations = [
     {
@@ -67,9 +71,7 @@ const Page = () => {
     const [rangeTemperature, setRangeTemperature] = useState([]);
     const [rangeCO2, setRangeCO2] = useState([]);
 
-    if (typeof Highcharts === 'object') {
-        HighchartsExporting(Highcharts)
-    }
+
 
 
     useEffect(() => {

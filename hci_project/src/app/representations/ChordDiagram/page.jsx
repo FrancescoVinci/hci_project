@@ -22,9 +22,6 @@ if (typeof Highcharts === 'object') {
 }
 
 
-
-
-
 const Page = () => {
 
     const options = {

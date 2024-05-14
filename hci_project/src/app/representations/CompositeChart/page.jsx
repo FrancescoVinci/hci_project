@@ -13,9 +13,14 @@ import { usePapaParse } from "react-papaparse";
 import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
-hc_more(Highcharts);
-seriesLabel(Highcharts);
-annotations(Highcharts);
+if (typeof Highcharts === 'object') {
+    HighchartsExporting(Highcharts);
+    hc_more(Highcharts);
+    seriesLabel(Highcharts);
+    annotations(Highcharts);
+}
+
+
 
 const locations = [
     {
@@ -156,9 +161,7 @@ const Page = () => {
         }
     }, [selected, selectedMonthData, radioValue]);
 
-    if (typeof Highcharts === 'object') {
-        HighchartsExporting(Highcharts)
-    }
+
 
     const changeRadioValue = (e) => {
         if (e === "daily") {
