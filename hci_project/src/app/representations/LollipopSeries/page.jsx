@@ -46,12 +46,12 @@ const Page = () => {
         },
 
         subtitle: {
-            text: 'subtitle',
+            text: 'Mobile Station Dataset',
             align: 'left'
         },
 
         title: {
-            text: 'Top 10 Countries by Population',
+            text: 'Wind, Noise, Vehicles and People Levels Per Path',
             align: 'left'
         },
 
@@ -100,30 +100,36 @@ const Page = () => {
                 type: 'lollipop',
                 yAxis: 0,
                 name: 'Wind',
+                color: "#006FEE",
                 data: [1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 2, 1, 1, 1, 1],
             },
             {
                 type: 'lollipop',
                 yAxis: 0,
                 name: 'Environmental Noise',
+                color: "#9353d3",
                 data: [1, 1, 1, 1, 1, 2, 2, 1, 2, 1, 1, 1, 2, 2, 3]
             },
             {
                 type: 'lollipop',
                 yAxis: 0,
                 name: 'Quantity of Vehicles',
+                color: "#17c964",
                 data: [3, 3, 0, 0, 0, 0, 1, 0, 3, 3, 2, 2, 0, 2, 3]
             },
             {
                 type: 'lollipop',
                 yAxis: 0,
                 name: 'Quantity of People',
+                color: "#f5a524",
                 data: [3, 2, 1, 3, 3, 2, 3, 1, 1, 0, 1, 1, 3, 3, 3]
             },
             {
                 type: 'spline',
                 yAxis: 1,
                 name: 'CO2',
+                lineWidth: 4,
+                color: "#f31260",
                 data: [494, 437, 479, 478, 476, 481, 473, 463, 461, 461, 461, 463, 488, 478, 500,]
             },
         ],
@@ -157,7 +163,7 @@ const Page = () => {
                     <Chip color="secondary">Environmental Noise</Chip>
                     <Chip className="text-white" color="success">Quantity of Vehicles</Chip>
                     <Chip className="text-white" color="warning">Quantity of People</Chip>
-                    <Chip className="text-white" color="default">CO2</Chip>
+                    <Chip className="text-white" color="danger">CO2</Chip>
                 </div>
 
                 <p className="font-xl font-Roboto pt-5 mb-7">

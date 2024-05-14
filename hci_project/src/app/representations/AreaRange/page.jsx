@@ -13,13 +13,10 @@ import {useEffect, useState} from "react";
 import {toast, ToastContainer} from "react-toastify";
 import {MonthPicker, MonthInput} from 'react-lite-month-picker';
 
-if (typeof Highcharts === 'object') {
-    HighchartsExporting(Highcharts);
-    hc_more(Highcharts);
-    seriesLabel(Highcharts);
-    annotations(Highcharts);
-}
 
+hc_more(Highcharts);
+seriesLabel(Highcharts);
+annotations(Highcharts);
 
 const locations = [
     {
@@ -69,6 +66,11 @@ const Page = () => {
     const [avgCO2, setAvgCO2] = useState([]);
     const [rangeTemperature, setRangeTemperature] = useState([]);
     const [rangeCO2, setRangeCO2] = useState([]);
+
+    if (typeof Highcharts === 'object') {
+        HighchartsExporting(Highcharts)
+    }
+
 
     useEffect(() => {
         const parsedDate = new Date(selectedMonthData.year + "-" + selectedMonthData.month + "-01");
@@ -188,7 +190,7 @@ const Page = () => {
                 marker: {
                     fillColor: 'white',
                     lineWidth: 2,
-                    lineColor: "#6b8abc"
+                    lineColor: "#006FEE"
                 },
                 tooltip: {
                     valueSuffix: " °C",
@@ -202,7 +204,7 @@ const Page = () => {
                 type: 'arearange',
                 lineWidth: 0.5,
                 linkedTo: ':previous',
-                color: "#6b8abc",
+                color: "#006FEE",
                 fillOpacity: 0.3,
                 zIndex: 0,
                 marker: {
@@ -220,7 +222,7 @@ const Page = () => {
                 marker: {
                     fillColor: 'white',
                     lineWidth: 2,
-                    lineColor: "#d568fb"
+                    lineColor: "#9353d3"
                 },
                 tooltip: {
                     valueSuffix: " ppm",
@@ -234,7 +236,7 @@ const Page = () => {
                 type: 'arearange',
                 lineWidth: 0.5,
                 linkedTo: ':previous',
-                color: "#d568fb",
+                color: "#9353d3",
                 fillOpacity: 0.3,
                 zIndex: 0,
                 marker: {
