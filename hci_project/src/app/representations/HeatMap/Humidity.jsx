@@ -8,9 +8,14 @@ import seriesLabel from "highcharts/modules/series-label"
 import annotations from "highcharts/modules/annotations"
 import HighchartsReact from 'highcharts-react-official'
 
-heatMap(Highcharts);
-seriesLabel(Highcharts);
-annotations(Highcharts);
+if (typeof Highcharts === 'object') {
+    HighchartsExporting(Highcharts);
+    heatMap(Highcharts);
+    seriesLabel(Highcharts);
+    annotations(Highcharts);
+}
+
+
 
 const humidity = [
     [0, 0, 70], [0, 1, 42], [0, 2, 61], [0, 3, 63], [0, 4, 59], [0, 5, 44],
@@ -32,10 +37,6 @@ const scale = [
 const value = 40;
 
 const Humidity = () => {
-
-    if (typeof Highcharts === 'object') {
-        HighchartsExporting(Highcharts)
-    }
 
     const options = {
         chart: {

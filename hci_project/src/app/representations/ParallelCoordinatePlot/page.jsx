@@ -11,9 +11,15 @@ import { Card, CardBody, Chip } from "@nextui-org/react";
 import "./style.css"
 import { interpolate } from 'framer-motion'
 
-parallelGraph(Highcharts);
-seriesLabel(Highcharts);
-annotations(Highcharts);
+
+if (typeof Highcharts === 'object') {
+    HighchartsExporting(Highcharts);
+    parallelGraph(Highcharts);
+    seriesLabel(Highcharts);
+    annotations(Highcharts);
+}
+
+
 
 const data = [
     [494, 3, 3],
@@ -33,11 +39,6 @@ const data = [
     [500, 3, 3]
 ]
 const Page = () => {
-
-
-    if (typeof Highcharts === 'object') {
-        HighchartsExporting(Highcharts)
-    }
 
     const options = {
         chart: {

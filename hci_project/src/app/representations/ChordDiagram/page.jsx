@@ -12,17 +12,20 @@ import annotations from "highcharts/modules/annotations"
 import HighchartsReact from 'highcharts-react-official'
 import {Card, CardBody, Chip, Select, SelectItem} from "@nextui-org/react";
 
-accessibility(Highcharts);
-sankey(Highcharts);
-dependencyWheel(Highcharts);
-seriesLabel(Highcharts);
-annotations(Highcharts);
+if (typeof Highcharts === 'object') {
+    HighchartsExporting(Highcharts);
+    accessibility(Highcharts);
+    sankey(Highcharts);
+    dependencyWheel(Highcharts);
+    seriesLabel(Highcharts);
+    annotations(Highcharts);
+}
+
+
+
+
+
 const Page = () => {
-
-
-    if (typeof Highcharts === 'object') {
-        HighchartsExporting(Highcharts)
-    }
 
     const options = {
         credits: {

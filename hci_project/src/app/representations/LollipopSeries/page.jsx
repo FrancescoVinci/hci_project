@@ -12,17 +12,18 @@ import annotations from "highcharts/modules/annotations"
 import HighchartsReact from 'highcharts-react-official'
 import {Card, CardBody, Chip} from "@nextui-org/react";
 
-hc_more(Highcharts);
-dumbbell(Highcharts);
-lollipop(Highcharts);
-seriesLabel(Highcharts);
-annotations(Highcharts);
+if (typeof Highcharts === 'object') {
+    HighchartsExporting(Highcharts);
+    hc_more(Highcharts);
+    dumbbell(Highcharts);
+    lollipop(Highcharts);
+    seriesLabel(Highcharts);
+    annotations(Highcharts);
+}
+
+
 
 const Page = () => {
-
-    if (typeof Highcharts === 'object') {
-        HighchartsExporting(Highcharts)
-    }
 
     const options = {
         chart: {

@@ -8,9 +8,14 @@ import seriesLabel from "highcharts/modules/series-label"
 import annotations from "highcharts/modules/annotations"
 import HighchartsReact from 'highcharts-react-official'
 
-heatMap(Highcharts);
-seriesLabel(Highcharts);
-annotations(Highcharts);
+if (typeof Highcharts === 'object') {
+    HighchartsExporting(Highcharts);
+    heatMap(Highcharts);
+    seriesLabel(Highcharts);
+    annotations(Highcharts);
+}
+
+
 
 const temperature = [
     [0, 0, 8.07], [0, 1, 10.89], [0, 2, 12.96], [0, 3, 12.47], [0, 4, 13.69], [0, 5, 12.85],
@@ -34,10 +39,6 @@ const scale = [
 const value = 1;
 
 const Temperature = () => {
-
-    if (typeof Highcharts === 'object') {
-        HighchartsExporting(Highcharts)
-    }
 
     const options = {
         chart: {

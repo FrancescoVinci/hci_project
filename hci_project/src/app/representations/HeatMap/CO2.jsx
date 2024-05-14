@@ -8,9 +8,14 @@ import seriesLabel from "highcharts/modules/series-label"
 import annotations from "highcharts/modules/annotations"
 import HighchartsReact from 'highcharts-react-official'
 
-heatMap(Highcharts);
-seriesLabel(Highcharts);
-annotations(Highcharts);
+if (typeof Highcharts === 'object') {
+    HighchartsExporting(Highcharts);
+    heatMap(Highcharts);
+    seriesLabel(Highcharts);
+    annotations(Highcharts);
+}
+
+
 
 const co2 = [
     [0, 0, 452], [0, 1, 513], [0, 2, 455], [0, 3, 544], [0, 4, 506], [0, 5, 418],
@@ -34,10 +39,6 @@ const scale = [
 const value = 360;
 
 const CO2 = () => {
-
-    if (typeof Highcharts === 'object') {
-        HighchartsExporting(Highcharts)
-    }
 
     const options = {
         chart: {

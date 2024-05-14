@@ -13,9 +13,12 @@ import { usePapaParse } from "react-papaparse";
 import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
-hc_more(Highcharts);
-seriesLabel(Highcharts);
-annotations(Highcharts);
+if (typeof Highcharts === 'object') {
+    HighchartsExporting(Highcharts);
+    hc_more(Highcharts);
+    seriesLabel(Highcharts);
+    annotations(Highcharts);
+}
 
 const locations = [
     {
@@ -156,9 +159,6 @@ const Page = () => {
         }
     }, [selected, selectedMonthData, radioValue]);
 
-    if (typeof Highcharts === 'object') {
-        HighchartsExporting(Highcharts)
-    }
 
     const changeRadioValue = (e) => {
         if (e === "daily") {
@@ -196,13 +196,13 @@ const Page = () => {
                 labels: {
                     format: '{value}°C',
                     style: {
-                        color: Highcharts.getOptions().colors[0]
+                        color: "#2caffe"
                     }
                 },
                 title: {
                     text: 'Temperature',
                     style: {
-                        color: Highcharts.getOptions().colors[0]
+                        color: "#2caffe"
                     }
                 },
                 opposite: false
@@ -213,13 +213,13 @@ const Page = () => {
                 title: {
                     text: 'Rainfall',
                     style: {
-                        color: Highcharts.getOptions().colors[1]
+                        color: "#544fc5"
                     }
                 },
                 labels: {
                     format: '{value} mm',
                     style: {
-                        color: Highcharts.getOptions().colors[1]
+                        color: "#544fc5"
                     }
                 },
                 opposite: true
@@ -230,13 +230,13 @@ const Page = () => {
                 title: {
                     text: 'CO2',
                     style: {
-                        color: Highcharts.getOptions().colors[2]
+                        color: "#00e272"
                     }
                 },
                 labels: {
                     format: '{value}',
                     style: {
-                        color: Highcharts.getOptions().colors[2]
+                        color: "#00e272"
                     }
                 },
                 opposite: false
@@ -247,13 +247,13 @@ const Page = () => {
                 title: {
                     text: 'Humidity',
                     style: {
-                        color: Highcharts.getOptions().colors[3]
+                        color: "#fe6a35"
                     }
                 },
                 labels: {
                     format: '{value}',
                     style: {
-                        color: Highcharts.getOptions().colors[3]
+                        color: "#fe6a35"
                     }
                 },
                 opposite: true

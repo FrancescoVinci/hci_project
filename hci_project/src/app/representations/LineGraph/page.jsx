@@ -12,8 +12,13 @@ import {usePapaParse} from "react-papaparse";
 import {Select, SelectItem} from "@nextui-org/react";
 
 
-seriesLabel(Highcharts);
-annotations(Highcharts);
+if (typeof Highcharts === "object") {
+    HighchartsExporting(Highcharts);
+    seriesLabel(Highcharts);
+    annotations(Highcharts);
+}
+
+
 
 
 const Page = () => {
@@ -54,10 +59,6 @@ const Page = () => {
 
     }, [selected]);
 
-
-    if (typeof Highcharts === "object") {
-        HighchartsExporting(Highcharts)
-    }
 
     const options = {
         chart: {

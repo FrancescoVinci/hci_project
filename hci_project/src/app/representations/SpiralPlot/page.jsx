@@ -7,13 +7,17 @@ import hc_more from "highcharts/highcharts-more";
 import seriesLabel from "highcharts/modules/series-label";
 import annotations from "highcharts/modules/annotations";
 import HighchartsReact from 'highcharts-react-official';
-import { usePapaParse } from "react-papaparse";
-import { useEffect, useState } from "react";
-import { Card, CardBody, Chip } from "@nextui-org/react";
+import {usePapaParse} from "react-papaparse";
+import {useEffect, useState} from "react";
+import {Card, CardBody, Chip} from "@nextui-org/react";
 
-hc_more(Highcharts);
-seriesLabel(Highcharts);
-annotations(Highcharts);
+
+if (typeof Highcharts === 'object') {
+    HighchartsExporting(Highcharts);
+    hc_more(Highcharts);
+    seriesLabel(Highcharts);
+    annotations(Highcharts);
+}
 
 const ranges = {
     "low": [300, 400],
@@ -23,7 +27,7 @@ const ranges = {
 
 const Page = () => {
     const avg = (array) => array.reduce((sum, x) => sum + x, 0) / array.length;
-    const { readRemoteFile } = usePapaParse();
+    const {readRemoteFile} = usePapaParse();
 
     // cafoscari data
     const [lowCaFoscari, setLowCaFoscari] = useState(0);
@@ -32,7 +36,7 @@ const Page = () => {
     readRemoteFile(`/spiralPlot/CaFoscari.csv`, {
         complete: (results) => {
             const CO2 = [];
-            for(let cur_month = 1; cur_month < 11; cur_month++){
+            for (let cur_month = 1; cur_month < 11; cur_month++) {
                 const accCO2 = [];
                 results.data.forEach((row, index) => {
                     if (index !== 0) {
@@ -51,11 +55,11 @@ const Page = () => {
             let high = 0;
 
             CO2.forEach((x) => {
-                if (x >= ranges["low"][0] && x < ranges["low"][1]){
+                if (x >= ranges["low"][0] && x < ranges["low"][1]) {
                     low += 1;
-                }else if (x >= ranges["med"][0] && x < ranges["med"][1]){
-                    med  += 1;
-                }else if (x >= ranges["high"][0] && x <= ranges["high"][1]){
+                } else if (x >= ranges["med"][0] && x < ranges["med"][1]) {
+                    med += 1;
+                } else if (x >= ranges["high"][0] && x <= ranges["high"][1]) {
                     high += 1;
                 }
             });
@@ -73,7 +77,7 @@ const Page = () => {
     readRemoteFile(`/spiralPlot/Briati.csv`, {
         complete: (results) => {
             const CO2 = [];
-            for(let cur_month = 1; cur_month < 11; cur_month++){
+            for (let cur_month = 1; cur_month < 11; cur_month++) {
                 const accCO2 = [];
                 results.data.forEach((row, index) => {
                     if (index !== 0) {
@@ -92,11 +96,11 @@ const Page = () => {
             let high = 0;
 
             CO2.forEach((x) => {
-                if (x >= ranges["low"][0] && x < ranges["low"][1]){
+                if (x >= ranges["low"][0] && x < ranges["low"][1]) {
                     low += 1;
-                }else if (x >= ranges["med"][0] && x < ranges["med"][1]){
+                } else if (x >= ranges["med"][0] && x < ranges["med"][1]) {
                     med += 1;
-                }else if (x >= ranges["high"][0] && x <= ranges["high"][1]){
+                } else if (x >= ranges["high"][0] && x <= ranges["high"][1]) {
                     high += 1;
                 }
             });
@@ -114,7 +118,7 @@ const Page = () => {
     readRemoteFile(`/spiralPlot/SMarghe.csv`, {
         complete: (results) => {
             const CO2 = [];
-            for(let cur_month = 1; cur_month < 11; cur_month++){
+            for (let cur_month = 1; cur_month < 11; cur_month++) {
                 const accCO2 = [];
                 results.data.forEach((row, index) => {
                     if (index !== 0) {
@@ -133,11 +137,11 @@ const Page = () => {
             let high = 0;
 
             CO2.forEach((x) => {
-                if (x >= ranges["low"][0] && x < ranges["low"][1]){
+                if (x >= ranges["low"][0] && x < ranges["low"][1]) {
                     low += 1;
-                }else if (x >= ranges["med"][0] && x < ranges["med"][1]){
+                } else if (x >= ranges["med"][0] && x < ranges["med"][1]) {
                     med += 1;
-                }else if (x >= ranges["high"][0] && x <= ranges["high"][1]){
+                } else if (x >= ranges["high"][0] && x <= ranges["high"][1]) {
                     high += 1;
                 }
             });
@@ -155,7 +159,7 @@ const Page = () => {
     readRemoteFile(`/spiralPlot/SGiobbe.csv`, {
         complete: (results) => {
             const CO2 = [];
-            for(let cur_month = 1; cur_month < 11; cur_month++){
+            for (let cur_month = 1; cur_month < 11; cur_month++) {
                 const accCO2 = [];
                 results.data.forEach((row, index) => {
                     if (index !== 0) {
@@ -174,11 +178,11 @@ const Page = () => {
             let high = 0;
 
             CO2.forEach((x) => {
-                if (x >= ranges["low"][0] && x < ranges["low"][1]){
+                if (x >= ranges["low"][0] && x < ranges["low"][1]) {
                     low += 1;
-                }else if (x >= ranges["med"][0] && x < ranges["med"][1]){
+                } else if (x >= ranges["med"][0] && x < ranges["med"][1]) {
                     med += 1;
-                }else if (x >= ranges["high"][0] && x <= ranges["high"][1]){
+                } else if (x >= ranges["high"][0] && x <= ranges["high"][1]) {
                     high += 1;
                 }
             });
@@ -196,7 +200,7 @@ const Page = () => {
     readRemoteFile(`/spiralPlot/SBasilio.csv`, {
         complete: (results) => {
             const CO2 = [];
-            for(let cur_month = 1; cur_month < 11; cur_month++){
+            for (let cur_month = 1; cur_month < 11; cur_month++) {
                 const accCO2 = [];
                 results.data.forEach((row, index) => {
                     if (index !== 0) {
@@ -215,11 +219,11 @@ const Page = () => {
             let high = 0;
 
             CO2.forEach((x) => {
-                if (x >= ranges["low"][0] && x < ranges["low"][1]){
+                if (x >= ranges["low"][0] && x < ranges["low"][1]) {
                     low += 1;
-                }else if (x >= ranges["med"][0] && x < ranges["med"][1]){
+                } else if (x >= ranges["med"][0] && x < ranges["med"][1]) {
                     med += 1;
-                }else if (x >= ranges["high"][0] && x <= ranges["high"][1]){
+                } else if (x >= ranges["high"][0] && x <= ranges["high"][1]) {
                     high += 1;
                 }
             });
@@ -237,7 +241,7 @@ const Page = () => {
     readRemoteFile(`/spiralPlot/campusS.csv`, {
         complete: (results) => {
             const CO2 = [];
-            for(let cur_month = 1; cur_month < 11; cur_month++){
+            for (let cur_month = 1; cur_month < 11; cur_month++) {
                 const accCO2 = [];
                 results.data.forEach((row, index) => {
                     if (index !== 0) {
@@ -256,11 +260,11 @@ const Page = () => {
             let high = 0;
 
             CO2.forEach((x) => {
-                if (x >= ranges["low"][0] && x < ranges["low"][1]){
+                if (x >= ranges["low"][0] && x < ranges["low"][1]) {
                     low += 1;
-                }else if (x >= ranges["med"][0] && x < ranges["med"][1]){
+                } else if (x >= ranges["med"][0] && x < ranges["med"][1]) {
                     med += 1;
-                }else if (x >= ranges["high"][0] && x <= ranges["high"][1]){
+                } else if (x >= ranges["high"][0] && x <= ranges["high"][1]) {
                     high += 1;
                 }
             });
@@ -270,10 +274,6 @@ const Page = () => {
             setHighcampusS(high);
         },
     });
-
-    if (typeof Highcharts === 'object') {
-        HighchartsExporting(Highcharts)
-    }
 
     const options = {
         colors: ['#17c964', '#f5a524', '#f31260'],
@@ -359,29 +359,29 @@ const Page = () => {
                     lowSBasilio,
                     lowSGiobbe,
                     lowSMarghe,
-                    lowBriati, 
+                    lowBriati,
                     lowCaFoscari
                 ]
-            }, 
+            },
             {
                 name: 'Medium CO2 Level',
                 data: [
                     medcampusS,
-                    medSBasilio, 
+                    medSBasilio,
                     medSGiobbe,
                     medSMarghe,
-                    medBriati, 
+                    medBriati,
                     medCaFoscari
                 ]
-            }, 
+            },
             {
                 name: 'High CO2 Level',
                 data: [
                     highcampusS,
-                    highSBasilio, 
-                    highSGiobbe, 
+                    highSBasilio,
+                    highSGiobbe,
                     highSMarghe,
-                    highBriati, 
+                    highBriati,
                     highCaFoscari
                 ]
             }

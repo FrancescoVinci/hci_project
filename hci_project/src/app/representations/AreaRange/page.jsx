@@ -13,10 +13,13 @@ import {useEffect, useState} from "react";
 import {toast, ToastContainer} from "react-toastify";
 import {MonthPicker, MonthInput} from 'react-lite-month-picker';
 
+if (typeof Highcharts === 'object') {
+    HighchartsExporting(Highcharts);
+    hc_more(Highcharts);
+    seriesLabel(Highcharts);
+    annotations(Highcharts);
+}
 
-hc_more(Highcharts);
-seriesLabel(Highcharts);
-annotations(Highcharts);
 
 const locations = [
     {
@@ -66,11 +69,6 @@ const Page = () => {
     const [avgCO2, setAvgCO2] = useState([]);
     const [rangeTemperature, setRangeTemperature] = useState([]);
     const [rangeCO2, setRangeCO2] = useState([]);
-
-    if (typeof Highcharts === 'object') {
-        HighchartsExporting(Highcharts)
-    }
-
 
     useEffect(() => {
         const parsedDate = new Date(selectedMonthData.year + "-" + selectedMonthData.month + "-01");
@@ -190,7 +188,7 @@ const Page = () => {
                 marker: {
                     fillColor: 'white',
                     lineWidth: 2,
-                    lineColor: Highcharts.getOptions().colors[4]
+                    lineColor: "#6b8abc"
                 },
                 tooltip: {
                     valueSuffix: " °C",
@@ -204,7 +202,7 @@ const Page = () => {
                 type: 'arearange',
                 lineWidth: 0.5,
                 linkedTo: ':previous',
-                color: Highcharts.getOptions().colors[4],
+                color: "#6b8abc",
                 fillOpacity: 0.3,
                 zIndex: 0,
                 marker: {
@@ -222,7 +220,7 @@ const Page = () => {
                 marker: {
                     fillColor: 'white',
                     lineWidth: 2,
-                    lineColor: Highcharts.getOptions().colors[5]
+                    lineColor: "#d568fb"
                 },
                 tooltip: {
                     valueSuffix: " ppm",
@@ -236,7 +234,7 @@ const Page = () => {
                 type: 'arearange',
                 lineWidth: 0.5,
                 linkedTo: ':previous',
-                color: Highcharts.getOptions().colors[5],
+                color: "#d568fb",
                 fillOpacity: 0.3,
                 zIndex: 0,
                 marker: {
