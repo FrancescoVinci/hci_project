@@ -57,73 +57,70 @@ const Page = () => {
     const [medcampusS, setMedcampusS] = useState(0);
     const [highcampusS, setHighcampusS] = useState(0);
 
-    files.forEach(
-        (file) => {
-            readRemoteFile(`/spiralPlot/${file}.csv`, {
-                complete: (results) => {
-                    const CO2 = [];
-                    for (let cur_month = 1; cur_month < 11; cur_month++) {
-                        const accCO2 = [];
-                        results.data.forEach((row, index) => {
-                            if (index !== 0) {
-                                const date = new Date(row[0]);
-                                const rowMonth = date.getMonth();
-                                if (rowMonth === cur_month) {
-                                    accCO2.push(parseFloat(row[3]));
+    useEffect(() => {
+        files.forEach(
+            (file) => {
+                readRemoteFile(`/spiralPlot/${file}.csv`, {
+                    complete: (results) => {
+                        const CO2 = [];
+                        for (let cur_month = 1; cur_month < 11; cur_month++) {
+                            const accCO2 = [];
+                            results.data.forEach((row, index) => {
+                                if (index !== 0) {
+                                    const date = new Date(row[0]);
+                                    const rowMonth = date.getMonth();
+                                    if (rowMonth === cur_month) {
+                                        accCO2.push(parseFloat(row[3]));
+                                    }
                                 }
+                            });
+                            CO2.push(avg(accCO2));
+                        }
+
+                        let low = 0;
+                        let med = 0;
+                        let high = 0;
+
+                        CO2.forEach((x) => {
+                            if (x >= ranges["low"][0] && x < ranges["low"][1]) {
+                                low += 1;
+                            } else if (x >= ranges["med"][0] && x < ranges["med"][1]) {
+                                med += 1;
+                            } else if (x >= ranges["high"][0] && x <= ranges["high"][1]) {
+                                high += 1;
                             }
                         });
-                        CO2.push(avg(accCO2));
-                    }
-        
-                    let low = 0;
-                    let med = 0;
-                    let high = 0;
-        
-                    CO2.forEach((x) => {
-                        if (x >= ranges["low"][0] && x < ranges["low"][1]) {
-                            low += 1;
-                        } else if (x >= ranges["med"][0] && x < ranges["med"][1]) {
-                            med += 1;
-                        } else if (x >= ranges["high"][0] && x <= ranges["high"][1]) {
-                            high += 1;
+
+                        if (file === "Briati") {
+                            setLowBriati(low);
+                            setMedBriati(med);
+                            setHighBriati(high);
+                        } else if (file === "CaFoscari") {
+                            setLowCaFoscari(low);
+                            setMedCaFoscari(med);
+                            setHighCaFoscari(high);
+                        } else if (file === "SBasilio") {
+                            setLowSBasilio(low);
+                            setMedSBasilio(med);
+                            setHighSBasilio(high);
+                        } else if (file === "SMarghe") {
+                            setLowSMarghe(low);
+                            setMedSMarghe(med);
+                            setHighSMarghe(high);
+                        } else if (file === "campusS") {
+                            setLowcampusS(low);
+                            setMedcampusS(med);
+                            setHighcampusS(high);
+                        } else if (file === "SGiobbe") {
+                            setLowSGiobbe(low);
+                            setMedSGiobbe(med);
+                            setHighSGiobbe(high);
                         }
-                    });
-        
-                    if(file === "Briati"){
-                        setLowBriati(low);
-                        setMedBriati(med);
-                        setHighBriati(high);
-                    }
-                    else if(file === "CaFoscari"){
-                        setLowCaFoscari(low);
-                        setMedCaFoscari(med);
-                        setHighCaFoscari(high);
-                    }
-                    else if(file === "SBasilio"){
-                        setLowSBasilio(low);
-                        setMedSBasilio(med);
-                        setHighSBasilio(high);
-                    }
-                    else if(file === "SMarghe"){
-                        setLowSMarghe(low);
-                        setMedSMarghe(med);
-                        setHighSMarghe(high);
-                    }
-                    else if(file === "campusS"){
-                        setLowcampusS(low);
-                        setMedcampusS(med);
-                        setHighcampusS(high);
-                    }
-                    else if(file === "SGiobbe"){
-                        setLowSGiobbe(low);
-                        setMedSGiobbe(med);
-                        setHighSGiobbe(high);
-                    }
-                },
-            });
-        }
-    );
+                    },
+                });
+            }
+        );
+    }, []);
 
     const options = {
         colors: ['#17c964', '#f5a524', '#f31260'],

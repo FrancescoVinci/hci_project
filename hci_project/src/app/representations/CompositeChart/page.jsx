@@ -276,7 +276,9 @@ const Page = () => {
                 yAxis: 1,
                 data: rainfall,
                 tooltip: {
-                    valueSuffix: ' mm'
+                    valueSuffix: ' mm',
+                    valueDecimals: 3
+
                 },
             },
             {
@@ -284,11 +286,12 @@ const Page = () => {
                 type: 'spline',
                 yAxis: 2,
                 data: co2,
-                tooltip: {
-                    valueSuffix: ''
-                },
                 dashStyle: 'ShortDashDot',
-                color: "#17c964"
+                color: "#17c964",
+                tooltip: {
+                    valueSuffix: " ppm",
+                    valueDecimals: 0
+                },
             },
             {
                 name: 'Temperature',
@@ -296,7 +299,9 @@ const Page = () => {
                 yAxis: 0,
                 data: temperature,
                 tooltip: {
-                    valueSuffix: ' °C'
+                    valueSuffix: ' °C',
+                    valueDecimals: 3
+
                 },
                 dashStyle: 'ShortDot',
                 color: "#006FEE"
@@ -307,7 +312,9 @@ const Page = () => {
                 yAxis: 3,
                 data: humidity,
                 tooltip: {
-                    valueSuffix: ' %'
+                    valueSuffix: ' %',
+                    valueDecimals: 3
+
                 },
                 dashStyle: 'Dash',
                 color: "#f5a524"

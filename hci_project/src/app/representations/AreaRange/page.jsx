@@ -228,7 +228,7 @@ const Page = () => {
                 },
                 tooltip: {
                     valueSuffix: " ppm",
-                    valueDecimals: 3
+                    valueDecimals: 0
                 },
             },
             {
