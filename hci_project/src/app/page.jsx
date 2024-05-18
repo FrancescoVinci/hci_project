@@ -31,7 +31,7 @@ export default function Home() {
                     </div>
 
                     <div className="grid sm:grid-cols-2 grid-cols-1 gap-4 pt-3 mb-7 px-4">
-                        <Card className="hover:cursor-pointer" >
+                        <Card className="hover:cursor-pointer hover:shadow-[inset_0_0_0px_1px_rgba(0,0,0,0.1),0_0_12px_0_rgba(0,0,0,0.05)]">
                             <CardBody onClick={() => router.push('/representations/HeatMap')}>
                                 <div className="flex items-center">
                                     <img className="mr-4" width="40" src="/heat_map.svg"></img>
@@ -39,7 +39,7 @@ export default function Home() {
                                 </div>
                             </CardBody>
                         </Card>
-                        <Card className="hover:cursor-pointer">
+                        <Card className="hover:cursor-pointer hover:shadow-[inset_0_0_0px_1px_rgba(0,0,0,0.1),0_0_12px_0_rgba(0,0,0,0.05)]">
                             <CardBody onClick={() => router.push('/representations/SpiralPlot')}>
                                 <div className="flex items-center">
                                     <img className="mr-4" width="40" src="/radial_bar_chart.svg"></img>
@@ -48,7 +48,7 @@ export default function Home() {
                                 </div>
                             </CardBody>
                         </Card>
-                        <Card className="hover:cursor-pointer">
+                        <Card className="hover:cursor-pointer hover:shadow-[inset_0_0_0px_1px_rgba(0,0,0,0.1),0_0_12px_0_rgba(0,0,0,0.05)]">
                             <CardBody onClick={() => router.push('/representations/AreaRange')}>
                                 <div className="flex items-center">
                                     <img className="mr-4" width="40" src="/area_graph.svg"></img>
@@ -57,7 +57,7 @@ export default function Home() {
                                 </div>
                             </CardBody>
                         </Card>
-                        <Card className="hover:cursor-pointer">
+                        <Card className="hover:cursor-pointer hover:shadow-[inset_0_0_0px_1px_rgba(0,0,0,0.1),0_0_12px_0_rgba(0,0,0,0.05)]">
                             <CardBody onClick={() => router.push('/representations/CompositeChart')}>
                                 <div className="flex items-center">
                                     <img className="mr-4" width="40" src="/multiset_bar_chart.svg"></img>
@@ -66,7 +66,7 @@ export default function Home() {
                                 </div>
                             </CardBody>
                         </Card>
-                        <Card className="hover:cursor-pointer">
+                        <Card className="hover:cursor-pointer hover:shadow-[inset_0_0_0px_1px_rgba(0,0,0,0.1),0_0_12px_0_rgba(0,0,0,0.05)]">
                             <CardBody onClick={() => router.push('/representations/ParallelCoordinatePlot')}>
                                 <div className="flex items-center">
                                     <img className="mr-4" width="40" src="/parallel_coordinates.svg"></img>
@@ -75,7 +75,7 @@ export default function Home() {
                                 </div>
                             </CardBody>
                         </Card>
-                        <Card className="hover:cursor-pointer">
+                        <Card className="hover:cursor-pointer hover:shadow-[inset_0_0_0px_1px_rgba(0,0,0,0.1),0_0_12px_0_rgba(0,0,0,0.05)]">
                             <CardBody onClick={() => router.push('/representations/LollipopSeries')}>
                                 <div className="flex items-center">
                                     <img className="mr-4" width="40" src="/lollipop_chart.png"></img>
