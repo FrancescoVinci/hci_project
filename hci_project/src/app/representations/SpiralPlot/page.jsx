@@ -25,255 +25,105 @@ const ranges = {
     "high": [600, 700],
 }
 
+const files = [
+    "Briati",
+    "CaFoscari",
+    "SBasilio",
+    "SMarghe",
+    "campusS",
+    "SGiobbe",
+]
+
 const Page = () => {
     const avg = (array) => array.reduce((sum, x) => sum + x, 0) / array.length;
     const {readRemoteFile} = usePapaParse();
 
-    // cafoscari data
     const [lowCaFoscari, setLowCaFoscari] = useState(0);
     const [medCaFoscari, setMedCaFoscari] = useState(0);
     const [highCaFoscari, setHighCaFoscari] = useState(0);
-    readRemoteFile(`/spiralPlot/CaFoscari.csv`, {
-        complete: (results) => {
-            const CO2 = [];
-            for (let cur_month = 1; cur_month < 11; cur_month++) {
-                const accCO2 = [];
-                results.data.forEach((row, index) => {
-                    if (index !== 0) {
-                        const date = new Date(row[0]);
-                        const rowMonth = date.getMonth();
-                        if (rowMonth === cur_month) {
-                            accCO2.push(parseFloat(row[3]));
-                        }
-                    }
-                });
-                CO2.push(avg(accCO2));
-            }
-
-            let low = 0;
-            let med = 0;
-            let high = 0;
-
-            CO2.forEach((x) => {
-                if (x >= ranges["low"][0] && x < ranges["low"][1]) {
-                    low += 1;
-                } else if (x >= ranges["med"][0] && x < ranges["med"][1]) {
-                    med += 1;
-                } else if (x >= ranges["high"][0] && x <= ranges["high"][1]) {
-                    high += 1;
-                }
-            });
-
-            setLowCaFoscari(low);
-            setMedCaFoscari(med);
-            setHighCaFoscari(high);
-        },
-    });
-
-    // Briati data
     const [lowBriati, setLowBriati] = useState(0);
     const [medBriati, setMedBriati] = useState(0);
     const [highBriati, setHighBriati] = useState(0);
-    readRemoteFile(`/spiralPlot/Briati.csv`, {
-        complete: (results) => {
-            const CO2 = [];
-            for (let cur_month = 1; cur_month < 11; cur_month++) {
-                const accCO2 = [];
-                results.data.forEach((row, index) => {
-                    if (index !== 0) {
-                        const date = new Date(row[0]);
-                        const rowMonth = date.getMonth();
-                        if (rowMonth === cur_month) {
-                            accCO2.push(parseFloat(row[3]));
-                        }
-                    }
-                });
-                CO2.push(avg(accCO2));
-            }
-
-            let low = 0;
-            let med = 0;
-            let high = 0;
-
-            CO2.forEach((x) => {
-                if (x >= ranges["low"][0] && x < ranges["low"][1]) {
-                    low += 1;
-                } else if (x >= ranges["med"][0] && x < ranges["med"][1]) {
-                    med += 1;
-                } else if (x >= ranges["high"][0] && x <= ranges["high"][1]) {
-                    high += 1;
-                }
-            });
-
-            setLowBriati(low);
-            setMedBriati(med);
-            setHighBriati(high);
-        },
-    });
-
-    // SMarghe data
     const [lowSMarghe, setLowSMarghe] = useState(0);
     const [medSMarghe, setMedSMarghe] = useState(0);
     const [highSMarghe, setHighSMarghe] = useState(0);
-    readRemoteFile(`/spiralPlot/SMarghe.csv`, {
-        complete: (results) => {
-            const CO2 = [];
-            for (let cur_month = 1; cur_month < 11; cur_month++) {
-                const accCO2 = [];
-                results.data.forEach((row, index) => {
-                    if (index !== 0) {
-                        const date = new Date(row[0]);
-                        const rowMonth = date.getMonth();
-                        if (rowMonth === cur_month) {
-                            accCO2.push(parseFloat(row[3]));
-                        }
-                    }
-                });
-                CO2.push(avg(accCO2));
-            }
-
-            let low = 0;
-            let med = 0;
-            let high = 0;
-
-            CO2.forEach((x) => {
-                if (x >= ranges["low"][0] && x < ranges["low"][1]) {
-                    low += 1;
-                } else if (x >= ranges["med"][0] && x < ranges["med"][1]) {
-                    med += 1;
-                } else if (x >= ranges["high"][0] && x <= ranges["high"][1]) {
-                    high += 1;
-                }
-            });
-
-            setLowSMarghe(low);
-            setMedSMarghe(med);
-            setHighSMarghe(high);
-        },
-    });
-
-    // SGiobbe data
     const [lowSGiobbe, setLowSGiobbe] = useState(0);
     const [medSGiobbe, setMedSGiobbe] = useState(0);
     const [highSGiobbe, setHighSGiobbe] = useState(0);
-    readRemoteFile(`/spiralPlot/SGiobbe.csv`, {
-        complete: (results) => {
-            const CO2 = [];
-            for (let cur_month = 1; cur_month < 11; cur_month++) {
-                const accCO2 = [];
-                results.data.forEach((row, index) => {
-                    if (index !== 0) {
-                        const date = new Date(row[0]);
-                        const rowMonth = date.getMonth();
-                        if (rowMonth === cur_month) {
-                            accCO2.push(parseFloat(row[3]));
-                        }
-                    }
-                });
-                CO2.push(avg(accCO2));
-            }
-
-            let low = 0;
-            let med = 0;
-            let high = 0;
-
-            CO2.forEach((x) => {
-                if (x >= ranges["low"][0] && x < ranges["low"][1]) {
-                    low += 1;
-                } else if (x >= ranges["med"][0] && x < ranges["med"][1]) {
-                    med += 1;
-                } else if (x >= ranges["high"][0] && x <= ranges["high"][1]) {
-                    high += 1;
-                }
-            });
-
-            setLowSGiobbe(low);
-            setMedSGiobbe(med);
-            setHighSGiobbe(high);
-        },
-    });
-
-    // SBasilio data
     const [lowSBasilio, setLowSBasilio] = useState(0);
     const [medSBasilio, setMedSBasilio] = useState(0);
     const [highSBasilio, setHighSBasilio] = useState(0);
-    readRemoteFile(`/spiralPlot/SBasilio.csv`, {
-        complete: (results) => {
-            const CO2 = [];
-            for (let cur_month = 1; cur_month < 11; cur_month++) {
-                const accCO2 = [];
-                results.data.forEach((row, index) => {
-                    if (index !== 0) {
-                        const date = new Date(row[0]);
-                        const rowMonth = date.getMonth();
-                        if (rowMonth === cur_month) {
-                            accCO2.push(parseFloat(row[3]));
-                        }
-                    }
-                });
-                CO2.push(avg(accCO2));
-            }
-
-            let low = 0;
-            let med = 0;
-            let high = 0;
-
-            CO2.forEach((x) => {
-                if (x >= ranges["low"][0] && x < ranges["low"][1]) {
-                    low += 1;
-                } else if (x >= ranges["med"][0] && x < ranges["med"][1]) {
-                    med += 1;
-                } else if (x >= ranges["high"][0] && x <= ranges["high"][1]) {
-                    high += 1;
-                }
-            });
-
-            setLowSBasilio(low);
-            setMedSBasilio(med);
-            setHighSBasilio(high);
-        },
-    });
-
-    // campusS data
     const [lowcampusS, setLowcampusS] = useState(0);
     const [medcampusS, setMedcampusS] = useState(0);
     const [highcampusS, setHighcampusS] = useState(0);
-    readRemoteFile(`/spiralPlot/campusS.csv`, {
-        complete: (results) => {
-            const CO2 = [];
-            for (let cur_month = 1; cur_month < 11; cur_month++) {
-                const accCO2 = [];
-                results.data.forEach((row, index) => {
-                    if (index !== 0) {
-                        const date = new Date(row[0]);
-                        const rowMonth = date.getMonth();
-                        if (rowMonth === cur_month) {
-                            accCO2.push(parseFloat(row[3]));
-                        }
+
+    files.forEach(
+        (file) => {
+            readRemoteFile(`/spiralPlot/${file}.csv`, {
+                complete: (results) => {
+                    const CO2 = [];
+                    for (let cur_month = 1; cur_month < 11; cur_month++) {
+                        const accCO2 = [];
+                        results.data.forEach((row, index) => {
+                            if (index !== 0) {
+                                const date = new Date(row[0]);
+                                const rowMonth = date.getMonth();
+                                if (rowMonth === cur_month) {
+                                    accCO2.push(parseFloat(row[3]));
+                                }
+                            }
+                        });
+                        CO2.push(avg(accCO2));
                     }
-                });
-                CO2.push(avg(accCO2));
-            }
-
-            let low = 0;
-            let med = 0;
-            let high = 0;
-
-            CO2.forEach((x) => {
-                if (x >= ranges["low"][0] && x < ranges["low"][1]) {
-                    low += 1;
-                } else if (x >= ranges["med"][0] && x < ranges["med"][1]) {
-                    med += 1;
-                } else if (x >= ranges["high"][0] && x <= ranges["high"][1]) {
-                    high += 1;
-                }
+        
+                    let low = 0;
+                    let med = 0;
+                    let high = 0;
+        
+                    CO2.forEach((x) => {
+                        if (x >= ranges["low"][0] && x < ranges["low"][1]) {
+                            low += 1;
+                        } else if (x >= ranges["med"][0] && x < ranges["med"][1]) {
+                            med += 1;
+                        } else if (x >= ranges["high"][0] && x <= ranges["high"][1]) {
+                            high += 1;
+                        }
+                    });
+        
+                    if(file === "Briati"){
+                        setLowBriati(low);
+                        setMedBriati(med);
+                        setHighBriati(high);
+                    }
+                    else if(file === "CaFoscari"){
+                        setLowCaFoscari(low);
+                        setMedCaFoscari(med);
+                        setHighCaFoscari(high);
+                    }
+                    else if(file === "SBasilio"){
+                        setLowSBasilio(low);
+                        setMedSBasilio(med);
+                        setHighSBasilio(high);
+                    }
+                    else if(file === "SMarghe"){
+                        setLowSMarghe(low);
+                        setMedSMarghe(med);
+                        setHighSMarghe(high);
+                    }
+                    else if(file === "campusS"){
+                        setLowcampusS(low);
+                        setMedcampusS(med);
+                        setHighcampusS(high);
+                    }
+                    else if(file === "SGiobbe"){
+                        setLowSGiobbe(low);
+                        setMedSGiobbe(med);
+                        setHighSGiobbe(high);
+                    }
+                },
             });
-
-            setLowcampusS(low);
-            setMedcampusS(med);
-            setHighcampusS(high);
-        },
-    });
+        }
+    );
 
     const options = {
         colors: ['#17c964', '#f5a524', '#f31260'],

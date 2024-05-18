@@ -20,8 +20,6 @@ if (typeof Highcharts === 'object') {
     annotations(Highcharts);
 }
 
-
-
 const locations = [
     {
         name: "P. Briati",
