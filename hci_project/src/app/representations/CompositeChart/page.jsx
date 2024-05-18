@@ -1,17 +1,17 @@
 "use client"
 
-import Highcharts, { color } from 'highcharts'
+import Highcharts, {color} from 'highcharts'
 
 import HighchartsExporting from 'highcharts/modules/exporting'
 import hc_more from "highcharts/highcharts-more"
 import seriesLabel from "highcharts/modules/series-label"
 import annotations from "highcharts/modules/annotations"
 import HighchartsReact from 'highcharts-react-official'
-import { Card, CardBody, Chip, Radio, RadioGroup, Select, SelectItem } from "@nextui-org/react";
-import { MonthPicker, MonthInput } from 'react-lite-month-picker';
-import { usePapaParse } from "react-papaparse";
-import { useEffect, useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import {Card, CardBody, Chip, Radio, RadioGroup, Select, SelectItem} from "@nextui-org/react";
+import {MonthPicker, MonthInput} from 'react-lite-month-picker';
+import {usePapaParse} from "react-papaparse";
+import {useEffect, useState} from "react";
+import {toast, ToastContainer} from "react-toastify";
 
 if (typeof Highcharts === 'object') {
     HighchartsExporting(Highcharts);
@@ -48,7 +48,7 @@ const locations = [
 ];
 
 const Page = () => {
-    const { readRemoteFile } = usePapaParse();
+    const {readRemoteFile} = usePapaParse();
 
     const start = "2023-02-01 00:00";
     const end = "2023-11-30";
@@ -72,7 +72,7 @@ const Page = () => {
     const [humidity, setHumidity] = useState([]);
 
     useEffect(() => {
-        if (radioValue === "daily"){
+        if (radioValue === "daily") {
             const parsedDate = new Date(selectedMonthData.year + "-" + selectedMonthData.month + "-01");
             const startDate = new Date(start);
             const endDate = new Date(end);
@@ -121,7 +121,7 @@ const Page = () => {
                     const rain = [];
                     const humid = [];
 
-                    for(let cur_month = 1; cur_month < 11; cur_month++){
+                    for (let cur_month = 1; cur_month < 11; cur_month++) {
                         const accTemp = [];
                         const accHumid = [];
                         const accCO2 = [];
@@ -160,7 +160,6 @@ const Page = () => {
     }, [selected, selectedMonthData, radioValue]);
 
 
-
     const changeRadioValue = (e) => {
         if (e === "daily") {
             setShowMonthPicker(true);
@@ -184,7 +183,7 @@ const Page = () => {
             align: 'left'
         },
         subtitle: {
-            text: 'Fixed Stations Dataset',
+            text: 'Fixed Stations Dataset & Cavanis Dataset',
             align: 'left'
         },
         xAxis: [{
@@ -386,13 +385,16 @@ const Page = () => {
                         <Chip className="text-white" color="warning">Humidity</Chip>
                     </div>
 
-                    <p className="font-xl font-Roboto pt-5 mb-7">
-                        Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. È
-                        sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione,
-                        pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei
-                        fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più
-                        recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem
-                        Ipsum.
+                    <p className="font-xl font-Roboto pt-5 mb-1">
+                        This chart displays various environmental indicators on the y-axis, namely{" "}
+                        <i><b>precipitation</b></i>, <i><b>CO2 levels</b></i>, <i><b>temperature</b></i>, and <i><b>humidity</b></i>. The x-axis represents time, which can be
+                        viewed either by months within a year or by days within a month.
+                    </p>
+                    <p className="font-xl font-Roboto mb-7">
+                        The chart provides a comprehensive overview of how these indicators fluctuate over time. For
+                        instance, it shows monthly variations throughout the year, highlighting seasonal changes in
+                        weather patterns, CO2 concentrations, and temperature. Alternatively, when viewed by days within
+                        a month, it allows for a more granular analysis, capturing daily trends and anomalies.
                     </p>
 
                     <div className="flex justify-center gap-5  mb-4">

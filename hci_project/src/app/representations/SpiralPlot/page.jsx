@@ -143,7 +143,7 @@ const Page = () => {
 
         subtitle: {
             align: 'left',
-            text: 'subtitle',
+            text: 'Fixed Stations Dataset',
         },
         tooltip: {
             outside: true
@@ -234,21 +234,6 @@ const Page = () => {
             }
         ],
 
-        /*responsive: {
-            rules: [{
-                condition: {
-                    maxWidth: 500
-                },
-                chartOptions: {
-                    yAxis: {
-                        labels: {
-                            format: '{substr value 0 1}'
-                        }
-                    }
-                }
-            }]
-        }*/
-
     };
 
     return (
@@ -262,12 +247,12 @@ const Page = () => {
                 </div>
 
                 <p className="font-xl font-Roboto pt-5 mb-7">
-                    Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. È
-                    sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione,
-                    pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei
-                    fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più
-                    recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem
-                    Ipsum.
+                    The plot illustrates <i><b>CO2</b></i> measurements from six detectors placed at <i>various locations</i> within
+                    the Ca' Foscari University of Venice. The data for each site are categorized into three ranges:{" "}
+                    <i>300-400</i> ppm, <i>400-600</i> ppm, and greater than <i>600</i> ppm. This visualization helps to compare CO2 levels
+                    across different university sites, showing variations in air quality. Each segment of the spiral
+                    represents a specific location, with the color coding indicating the corresponding CO2 concentration
+                    range, allowing for easy identification of areas with higher or lower CO2 levels.
                 </p>
 
                 <HighchartsReact

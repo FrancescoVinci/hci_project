@@ -9,7 +9,6 @@ import annotations from "highcharts/modules/annotations"
 import HighchartsReact from 'highcharts-react-official'
 import { Card, CardBody, Chip } from "@nextui-org/react";
 import "./style.css"
-import { interpolate } from 'framer-motion'
 
 
 if (typeof Highcharts === 'object') {

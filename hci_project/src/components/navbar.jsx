@@ -69,11 +69,6 @@ export const Navbar = () => {
                     <Image src="/fondazione.png" height={80} width={80} />
                     <p className="font-semibold text-sm">BeViCi's HCI Project</p>
                 </NavbarBrand>
-                <NavbarItem>
-                    <Link color="foreground" href="#">
-                        Group Info
-                    </Link>
-                </NavbarItem>
                 <NavbarItem isActive>
                     <Dropdown className="bg-blue-50">
                         <DropdownTrigger>
@@ -113,9 +108,7 @@ export const Navbar = () => {
                     <NavbarMenuItem key={`${item}-${index}`}>
                         <Link
                             className="w-full"
-                            color={
-                                index === menuItems.length - 1 ? "warning" : "foreground"
-                            }
+                            color="foreground"
                             href={`${menuItemsRef[index]}`}
                             size="lg"
                         >

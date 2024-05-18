@@ -16,7 +16,7 @@ export default function RootLayout({children}) {
         <html lang="en" className="light">
         <body className={inter.className}>
         <Providers>
-            <div className="relative flex flex-col h-screen bg-slate-100">
+            <div className="relative h-screen flex flex-col bg-slate-100 bg-image">
                 <Navbar/>
                 <main className="flex-grow container mx-auto pt-5">
                     {children}

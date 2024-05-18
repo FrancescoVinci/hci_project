@@ -15,7 +15,8 @@ const Page = () => {
         <Card className="fullWidth">
             <CardBody className="p-7">
                 <p className="text-3xl font-PlayfairDisplay ">Heat Map</p>
-                <p className="text-xl font-PlayfairDisplay mb-3">Analysis of Temperature, CO2 and Humidity from stations deployed in University sites</p>
+                <p className="text-xl font-PlayfairDisplay mb-3">Analysis of Temperature, CO2 and Humidity from stations
+                    deployed in University sites</p>
 
                 <div className="flex flex-wrap justify-start gap-2">
                     <Chip color="primary">Co2</Chip>
@@ -24,7 +25,10 @@ const Page = () => {
                 </div>
 
                 <p className="font-xl font-Roboto pt-5 mb-7">
-                    The heat map representing CO2 <b><i>levels</i></b>, <b><i>temperature</i></b>, and <b><i>humidity</i></b> across various sites at Ca' Foscari University and the city of Venice offers valuable insights into the environmental conditions within the campus and the city throughout the year.
+                    The heat map representing <b><i>CO2 levels</i></b>, <b><i>temperature</i></b>,
+                    and <b><i>humidity</i></b> across various sites at Ca' Foscari University and the city of Venice
+                    offers valuable insights into the environmental conditions within the campus and the city throughout
+                    the year.
                 </p>
 
                 <div className="flex justify-center mb-4">
