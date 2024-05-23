@@ -30,9 +30,6 @@ export const Navbar = () => {
         "Composite Chart",
         "Parallel Coordinates Plot",
         "Lollipop Series",
-        "Chord Diagram (?)",
-        "Line Graph (?)",
-        "Meteo Graph (?)",
     ];
 
     const menuItemsRef = [
@@ -42,9 +39,6 @@ export const Navbar = () => {
         "/representations/CompositeChart",
         "/representations/ParallelCoordinatePlot",
         "/representations/LollipopSeries",
-        "/representations/ChordDiagram",
-        "/representations/LineGraph",
-        "/representations/MeteoGraph",
     ];
 
     return (
