@@ -19,21 +19,21 @@ if (typeof Highcharts === 'object') {
 }
 
 const data = [
-    [494, 3, 0],
-    [437, 3, 0],
+    [494, 3, 3],
+    [437, 3, 2],
     [479, 0, 1],
-    [478, 0, 1],
+    [478, 0, 3],
     [476, 0, 3],
-    [481, 0, 3],
+    [481, 0, 2],
     [473, 1, 3],
-    [463, 0, 3],
-    [461, 3, 3],
-    [461, 3, 1.],
+    [463, 0, 1],
+    [461, 3, 1],
+    [461, 3, 0],
     [461, 2, 1],
-    [463, 2, 3],
+    [463, 2, 1],
     [488, 0, 3],
-    [474, 2, 1],
-    [500, 3, 0]
+    [474, 2, 3],
+    [500, 3, 3]
 ]
 const Page = () => {
 
@@ -52,7 +52,7 @@ const Page = () => {
         },
         title: {
             align: 'left',
-            text: 'CO2 Values in Relation to the Number of Vehicles and Air Quality/Smell'
+            text: 'CO2 Values in Relation to the Number of Vehicles and People'
         },
         subtitle: {
             align: 'left',
@@ -94,7 +94,7 @@ const Page = () => {
             categories: [
                 'CO2',
                 'Vehicles',
-                'Air Quality',
+                'People',
             ],
             offset: 10,
         },
@@ -121,11 +121,11 @@ const Page = () => {
                 tooltipValueFormat: '{value}',
                 startOnTick: false,
                 categories:[
-                    "Bad",
-                    "Fair",
-                    "",
-                    "Good"
-                ],
+                    "None",
+                    "Low",
+                    "Medium",
+                    "High",
+                ]
             },
         ],
         colors: [
