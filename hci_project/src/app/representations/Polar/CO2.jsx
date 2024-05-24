@@ -38,7 +38,7 @@ const CO2 = () => {
 
         yAxis: {
             min: 0,
-            tickPositions: [0, 100, 300200, 300, 400, 500, 600]
+            tickPositions: [0, 100, 200, 300, 400, 500, 600]
         },
 
         plotOptions: {
