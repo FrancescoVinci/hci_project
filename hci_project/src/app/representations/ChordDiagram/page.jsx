@@ -67,7 +67,9 @@ const Page = () => {
                         let med = 0;
                         let high = 0;
 
-                        for (let cur_month = 1; cur_month < 11; cur_month++) {
+                        let end_month = file === "SBasilio" ? 9 : 11;
+
+                        for (let cur_month = 1; cur_month < end_month; cur_month++) {
                             results.data.forEach((row, index) => {
                                 if (index !== 0) {
                                     const CO2 = parseFloat(row[3]);
@@ -140,13 +142,13 @@ const Page = () => {
                 ['CaFoscari', '400-600', medCaFoscari - 2000],
                 ['CaFoscari', '600-700', highCaFoscari],
                 ['CampusS', '300-400', lowcampusS],
-                ['CampusS', '400-600', medcampusS - 2000],
+                ['CampusS', '400-600', medcampusS - 2200],
                 ['CampusS', '600-700', highcampusS ],
                 ['Briati', '300-400', lowBriati],
                 ['Briati', '400-600', medBriati - 2000],
                 ['Briati', '600-700', highBriati],
                 ['SBasilio', '300-400', lowSBasilio],
-                ['SBasilio', '400-600', medSBasilio - 2000],
+                ['SBasilio', '400-600', medSBasilio - 1000],
                 ['SBasilio', '600-700', highSBasilio],
                 ['SGiobbe', '300-400', lowSGiobbe],
                 ['SGiobbe', '400-600', medSGiobbe - 2000],
