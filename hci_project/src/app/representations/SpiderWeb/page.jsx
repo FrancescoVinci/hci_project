@@ -46,7 +46,9 @@ const Page = () => {
                 readRemoteFile(`/spiralPlot/${file}.csv`, {
                     complete: (results) => {
                         const CO2 = [];
-                        for (let cur_month = 2; cur_month < 11; cur_month++) {
+
+                        let end_month = file === "SBasilio" ? 9 : 11;
+                        for (let cur_month = 1; cur_month < end_month; cur_month++) {
                             const accCO2 = [];
                             results.data.forEach((row, index) => {
                                 if (index !== 0) {
@@ -156,7 +158,7 @@ const Page = () => {
         responsive: {
             rules: [{
                 condition: {
-                    maxWidth: 500
+                    maxWidth: 700
                 },
                 chartOptions: {
                     legend: {
