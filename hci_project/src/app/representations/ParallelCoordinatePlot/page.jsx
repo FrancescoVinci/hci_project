@@ -7,7 +7,7 @@ import parallelGraph from "highcharts/modules/parallel-coordinates"
 import seriesLabel from "highcharts/modules/series-label"
 import annotations from "highcharts/modules/annotations"
 import HighchartsReact from 'highcharts-react-official'
-import { Card, CardBody, Chip } from "@nextui-org/react";
+import {Card, CardBody, Chip} from "@nextui-org/react";
 import "./style.css"
 
 
@@ -108,7 +108,7 @@ const Page = () => {
                 allowDecimals: false,
                 tooltipValueFormat: '{value}',
                 startOnTick: false,
-                categories:[
+                categories: [
                     "None",
                     "Low",
                     "Medium",
@@ -120,7 +120,7 @@ const Page = () => {
                 allowDecimals: false,
                 tooltipValueFormat: '{value}',
                 startOnTick: false,
-                categories:[
+                categories: [
                     "Bad",
                     "Fair",
                     "",
@@ -166,12 +166,13 @@ const Page = () => {
                 </div>
 
                 <p className="font-xl font-Roboto pt-5 mb-7">
-                    Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. È
-                    sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione,
-                    pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei
-                    fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più
-                    recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem
-                    Ipsum.
+                    The Parallel Coordinate Plot effectively visualizes the <i>relationship</i> between <b>CO2 concentration</b>,
+                    <b>vehicle quantity</b>, and <b>air quality</b> across <b>14 paths</b> on <i>November 30, 2023</i>. Each axis represents
+                    one of these variables, while the lines correspond to individual road segments. This plot allows us
+                    to observe how traffic volume and CO2 levels correlate with air quality. For example, if lines show
+                    similar trends between the CO2 and vehicle quantity axes, it suggests that higher traffic volume
+                    might lead to increased CO2 emissions. Additionally, by examining the intersections on the air
+                    quality axis, we can discern how changes in CO2 and vehicle numbers impact overall air quality.
                 </p>
 
                 <HighchartsReact

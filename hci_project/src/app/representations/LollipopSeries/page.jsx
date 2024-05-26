@@ -22,7 +22,6 @@ if (typeof Highcharts === 'object') {
 }
 
 
-
 const Page = () => {
 
     const options = {
@@ -167,12 +166,13 @@ const Page = () => {
                 </div>
 
                 <p className="font-xl font-Roboto pt-5 mb-7">
-                    Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. È
-                    sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione,
-                    pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei
-                    fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più
-                    recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem
-                    Ipsum.
+                    A lollipop series plot was created to visualize <i>various environmental</i> and <i>traffic metrics</i> along <b>15
+                    different paths</b> walked in Venice on <i>November 30th</i>. The plot features <b>wind, ambient noise, number of
+                    vehicles, and number of people</b>, each categorized on a scale of <b>NONE, LOW, MEDIUM, and HIGH</b>.
+                    Additionally, the <b>concentration of CO2</b> is represented as a
+                    line along the x-axis. The y-axis lists the <b>15 paths</b>, providing a clear comparison of these
+                    variables for each specific route. This visual representation helps in understanding the
+                    environmental conditions and traffic density experienced during the walk.
                 </p>
 
                 <HighchartsReact
