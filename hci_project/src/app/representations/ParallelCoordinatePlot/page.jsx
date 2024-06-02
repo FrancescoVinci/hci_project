@@ -40,7 +40,7 @@ const Page = () => {
     const options = {
         chart: {
             type: 'spline',
-            zoomType: 'x',
+            zoomType: 'none',
             height: 500,
             parallelCoordinates: true,
             parallelAxes: {
@@ -83,8 +83,14 @@ const Page = () => {
                     mouseOver: function () {
                         this.group.toFront();
                     }
-                }
+                },
             }
+        },
+        legend: {
+            floating: true,
+            layout: 'horizontal',
+            align: 'center',
+            verticalAlign: 'top',
         },
         tooltip: {
             pointFormat: '<span style="color:{point.color}">\u25CF</span>' +
@@ -151,7 +157,25 @@ const Page = () => {
                 data: set,
                 shadow: false
             };
-        })
+        }),
+        responsive: {
+            rules: [
+                {
+                    condition: {
+                        maxWidth: 500
+                    },
+                    chartOptions: {
+                        legend: {
+                            floating: true,
+                            layout: 'horizontal',
+                            align: 'center',
+                            verticalAlign: 'top',
+                            x: 0,
+                            y: 0
+                        },
+                    }
+                }]
+        },
     };
 
     return (
@@ -179,7 +203,16 @@ const Page = () => {
                     highcharts={Highcharts}
                     options={options}
                 />
-
+                <div className='flex items-center justify-center mt-5 min-[640px]:hidden'>
+                        <Chip color="default" className='bg-gray-200'>
+                            <div className="flex items-center">
+                                <img className="mr-4 opacity-55" width="40" src="/rotate_phone.svg"></img>
+                                <p className='overflow-auto'>
+                                    Better Smartphone Experience
+                                </p>
+                            </div>
+                        </Chip>
+                    </div>
             </CardBody>
 
         </Card>

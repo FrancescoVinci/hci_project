@@ -1,8 +1,8 @@
 "use client"
 
 
-import {Card, CardBody, Chip, Select, SelectItem} from "@nextui-org/react";
-import {useState} from "react";
+import { Card, CardBody, Chip, Select, SelectItem } from "@nextui-org/react";
+import { useState } from "react";
 import CO2 from "@/app/representations/HeatMap/CO2";
 import Humidity from "@/app/representations/HeatMap/Humidity";
 import Temperature from "@/app/representations/HeatMap/Temp";
@@ -47,12 +47,21 @@ const Page = () => {
                 </div>
 
                 {selected === "CO2" ?
-                    <CO2/>
+                    <CO2 />
                     : selected === "Humidity" ?
-                        <Humidity/>
-                        : <Temperature/>
+                        <Humidity />
+                        : <Temperature />
                 }
-
+                <div className='flex items-center justify-center mt-5 min-[640px]:hidden'>
+                    <Chip color="default" className='bg-gray-200'>
+                        <div className="flex items-center">
+                            <img className="mr-4 opacity-55" width="40" src="/rotate_phone.svg"></img>
+                            <p className='overflow-auto'>
+                                Better Smartphone Experience
+                            </p>
+                        </div>
+                    </Chip>
+                </div>
             </CardBody>
         </Card>
     );

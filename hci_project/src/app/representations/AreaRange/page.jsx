@@ -7,11 +7,11 @@ import hc_more from "highcharts/highcharts-more"
 import seriesLabel from "highcharts/modules/series-label"
 import annotations from "highcharts/modules/annotations"
 import HighchartsReact from 'highcharts-react-official'
-import {Card, CardBody, Chip, Select, SelectItem} from "@nextui-org/react";
-import {usePapaParse} from "react-papaparse";
-import {useEffect, useState} from "react";
-import {toast, ToastContainer} from "react-toastify";
-import {MonthPicker, MonthInput} from 'react-lite-month-picker';
+import { Card, CardBody, Chip, Select, SelectItem } from "@nextui-org/react";
+import { usePapaParse } from "react-papaparse";
+import { useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import { MonthPicker, MonthInput } from 'react-lite-month-picker';
 
 if (typeof Highcharts === 'object') {
     HighchartsExporting(Highcharts);
@@ -51,7 +51,7 @@ const locations = [
 
 const Page = () => {
 
-    const {readRemoteFile} = usePapaParse();
+    const { readRemoteFile } = usePapaParse();
 
     const start = "2023-02-01 00:00";
     const end = "2023-11-30";
@@ -312,10 +312,19 @@ const Page = () => {
                         highcharts={Highcharts}
                         options={options}
                     />
-
+                    <div className='flex items-center justify-center mt-5 min-[640px]:hidden'>
+                        <Chip color="default" className='bg-gray-200'>
+                            <div className="flex items-center">
+                                <img className="mr-4 opacity-55" width="40" src="/rotate_phone.svg"></img>
+                                <p className='overflow-auto'>
+                                    Better Smartphone Experience
+                                </p>
+                            </div>
+                        </Chip>
+                    </div>
                 </CardBody>
-
             </Card>
+
             <ToastContainer
                 position="top-right"
                 autoClose={5000}

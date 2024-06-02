@@ -10,7 +10,7 @@ import dumbbell from "highcharts/modules/dumbbell";
 import seriesLabel from "highcharts/modules/series-label"
 import annotations from "highcharts/modules/annotations"
 import HighchartsReact from 'highcharts-react-official'
-import {Card, CardBody, Chip} from "@nextui-org/react";
+import { Card, CardBody, Chip } from "@nextui-org/react";
 
 if (typeof Highcharts === 'object') {
     HighchartsExporting(Highcharts);
@@ -167,8 +167,8 @@ const Page = () => {
 
                 <p className="font-xl font-Roboto pt-5 mb-7">
                     A lollipop series plot was created to visualize <i>various environmental</i> and <i>traffic metrics</i> along <b>15
-                    different paths</b> walked in Venice on <i>November 30th</i>. The plot features <b>wind, ambient noise, number of
-                    vehicles, and number of people</b>, each categorized on a scale of <b>NONE, LOW, MEDIUM, and HIGH</b>.
+                        different paths</b> walked in Venice on <i>November 30th</i>. The plot features <b>wind, ambient noise, number of
+                            vehicles, and number of people</b>, each categorized on a scale of <b>NONE, LOW, MEDIUM, and HIGH</b>.
                     Additionally, the <b>concentration of CO2</b> is represented as a
                     line along the x-axis. The y-axis lists the <b>15 paths</b>, providing a clear comparison of these
                     variables for each specific route. This visual representation helps in understanding the
@@ -180,7 +180,16 @@ const Page = () => {
                     highcharts={Highcharts}
                     options={options}
                 />
-
+                <div className='flex items-center justify-center mt-5 min-[640px]:hidden'>
+                    <Chip color="default" className='bg-gray-200'>
+                        <div className="flex items-center">
+                            <img className="mr-4 opacity-55" width="40" src="/rotate_phone.svg"></img>
+                            <p className='overflow-auto'>
+                                Better Smartphone Experience
+                            </p>
+                        </div>
+                    </Chip>
+                </div>
 
             </CardBody>
 

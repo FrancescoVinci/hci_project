@@ -202,8 +202,7 @@ const Page = () => {
                     <HighchartsReact
                         highcharts={Highcharts}
                         options={options}
-                    />
-
+                    /> 
                 </CardBody>
 
 
