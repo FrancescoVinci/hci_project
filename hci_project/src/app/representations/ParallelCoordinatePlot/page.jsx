@@ -195,7 +195,7 @@ const Page = () => {
 
                 <p className="font-xl font-Roboto pt-5 mb-7">
                     The Parallel Coordinate Plot effectively visualizes the <i>relationship</i> between <b>CO2 concentration</b>,
-                    <b>vehicle quantity</b>, and <b>air quality</b> across <b>14 paths</b> on <i>November 30, 2023</i>. Each axis represents
+                    <b>vehicle quantity</b>, and <b>air quality</b> across <b>15 paths</b> on <i>November 30, 2023</i>. Each axis represents
                     one of these variables, while the lines correspond to individual road segments. This plot allows us
                     to observe how traffic volume and CO2 levels correlate with air quality. For example, if lines show
                     similar trends between the CO2 and vehicle quantity axes, it suggests that higher traffic volume
