@@ -87,10 +87,13 @@ const Page = () => {
             }
         },
         legend: {
-            floating: true,
+            enabled: true,
+            floating: false,
             layout: 'horizontal',
             align: 'center',
-            verticalAlign: 'top',
+            verticalAlign: 'bottom',
+            x: 0,
+            y: 0
         },
         tooltip: {
             pointFormat: '<span style="color:{point.color}">\u25CF</span>' +
@@ -153,7 +156,7 @@ const Page = () => {
         ],
         series: data.map(function (set, i) {
             return {
-                name: 'Path ' + i,
+                name: 'Path ' + (i + 1),
                 data: set,
                 shadow: false
             };
@@ -166,10 +169,11 @@ const Page = () => {
                     },
                     chartOptions: {
                         legend: {
-                            floating: true,
+                            enabled: true,
+                            floating: false,
                             layout: 'horizontal',
                             align: 'center',
-                            verticalAlign: 'top',
+                            verticalAlign: 'bottom',
                             x: 0,
                             y: 0
                         },
