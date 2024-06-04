@@ -60,7 +60,7 @@ This will create an optimized production build in the `.next` folder.
 After building the project, you can start the production server using:
 
 ```bash
-npm start
+npm run start
 ```
 
 or, if you're using Yarn:

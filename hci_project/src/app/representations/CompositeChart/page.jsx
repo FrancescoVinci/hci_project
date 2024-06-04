@@ -159,7 +159,6 @@ const Page = () => {
         }
     }, [selected, selectedMonthData, radioValue]);
 
-
     const changeRadioValue = (e) => {
         if (e === "daily") {
             setShowMonthPicker(true);
@@ -394,7 +393,7 @@ const Page = () => {
                         The chart provides a comprehensive overview of how these indicators fluctuate over time. For
                         instance, it shows monthly variations throughout the year, highlighting seasonal changes in
                         weather patterns, CO2 concentrations, and temperature. Alternatively, when viewed by days within
-                        a month, it allows for a more granular analysis, capturing daily trends and anomalies.
+                        a month, it allows for a more granular analysis, capturing daily trends and anomalies (like no data gathered in october for SBasilio Station).
                     </p>
 
                     <div className="flex justify-center gap-5  mb-4">
