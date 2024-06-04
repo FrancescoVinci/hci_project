@@ -79,7 +79,3 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can also check out the [Next.js GitHub repository](https://github.com/vercel/next.js/) for more examples and information.
-
----
-
-Feel free to customize the README file with specific details about your project, such as its name, a more detailed description, or any additional steps required to set up and run the project.

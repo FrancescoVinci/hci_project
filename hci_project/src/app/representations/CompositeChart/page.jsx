@@ -121,7 +121,7 @@ const Page = () => {
                     const rain = [];
                     const humid = [];
 
-                    for (let cur_month = 1; cur_month < 11; cur_month++) {
+                    for (let cur_month = 1; cur_month <= 12; cur_month++) {
                         const accTemp = [];
                         const accHumid = [];
                         const accCO2 = [];
@@ -138,16 +138,17 @@ const Page = () => {
                                 }
                             }
                         });
+                        if (accTemp.length != 0 ){
+                            temp.push(avg(accTemp));
+                            humid.push(avg(accHumid));
+                            CO2.push(avg(accCO2));
+                            rain.push(avg(accRain));
 
-                        temp.push(avg(accTemp));
-                        humid.push(avg(accHumid));
-                        CO2.push(avg(accCO2));
-                        rain.push(avg(accRain));
-
-                        console.log(temp);
-                        console.log(humid);
-                        console.log(CO2);
-                        console.log(rain);
+                            console.log(temp);
+                            console.log(humid);
+                            console.log(CO2);
+                            console.log(rain);
+                        }
                     }
                     setDates(["Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov"]);
                     setCO2(CO2);
